@@ -8,21 +8,22 @@ questions:
 - "How to find your way around RStudio?"
 - "How to interact with R?"
 - "How to manage your environment?"
-<!-- "How to install packages?" -->
 objectives:
 - "Install latest version of R."
 - "Install latest version of RStudio."
 - "Navigate the RStudio GUI."
-<!-- "Install additional packages using the packages tab." -->
-<!-- "Install additional packages using R code." -->
 keypoints:
 - "Use RStudio to write and run R programs."
-<!-- "Use `install.packages()` to install packages (libraries)." -->
 source: Rmd
 ---
 
 
 
+Vi har fjernet følgende fra questions, objecives og keypoints
+- "How to install packages?"
+- "Install additional packages using the packages tab."
+- "Install additional packages using R code."
+- "Use `install.packages()` to install packages (libraries)."
 
 ## What is R? What is RStudio?
 
