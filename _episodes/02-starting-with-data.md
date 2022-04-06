@@ -343,9 +343,9 @@ interviews[1:3, 7]
 
 
 ~~~
-Error in `stop_subscript()`:
-! Can't subset columns that don't exist.
-✖ Location 7 doesn't exist.
+Error in `vectbl_as_col_location()`:
+! Can't subset columns past the end.
+ℹ Location 7 doesn't exist.
 ℹ There are only 6 columns.
 ~~~
 {: .error}
