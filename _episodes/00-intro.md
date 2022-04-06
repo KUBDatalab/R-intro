@@ -8,16 +8,16 @@ questions:
 - "How to find your way around RStudio?"
 - "How to interact with R?"
 - "How to manage your environment?"
-- "How to install packages?"
+<!-- "How to install packages?" -->
 objectives:
 - "Install latest version of R."
 - "Install latest version of RStudio."
 - "Navigate the RStudio GUI."
-- "Install additional packages using the packages tab."
-- "Install additional packages using R code."
+<!-- "Install additional packages using the packages tab." -->
+<!-- "Install additional packages using R code." -->
 keypoints:
 - "Use RStudio to write and run R programs."
-- "Use `install.packages()` to install packages (libraries)."
+<!-- "Use `install.packages()` to install packages (libraries)." -->
 source: Rmd
 ---
 
