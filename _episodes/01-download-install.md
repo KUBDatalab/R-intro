@@ -5,7 +5,6 @@ title: "Download files and install packages"
 teaching: 30
 exercises: 10
 questions:
-Vi har fjernet følgende fra questions, objecives og keypoints
 - "How to install packages?"
 - "What data types are available in R?"
 - "What is an object?"
@@ -35,6 +34,8 @@ source: Rmd
 ---
 
 
+
+Vi har fjernet følgende fra questions, objecives og keypoints
 
 FLYTTET FRA 00-intro.Rmd
 ### Downloading the data and getting set up
