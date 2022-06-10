@@ -8,10 +8,38 @@
 library(readxl)
 
 read_excel("flightdata.xlsx")
-data <- read_excel("flightdata.xlsx")
+data <- read_excel("data/flightdata.xlsx")
+library(tidyverse)
+
+data %>% 
+  sample_frac(.005) %>%
+  ggplot(mapping = aes(x=dep_delay, y=arr_delay)) +
+  geom_point()
+
+# vi tænker lige oer sample_frac. Den kan forvirre.
+# Men den tid vi bruger på at vente på plottet...
+
+# Og inden vi taler om ggplot - så må vi heller kigge
+# på hvad datastrukturen er.
 data
 View(data)
-library(tidyverse)
+# Det er vigtigt at vide hvilke data vi har-
+# så ved vi nemlig at planlagt ankomst er gemt som
+# antal minutter efter midnat.
+
+
+# Indholdet af hjælpe filen til denne bør vi nok 
+# have med på siden.
+# flights
+
+
+# vi har lige set på hele datasættet. Og henvist til
+# hjemmesiden, hvor databsekrivelserne er - og 
+# nævnt at når man laver sit eget, er det godt at have
+# et (maskinlæsbart) dokument med de beskrivelser også.
+
+# STort og forvirrnede. Er der flyselskaber er er 
+# bedre til at flyge til tiden= Eller ankomme rettigidt
 
 data %>% select(carrier, dep_delay, arr_delay)
 
@@ -19,30 +47,34 @@ data %>%
   select(carrier, dep_delay, arr_delay) %>% 
   arrange(carrier) 
 
+data %>% 
+  select(carrier, dep_delay, arr_delay) %>% 
+  arrange(carrier) %>% 
+  view()
 
 data %>% 
   summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay))
+
 # Hov NA!!
+# Og vi så faktisk (sandsynligvis) det same under
+# plottet
 # hjælp! F1 på mean og ?mean- hvilke argumenter kan den tage
 data %>% select(dep_delay) %>% 
   summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE))
 
-
-data %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            manglende_værdier = sum(is.na(dep_delay)),
-            antal_værdier = n(),
-            andel_manglende = manglende_værdier/antal_værdier*100)
+# denne har for travlt og skal enten helt væk, eller langt senere
+# data %>% 
+#   summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
+#             manglende_værdier = sum(is.na(dep_delay)),
+#             antal_værdier = n(),
+#             andel_manglende = manglende_værdier/antal_værdier*100)
 # vi behøver ikke at selecte! måske først senere.
-
-data %>% 
-  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
-            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T))
 
 #kan summarise over flere kolonner
 data %>% 
   summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
             gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T))
+
 
 #måske kunne det være se hvordan det variere fra flyselskab til flyselskab
 data %>%
@@ -50,24 +82,30 @@ data %>%
   summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
             gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) 
 
-#kan de to gennemsnit visualiseres 
-data %>% 
+# Nu er det tid at introducere variable, assignment og "objekter"
+# "genbruge" resultatet af ting vi har gjort
+forsinkelser <- data %>%
   group_by(carrier) %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
-  ggplot(mapping = aes(x = gennemsnitlig_forsinket_afgang, 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) 
+forsinkelser
+
+#kan de to gennemsnit visualiseres 
+forsinkelser %>% 
+  ggplot(mapping = aes(x = gennemsnit_forsinket_afgang, 
                        y = gennemsnit_forsinket_ankomst, color = carrier)) +
-  geom_point() +
-  geom_hline(aes(yintercept = 0))
-
+      geom_point() +
+#  geom_hline(aes(yintercept = 0)) +
+  NULL
+  
 # Hvordan finder vi ud af hvor mange NA værdier der er ?
-data %>% select(dep_delay) %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            manglende_værdier = sum(is.na(dep_delay)),
-            antal_værdier = n(),
-            andel_manglende = manglende_værdier/antal_værdier*100)
+# data %>% select(dep_delay) %>% 
+#   summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
+#             manglende_værdier = sum(is.na(dep_delay)),
+#             antal_værdier = n(),
+#             andel_manglende = manglende_værdier/antal_værdier*100)
 
-
+# herunder er der fine ting. Men vi skal i retning af kode ----
 #Det kunne være interessant at se hvor mange observationer der er for hver
 #carrier, samt andel af NA værdier der er i observationerne
 data %>% 
@@ -98,36 +136,69 @@ data %>%
             proportion_arrival = sum(is.na(arr_delay))/n()*100) %>% 
   arrange(proportion_departure, proportion_arrival)
 
-data %>% 
-  group_by(carrier) %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T),
-            proportion_departure = sum(is.na(dep_delay))/n()*100,
-            proportion_arrival = sum(is.na(arr_delay))/n()*100) %>% 
-  filter(gennemsnitlig_forsinket_afgang > 20)
+# her begynder der er være ting vi skal have med nu. ------------
+forsinkelser %>% 
+  filter(gennemsnit_forsinket_afgang > 15)
+
+
+
+
 
 #Øvelse til dem - Find ud af hvem der har den laveste gennemsnitlige forsinkede
 #ankomst - brug plottet til at sjusse sig til værdi - hvem er det?
-data %>% 
-  group_by(carrier) %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T),
-            proportion_departure = sum(is.na(dep_delay))/n()*100,
-            proportion_arrival = sum(is.na(arr_delay))/n()*100) %>% 
+forsinkelser %>% 
   filter(gennemsnit_forsinket_ankomst < -9)
 
+# default AND, men pædagosik &
+forsinkelser %>% 
+  filter(gennemsnit_forsinket_afgang >10 & gennemsnit_forsinket_afgang < 15)
+
 #Man kan også udvælge to carrier hvis der er noget man vil nær studere
-data %>% 
-  group_by(carrier) %>% 
-  summarise(gennemsnitlig_forsinket_afgang = mean(dep_delay, na.rm = TRUE),
-            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T),
-            proportion_departure = sum(is.na(dep_delay))/n()*100,
-            proportion_arrival = sum(is.na(arr_delay))/n()*100) %>%
-  filter(carrier == 'F9' | carrier == "AS")
+# or operatoren. forskellige anførselstegn?
+forsinkelser %>% 
+  filter(carrier == 'F9' | carrier == "AS") 
 
+# bøvlet hvis det var fem carriers vi ville kigge på!
+# B6, MQ, AS, F9, OO
+# her %in% og vektor!
+flyselskaber <- c("B6", "MQ", "AS", "F9", "OO" )
 
+forsinkelser %>% 
+  filter(carrier %in% flyselskaber)
 
+# a <- 2.5
+# b <- a*2.47
+# hvad sker der så når vi ændrer på a?'
+# Ændring af variable - og følgevirkninger
+# Tilføje til flyselskaber
+# Se på et andet interval af forsinkelser ovenfor?
+# forsinkelse på afgang = 5 minutter
+# forsinkelse af ankomst= forsinkelse på afgang + 5 minutter
+# Nu ændrer vi dep_delay - ændres arr_delay?
+# Nu skal vi tale lidt om vektorer. Herunder at dataframes består af 
+# vektorer. 
+# datatyper
+# Nok begge!
+# class()
+# gem data - nok omkring hvor vi gemmer i en variabel!
+# Split-apply-combine som begreb i forbindelse med group_by?
+# gem data!
+# dimensioner af datafrmaes, dim, ncol, nrow, head, tail, names
+# summary
+# subsetting af vektorer (og dataframes) - overveje om 
+# vi skal fortælle at vi gør det gennem dplyr, men at der er andre
+# måder. Eller om vi skal vise de andre måder?
+#   Vektorer - kun en datatype!
+#   numeric, character, (logical)
+#   Illustration fra carpentries - 
+#     
+#     dataframes - en samling af vektorer - der skal være lige lange
+#   Det betyder også! at der kun kna være en datatype i en kolonne 
+#   i dataframen!
 
+# spørgsmål: skal vi også tale om coercion her?
+
+sum(is.na(data))
 
 #øvelse to
 #Finde ud af hvad flyselskaberne egentlig hedder
@@ -311,6 +382,7 @@ data %>%
 
 #top 3 nederste i box plot sammenlignet med top 3 øverste i boxplot
 #i forhold til forsinkelser
+
 
 
 
