@@ -16,7 +16,7 @@ data %>%
   ggplot(mapping = aes(x=dep_delay, y=arr_delay)) +
   geom_point()
 
-# vi tænker lige oer sample_frac. Den kan forvirre.
+# vi tænker lige over sample_frac. Den kan forvirre.
 # Men den tid vi bruger på at vente på plottet...
 
 # Og inden vi taler om ggplot - så må vi heller kigge
@@ -81,6 +81,74 @@ data %>%
   group_by(carrier) %>% 
   summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
             gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) 
+
+# filtrering
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang < 20 )
+
+#Logiske operatorer Hvis vi godt vil have forsinket afgang mindre end 20
+# OG forsinket ankomst mindre end noget andet.
+
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang < 20 ) %>% 
+  filter(gennemsnit_forsinket_ankomst < 15)
+
+
+# Eller! 
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang < 20 ,  
+         gennemsnit_forsinket_ankomst < 15)
+
+# Men nok en god ide at!
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang < 20 &   
+         gennemsnit_forsinket_afgang > 15)
+
+# Hvad med eller? Hvem har forsinkelser mellem 10 og 20 minutter?
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang > 20 |   
+           gennemsnit_forsinket_afgang < 15)
+
+  #vi starter med acceptabel forsinkelse på ankomst 20 minutter (fordi vi 
+# er blevet opgraderet, og der er gratis drikkevarer),
+# og afgang på 20 minutter - 5 minutter. 
+# så viser det sig at de er løbet tør for champagne. Så nu accepterer vi
+# kun 10 minutters forsinkelse på ankomst. Men vi glemmer at køre linien
+# hvor vi definerer acceptabel forsinkelse på afgang.
+# Så får vi flyselskaber med, der har en forsinkelse på afgangen, der er 12
+# og tretten minutter. Og det skal det jo ikke. For acceptabel forsinkelse på
+# afgangen er forsinkelse på ankomst - 5. Og den skulle nu være 5 minutter, ikke
+# 15
+acceptabel_forsinkelse_ankomst <- 20
+acceptabel_forsinkelse_afgang <- acceptabel_forsinkelse_ankomst - 5
+
+data %>%
+  group_by(carrier) %>% 
+  summarise(gennemsnit_forsinket_afgang = mean(dep_delay, na.rm =T),
+            gennemsnit_forsinket_ankomst = mean(arr_delay, na.rm=T)) %>% 
+  filter(gennemsnit_forsinket_afgang < acceptabel_forsinkelse_afgang) %>% 
+  filter(gennemsnit_forsinket_ankomst < acceptabel_forsinkelse_ankomst)
+
+# acceptabel forinsket akomst laver vi om til 10 minutter.
+# acceptabel forsinket afgang er jo defineret.
+res_rigtig_første
+res_fejl_første
+res_rigtig_anden
 
 # Nu er det tid at introducere variable, assignment og "objekter"
 # "genbruge" resultatet af ting vi har gjort
@@ -166,15 +234,7 @@ flyselskaber <- c("B6", "MQ", "AS", "F9", "OO" )
 forsinkelser %>% 
   filter(carrier %in% flyselskaber)
 
-# a <- 2.5
-# b <- a*2.47
-# hvad sker der så når vi ændrer på a?'
-# Ændring af variable - og følgevirkninger
 # Tilføje til flyselskaber
-# Se på et andet interval af forsinkelser ovenfor?
-# forsinkelse på afgang = 5 minutter
-# forsinkelse af ankomst= forsinkelse på afgang + 5 minutter
-# Nu ændrer vi dep_delay - ændres arr_delay?
 # Nu skal vi tale lidt om vektorer. Herunder at dataframes består af 
 # vektorer. 
 # datatyper
@@ -184,6 +244,7 @@ forsinkelser %>%
 # Split-apply-combine som begreb i forbindelse med group_by?
 # gem data!
 # dimensioner af datafrmaes, dim, ncol, nrow, head, tail, names
+# det ligger naturligt lige efter plottet.
 # summary
 # subsetting af vektorer (og dataframes) - overveje om 
 # vi skal fortælle at vi gør det gennem dplyr, men at der er andre
