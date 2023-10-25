@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/00-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/01-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/02-next-episode.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/404.html</loc>
   </url>
   <url>
@@ -17,6 +26,15 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/00-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/01-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/02-next-episode.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/404.html</loc>
@@ -46,6 +64,9 @@
     <loc>https://carpentries.github.io/workbench-template-md/instructor/key-points.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/next-episode.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/profiles.html</loc>
   </url>
   <url>
@@ -59,6 +80,9 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/next-episode.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/profiles.html</loc>
