@@ -13,8 +13,6 @@ exercises: 5
 
 
 
-
-
 questions:
 
 objectives:

@@ -1,0 +1,623 @@
+---
+title: "Data Wrangling with dplyr and tidyr"
+keypoints:
+- Use the `dplyr` package to manipulate dataframes.
+- Use `select()` to choose variables from a dataframe.
+- Use `filter()` to choose data based on values.
+- Use `group_by()` and `summarize()` to work with subsets of data.
+- Use `mutate()` to create new variables.
+- Use the `tidyr` package to change the layout of dataframes.
+- Use `pivot_wider()` to go from long to wide format.
+- Use `pivot_longer()` to go from wide to long format.
+objectives:
+- Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
+- Select certain columns in a dataframe with the **`dplyr`** function `select`.
+- Select certain rows in a dataframe according to filtering conditions with the **`dplyr`**
+  function `filter`.
+- Link the output of one **`dplyr`** function to the input of another function with
+  the 'pipe' operator `%>%`.
+- Add new columns to a dataframe that are functions of existing columns with `mutate`.
+- Use the split-apply-combine concept for data analysis.
+- Use `summarize`, `group_by`, and `count` to split a dataframe into groups of observations,
+  apply a summary statistics for each group, and then combine the results.
+- Describe the concept of a wide and a long table format and for which purpose those
+  formats are useful.
+- Describe the roles of variable names and their associated values when a table is
+  reshaped.
+- Reshape a dataframe from long to wide format and back with the `pivot_wider` and
+  `pivot_longer` commands from the **`tidyr`** package.
+- Export a dataframe to a csv file.
+questions:
+- How can I select specific rows and/or columns from a dataframe?
+- How can I combine multiple commands into a single command?
+- How can I create new columns or remove existing columns from a dataframe?
+- How can I reformat a dataframe to meet my needs?
+teaching: 20
+exercises: 10
+source: Rmd
+---
+
+
+
+
+**`dplyr`** is a package for making tabular data wrangling easier by using a
+limited set of functions that can be combined to extract and summarize insights
+from your data. It pairs nicely with **`tidyr`** which enables you to swiftly
+convert between different data formats (long vs. wide) for plotting and analysis.
+
+Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the
+tidyverse. These packages were loaded in R's memory when we called
+`library(tidyverse)` earlier.
+
+> ## Note
+>
+> The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`**
+> accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling
+> variants of different function and option names. For this lesson, we utilize
+> the American spellings of different functions; however, feel free to use
+> the regional variant for where you are teaching.
+{: .callout}
+
+## What is an R package?
+
+The package **`dplyr`** provides easy tools for the most common data
+wrangling tasks. It is built to work directly with dataframes, with many
+common tasks optimized by being written in a compiled language (C++) (not all R
+packages are written in R!).
+
+The package **`tidyr`** addresses the common problem of wanting to reshape your
+data for plotting and use by different R functions. Sometimes we want data sets
+where we have one row per measurement. Sometimes we want a dataframe where each
+measurement type has its own column, and rows are instead more aggregated
+groups. Moving back and forth between these formats is nontrivial, and
+**`tidyr`** gives you tools for this and more sophisticated data wrangling.
+
+But there are also packages available for a wide range of tasks including
+building plots (**`ggplot2`**, which we'll see later), downloading data from the
+NCBI database, or performing statistical analysis on your data set. Many
+packages such as these are housed on, and downloadable from, the
+**C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`.
+This function makes the package accessible by your R installation with the
+command `library()`, as you did with `tidyverse` earlier.
+
+To easily access the documentation for a package within R or RStudio, use
+`help(package = "package_name")`.
+
+To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
+to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+
+## Learning **`dplyr`** and **`tidyr`**
+
+We are working with the same dataset as earlier. Refer to the 
+previous lesson to download the data, if you do not have it loaded.
+
+We're going to learn some of the most common **`dplyr`** functions:
+
+- `select()`: subset columns
+- `filter()`: subset rows on conditions
+- `mutate()`: create new columns by using information from other columns
+- `group_by()` and `summarize()`: create summary statistics on grouped data
+- `arrange()`: sort results
+- `count()`: count discrete values
+
+## Selecting columns and filtering rows
+
+To select columns of a dataframe, use `select()`. The first argument to this
+function is the dataframe (`interviews`), and the subsequent arguments are the
+columns to keep, separated by commas. Alternatively, if you are selecting
+columns adjacent to each other, you can use a `:` to select a range of columns,
+read as "select columns from ___ to ___."
+
+
+```r
+# to select columns throughout the dataframe
+select(interviews, village, no_membrs)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+```r
+# to select a series of connected columns
+select(interviews, village:respondent_wall_type)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+To choose rows based on specific criteria, we can use the `filter()` function.
+The argument after the dataframe is the condition we want our final
+dataframe to adhere to (e.g. village name is Chirodzo): 
+
+
+```r
+# filters observations where village name is "Chirodzo" 
+filter(interviews, village == "Chirodzo")
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+We can also specify multiple conditions within the `filter()` function. We can
+combine conditions using either "and" or "or" statements. In an "and" 
+statement, an observation (row) must meet **every** criteria to be included
+in the resulting dataframe. To form "and" statements within dplyr, we can  pass
+our desired conditions as arguments in the `filter()` function, separated by
+commas:
+
+
+```r
+# filters observations with "and" operator (comma)
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo", 
+                   no_membrs > 4, 
+                   no_meals > 2)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+We can also form "and" statements with the `&` operator instead of commas:
+
+
+```r
+# filters observations with "&" logical operator
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo" & 
+                   no_membrs > 4 & 
+                   no_meals > 2)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+In an "or" statement, observations must meet *at least one* of the specified conditions. 
+To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
+
+
+```r
+# filters observations with "|" logical operator
+# output dataframe satisfies AT LEAST ONE of the specified conditions
+filter(interviews, village == "Chirodzo" | village == "Ruaca")
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+
+## Pipes
+
+What if you want to select and filter at the same time? There are three
+ways to do this: use intermediate steps, nested functions, or pipes.
+
+With intermediate steps, you create a temporary dataframe and use
+that as input to the next function, like this:
+
+
+```r
+interviews2 <- filter(interviews, village == "Chirodzo")
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+```r
+interviews_ch <- select(interviews2, village:respondent_wall_type)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews2' not found
+```
+
+This is readable, but can clutter up your workspace with lots of objects that
+you have to name individually. With multiple steps, that can be hard to keep
+track of.
+
+You can also nest functions (i.e. one function inside of another), like this:
+
+
+```r
+interviews_ch <- select(filter(interviews, village == "Chirodzo"),
+                         village:respondent_wall_type)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+This is handy, but can be difficult to read if too many functions are nested, as
+R evaluates the expression from the inside out (in this case, filtering, then
+selecting).
+
+The last option, *pipes*, are a recent addition to R. Pipes let you take the
+output of one function and send it directly to the next, which is useful when
+you need to do many things to the same dataset. Pipes in R look like `%>%` and
+are made available via the **`magrittr`** package, installed automatically with
+**`dplyr`**. If you use RStudio, you can type the pipe with:  
+- <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
+<kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
+
+
+```r
+interviews %>%
+    filter(village == "Chirodzo") %>%
+    select(village:respondent_wall_type)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+In the above code, we use the pipe to send the `interviews` dataset first
+through `filter()` to keep rows where `village` is "Chirodzo", then through
+`select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
+takes the object on its left and passes it as the first argument to the function
+on its right, we don't need to explicitly include the dataframe as an argument
+to the `filter()` and `select()` functions any more.
+
+Some may find it helpful to read the pipe like the word "then". For instance,
+in the above example, we take the dataframe `interviews`, *then* we `filter`
+for rows with `village == "Chirodzo"`, *then* we `select` columns `no_membrs` and
+`years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
+but by combining them into linear workflows with the pipe, we can accomplish
+more complex data wrangling operations.
+
+If we want to create a new object with this smaller version of the data, we
+can assign it a new name:
+
+
+```r
+interviews_ch <- interviews %>%
+    filter(village == "Chirodzo") %>%
+    select(village:respondent_wall_type)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+```r
+interviews_ch
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews_ch' not found
+```
+
+Note that the final dataframe (`interviews_ch`) is the leftmost part of this
+expression.
+
+> ## Exercise
+>
+>  Using pipes, subset the `interviews` data to include interviews
+> where respondents were members of an irrigation association
+> (`memb_assoc`) and retain only the columns `affect_conflicts`,
+> `liv_count`, and `no_meals`.
+>
+> > ## Solution
+> >
+> > 
+> > ```r
+> > interviews %>%
+> >     filter(memb_assoc == "yes") %>%
+> >     select(affect_conflicts, liv_count, no_meals)
+> > ```
+> > 
+> > ```{.error}
+> > Error in eval(expr, envir, enclos): object 'interviews' not found
+> > ```
+> {: .solution}
+{: .challenge}
+
+### Mutate
+
+Frequently you'll want to create new columns based on the values in existing
+columns, for example to do unit conversions, or to find the ratio of values in
+two columns. For this we'll use `mutate()`.
+
+We might be interested in the number of meals served in a given household
+(i.e. number of people times the number of meals served):
+
+
+```r
+interviews %>%
+    mutate(people_per_room = no_membrs * no_meals)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+
+
+
+
+> ## Exercise
+>
+>  Create a new dataframe from the `interviews` data that meets the following
+>  criteria: contains only the `village` column and a new column called
+>  `total_meals` containing a value that is equal to the total number of meals
+>  served in the household per day on average (`no_membrs` times `no_meals`).
+>  Only the rows where `total_meals` is greater than 20 should be shown in the
+>  final dataframe.
+>
+>  **Hint**: think about how the commands should be ordered to produce this data
+>  frame!
+>
+> > ## Solution
+> >
+> > 
+> > ```r
+> > interviews_total_meals <- interviews %>%
+> >     mutate(total_meals = no_membrs * no_meals) %>%
+> >     filter(total_meals > 20) %>%
+> >     select(village, total_meals)
+> > ```
+> > 
+> > ```{.error}
+> > Error in eval(expr, envir, enclos): object 'interviews' not found
+> > ```
+> {: .solution}
+{: .challenge}
+
+### Split-apply-combine data analysis and the summarize() function
+
+Many data analysis tasks can be approached using the *split-apply-combine*
+paradigm: split the data into groups, apply some analysis to each group, and
+then combine the results. **`dplyr`** makes this very easy through the use of
+the `group_by()` function.
+
+
+#### The `summarize()` function
+
+`group_by()` is often used together with `summarize()`, which collapses each
+group into a single-row summary of that group.  `group_by()` takes as arguments
+the column names that contain the **categorical** variables for which you want
+to calculate the summary statistics. So to compute the average household size by
+village:
+
+
+```r
+interviews %>%
+    group_by(village) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+You may also have noticed that the output from these calls doesn't run off the
+screen anymore. It's one of the advantages of `tbl_df` over dataframe.
+
+You can also group by multiple columns:
+
+
+```r
+interviews %>%
+    group_by(village, respondent_wall_type) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
+`ungroup` function:
+
+
+```r
+interviews %>%
+    group_by(village, respondent_wall_type) %>%
+    summarize(mean_no_membrs = mean(no_membrs)) %>%
+    ungroup()
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+
+
+Once the data are grouped, you can also summarize multiple variables at the same
+time (and not necessarily on the same variable). For instance, we could add a
+column indicating the minimum household size for each village for each group
+(type of wall):
+
+
+```r
+interviews %>%
+    group_by(village, respondent_wall_type) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+It is sometimes useful to rearrange the result of a query to inspect the values.
+For instance, we can sort on `min_membrs` to put the group with the smallest
+household first:
+
+
+
+```r
+interviews %>%
+    group_by(village, respondent_wall_type) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs)) %>%
+    arrange(min_membrs)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+To sort in descending order, we need to add the `desc()` function. If we want to
+sort the results by decreasing order of minimum household size:
+
+
+```r
+interviews %>%
+    group_by(village, respondent_wall_type) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs)) %>%
+    arrange(desc(min_membrs))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+#### Counting
+
+When working with data, we often want to know the number of observations found
+for each factor or combination of factors. For this task, **`dplyr`** provides
+`count()`. For example, if we wanted to count the number of rows of data for
+each village, we would do:
+
+
+```r
+interviews %>%
+    count(village)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+For convenience, `count()` provides the `sort` argument to get results in
+decreasing order:
+
+
+```r
+interviews %>%
+    count(village, sort = TRUE)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+> ## Exercise
+>
+> How many households in the survey have an average of
+> two meals per day? Three meals per day? Are there any other numbers
+> of meals represented?
+>
+> > ## Solution
+> >
+> > 
+> > ```r
+> > interviews %>%
+> >    count(no_meals)
+> > ```
+> > 
+> > ```{.error}
+> > Error in eval(expr, envir, enclos): object 'interviews' not found
+> > ```
+> {: .solution}
+>
+> Use `group_by()` and `summarize()` to find the mean, min, and max
+> number of household members for each village. Also add the number of
+> observations (hint: see `?n`).
+>
+> > ## Solution
+> >
+> > 
+> > ```r
+> > interviews %>%
+> >   group_by(village) %>%
+> >   summarize(
+> >       mean_no_membrs = mean(no_membrs),
+> >       min_no_membrs = min(no_membrs),
+> >       max_no_membrs = max(no_membrs),
+> >       n = n()
+> >   )
+> > ```
+> > 
+> > ```{.error}
+> > Error in eval(expr, envir, enclos): object 'interviews' not found
+> > ```
+> {: .solution}
+>
+> What was the largest household interviewed in each month?
+>
+> > ## Solution
+> >
+> > 
+> > ```r
+> > # if not already included, add month, year, and day columns
+> > library(lubridate) # load lubridate if not already loaded
+> > ```
+> > 
+> > ```{.output}
+> > 
+> > Attaching package: 'lubridate'
+> > ```
+> > 
+> > ```{.output}
+> > The following objects are masked from 'package:base':
+> > 
+> >     date, intersect, setdiff, union
+> > ```
+> > 
+> > ```r
+> > interviews %>%
+> >     mutate(month = month(interview_date),
+> >            day = day(interview_date),
+> >            year = year(interview_date)) %>%
+> >     group_by(year, month) %>%
+> >     summarize(max_no_membrs = max(no_membrs))
+> > ```
+> > 
+> > ```{.error}
+> > Error in eval(expr, envir, enclos): object 'interviews' not found
+> > ```
+> {: .solution}
+{: .challenge}
+
+
+## Exporting data
+
+Now that you have learned how to use **`dplyr`** to extract information from
+or summarize your raw data, you may want to export these new data sets to share
+them with your collaborators or for archival.
+
+Similar to the `read_csv()` function used for reading CSV files into R, there is
+a `write_csv()` function that generates CSV files from dataframes.
+
+Before using `write_csv()`, we are going to create a new folder, `data_output`,
+in our working directory that will store this generated dataset. We don't want
+to write generated datasets in the same directory as our raw data. It's good
+practice to keep them separate. The `data` folder should only contain the raw,
+unaltered data, and should be left alone to make sure we don't delete or modify
+it. In contrast, our script will generate the contents of the `data_output`
+directory, so even if the files it contains are deleted, we can always
+re-generate them.
+
+
+
+Now we can save this dataframe to our `data_output` directory.
+
+
+```r
+write_csv(interviews, file = "data_output/interviews_plotting.csv")
+```
+
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+{% include links.md %}
