@@ -7,10 +7,25 @@
     <loc>https://carpentries.github.io/workbench-template-md/00-next-episode.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/01-intro-to-r.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/01-next-episode.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/02-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/02-starting-with-data.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/03-dplyr-tidyr.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/04-functions-plots.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/05-whats-next.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/404.html</loc>
@@ -25,6 +40,15 @@
     <loc>https://carpentries.github.io/workbench-template-md/aio.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/ignore-04-ggplot2.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/ignore-05-databases.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/ignore-05-json.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/images.html</loc>
   </url>
   <url>
@@ -37,10 +61,25 @@
     <loc>https://carpentries.github.io/workbench-template-md/instructor/00-next-episode.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/01-intro-to-r.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/01-next-episode.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/02-next-episode.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/02-starting-with-data.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/03-dplyr-tidyr.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/04-functions-plots.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/05-whats-next.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/404.html</loc>
@@ -53,6 +92,15 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/ignore-04-ggplot2.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/ignore-05-databases.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/ignore-05-json.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/images.html</loc>
