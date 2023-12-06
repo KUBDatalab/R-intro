@@ -17,12 +17,7 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: test
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Introduction

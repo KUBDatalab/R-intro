@@ -1,9 +1,9 @@
 ---
 site: sandpaper::sandpaper_site
+title: "nu prøver vi"
 ---
 
-This is a new lesson built with [The Carpentries Workbench][workbench]. 
-
+hej for dig
 
 [workbench]: https://carpentries.github.io/sandpaper-docs
 

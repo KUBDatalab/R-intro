@@ -1,5 +1,5 @@
 ---
-title: Setup
+title: 'Reference'
 ---
 
 FIXME: Setup instructions live in this document. Please specify the tools and
