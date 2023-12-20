@@ -40,7 +40,7 @@
     </div>
   </div>
   <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav incubator" aria-label="Main Navigation"><div class="container-fluid nav-container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
@@ -51,7 +51,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-      <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="search button" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -97,7 +97,7 @@
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle">
+      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
@@ -206,6 +206,9 @@
 <strong><code>tidyr</code></strong></a></li>
 <li><a href="#selecting-columns-and-filtering-rows">Selecting columns and filtering rows</a></li>
 <li><a href="#pipes">Pipes</a></li>
+<li><a href="#solution-2">Solution</a></li>
+<li><a href="#solution-3">Solution</a></li>
+<li><a href="#solution-4">Solution</a></li>
 <li><a href="#exporting-data">Exporting data</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -316,18 +319,68 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr and tidyr</h1>
-        <p> Last updated on 2023-12-06 | 
+        <p>Last updated on 2023-12-20 |
         
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/03-dplyr-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
         
         
         <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
 
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How can I select specific rows and/or columns from a dataframe?</li>
+<li>How can I combine multiple commands into a single command?</li>
+<li>How can I create new columns or remove existing columns from a
+dataframe?</li>
+<li>How can I reformat a dataframe to meet my needs?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Describe the purpose of an R package and the
+<strong><code>dplyr</code></strong> and
+<strong><code>tidyr</code></strong> packages.</li>
+<li>Select certain columns in a dataframe with the
+<strong><code>dplyr</code></strong> function <code>select</code>.</li>
+<li>Select certain rows in a dataframe according to filtering conditions
+with the <strong><code>dplyr</code></strong> function
+<code>filter</code>.</li>
+<li>Link the output of one <strong><code>dplyr</code></strong> function
+to the input of another function with the ‘pipe’ operator
+<code>%&gt;%</code>.</li>
+<li>Add new columns to a dataframe that are functions of existing
+columns with <code>mutate</code>.</li>
+<li>Use the split-apply-combine concept for data analysis.</li>
+<li>Use <code>summarize</code>, <code>group_by</code>, and
+<code>count</code> to split a dataframe into groups of observations,
+apply a summary statistics for each group, and then combine the
+results.</li>
+<li>Describe the concept of a wide and a long table format and for which
+purpose those formats are useful.</li>
+<li>Describe the roles of variable names and their associated values
+when a table is reshaped.</li>
+<li>Reshape a dataframe from long to wide format and back with the
+<code>pivot_wider</code> and <code>pivot_longer</code> commands from the
+<strong><code>tidyr</code></strong> package.</li>
+<li>Export a dataframe to a csv file.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
 <p><strong><code>dplyr</code></strong> is a package for making tabular
 data wrangling easier by using a limited set of functions that can be
 combined to extract and summarize insights from your data. It pairs
@@ -339,8 +392,7 @@ plotting and analysis.</p>
 <strong><code>tidyr</code></strong> are also part of the tidyverse.
 These packages were loaded in R’s memory when we called
 <code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code> earlier.</p>
-<blockquote>
-<h2 id="note">Note</h2>
+<p>## Note husk dette er en callout!</p>
 <p>The packages in the tidyverse, namely
 <strong><code>dplyr</code></strong>, <strong><code>tidyr</code></strong>
 and <strong><code>ggplot2</code></strong> accept both the British
@@ -348,8 +400,7 @@ and <strong><code>ggplot2</code></strong> accept both the British
 spelling variants of different function and option names. For this
 lesson, we utilize the American spellings of different functions;
 however, feel free to use the regional variant for where you are
-teaching. {: .callout}</p>
-</blockquote>
+teaching.</p>
 <section id="what-is-an-r-package"><h2 class="section-heading">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a>
 </h2>
 <hr class="half-width"><p>The package <strong><code>dplyr</code></strong> provides easy tools
@@ -623,31 +674,46 @@ data, we can assign it a new name:</p>
 </div>
 <p>Note that the final dataframe (<code>interviews_ch</code>) is the
 leftmost part of this expression.</p>
-<blockquote>
-<h2 id="exercise">Exercise</h2>
+<div id="exercise" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="exercise" class="callout-inner">
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise"></a>
+</h3>
+<div class="callout-content">
 <p>Using pipes, subset the <code>interviews</code> data to include
 interviews where respondents were members of an irrigation association
 (<code>memb_assoc</code>) and retain only the columns
 <code>affect_conflicts</code>, <code>liv_count</code>, and
 <code>no_meals</code>.</p>
-<blockquote>
-<h2 id="solution">Solution</h2>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">select</span><span class="op">(</span><span class="va">affect_conflicts</span>, <span class="va">liv_count</span>, <span class="va">no_meals</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span>     <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>     <span class="fu">select</span><span class="op">(</span><span class="va">affect_conflicts</span>, <span class="va">liv_count</span>, <span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="mutate">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a></h3>
 <p>Frequently you’ll want to create new columns based on the values in
@@ -668,8 +734,14 @@ household (i.e. number of people times the number of meals served):</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<blockquote>
-<h2 id="exercise-1">Exercise</h2>
+<div id="exercise-1" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="exercise-1" class="callout-inner">
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-1"></a>
+</h3>
+<div class="callout-content">
 <p>Create a new dataframe from the <code>interviews</code> data that
 meets the following criteria: contains only the <code>village</code>
 column and a new column called <code>total_meals</code> containing a
@@ -679,8 +751,16 @@ Only the rows where <code>total_meals</code> is greater than 20 should
 be shown in the final dataframe.</p>
 <p><strong>Hint</strong>: think about how the commands should be ordered
 to produce this data frame!</p>
-<blockquote>
-<h2 id="solution-1">Solution</h2>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -695,9 +775,10 @@ to produce this data frame!</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="split-apply-combine-data-analysis-and-the-summarize-function">Split-apply-combine data analysis and the summarize() function<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a></h3>
@@ -848,61 +929,58 @@ argument to get results in decreasing order:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<blockquote>
-<h2 id="exercise-2">Exercise</h2>
+<p>## Exercise</p>
 <p>How many households in the survey have an average of two meals per
 day? Three meals per day? Are there any other numbers of meals
 represented?</p>
-<blockquote>
-<h2 id="solution-2">Solution</h2>
-<div class="codewrapper sourceCode" id="cb47">
+</div>
+</div>
+</section><section id="solution-2"><h2 class="section-heading">Solution<a class="anchor" aria-label="anchor" href="#solution-2"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>   <span class="fu">count</span><span class="op">(</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<p>{: .solution}</p>
-</blockquote>
 <p>Use <code>group_by()</code> and <code>summarize()</code> to find the
 mean, min, and max number of household members for each village. Also
 add the number of observations (hint: see <code>?n</code>).</p>
-<blockquote>
-<h2 id="solution-3">Solution</h2>
-<div class="codewrapper sourceCode" id="cb49">
+</section><section id="solution-3"><h2 class="section-heading">Solution<a class="anchor" aria-label="anchor" href="#solution-3"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span></span>
-<span>      mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>      min_no_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>      max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>      n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre>
+<span>   <span class="fu">summarize</span><span class="op">(</span></span>
+<span>       mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
+<span>       min_no_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
+<span>       max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
+<span>       n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span></span>
+<span>   <span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<p>{: .solution}</p>
-</blockquote>
 <p>What was the largest household interviewed in each month?</p>
-<blockquote>
-<h2 id="solution-4">Solution</h2>
-<div class="codewrapper sourceCode" id="cb51">
+</section><section id="solution-4"><h2 class="section-heading">Solution<a class="anchor" aria-label="anchor" href="#solution-4"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># if not already included, add month, year, and day columns</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span> <span class="co"># load lubridate if not already loaded</span></span></code></pre>
+<code class="sourceCode R"><span> <span class="co"># if not already included, add month, year, and day columns</span></span>
+<span> <span class="kw">library</span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span> <span class="co"># load lubridate if not already loaded</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -921,22 +999,17 @@ Attaching package: 'lubridate'</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>           day <span class="op">=</span> <span class="fu">day</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>           year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span>max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span>     <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
+<span>            day <span class="op">=</span> <span class="fu">day</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
+<span>            year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>     <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>     <span class="fu">summarize</span><span class="op">(</span>max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
-</div>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-</div>
 </div>
 </section><section id="exporting-data"><h2 class="section-heading">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
 </h2>
@@ -969,7 +1042,27 @@ directory.</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<p>{% include links.md %}</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+</h3>
+<div class="callout-content">
+<ul><li>Use the <code>dplyr</code> package to manipulate dataframes.</li>
+<li>Use <code>select()</code> to choose variables from a dataframe.</li>
+<li>Use <code>filter()</code> to choose data based on values.</li>
+<li>Use <code>group_by()</code> and <code>summarize()</code> to work
+with subsets of data.</li>
+<li>Use <code>mutate()</code> to create new variables.</li>
+<li>Use the <code>tidyr</code> package to change the layout of
+dataframes.</li>
+<li>Use <code>pivot_wider()</code> to go from long to wide format.</li>
+<li>Use <code>pivot_longer()</code> to go from wide to long format.</li>
+</ul></div>
+</div>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -995,13 +1088,13 @@ any links that you are not going to use.
 
       </div><!--/div.row-->
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
-				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/03-dplyr-tidyr.Rmd" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/carpentries/workbench-template-md/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/carpentries/workbench-template-md/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/carpentries/workbench-template-md/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/carpentries/workbench-template-md/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
@@ -1009,15 +1102,13 @@ any links that you are not going to use.
         
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.15.0" class="external-link">sandpaper (0.15.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.4.0" class="external-link">varnish (0.4.0)</a>.</p>
+        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
-			<i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back to top"></i><br><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
+      <i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back To Top"></i><br><!-- <span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top --><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
 		</a>
 	</div>
   <script type="application/ld+json">
@@ -1025,6 +1116,7 @@ any links that you are not going to use.
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
   "@id": "https://carpentries.github.io/workbench-template-md/03-dplyr-tidyr.html",
+  "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries, KUB Datalab",
@@ -1032,9 +1124,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/03-dplyr-tidyr.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/03-dplyr-tidyr.html",
-  "dateCreated": "2023-12-06",
-  "dateModified": "2023-12-06",
-  "datePublished": "2023-12-06"
+  "dateCreated": "2023-12-20",
+  "dateModified": "2023-12-20",
+  "datePublished": "2023-12-20"
 }
 
   </script><script>
