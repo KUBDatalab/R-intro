@@ -1,15 +1,23 @@
 ---
 title: "Data Wrangling with dplyr and tidyr"
-keypoints:
-- Use the `dplyr` package to manipulate dataframes.
-- Use `select()` to choose variables from a dataframe.
-- Use `filter()` to choose data based on values.
-- Use `group_by()` and `summarize()` to work with subsets of data.
-- Use `mutate()` to create new variables.
-- Use the `tidyr` package to change the layout of dataframes.
-- Use `pivot_wider()` to go from long to wide format.
-- Use `pivot_longer()` to go from wide to long format.
-objectives:
+
+teaching: 20
+exercises: 10
+
+---
+
+:::: questions
+
+- How can I select specific rows and/or columns from a dataframe?
+- How can I combine multiple commands into a single command?
+- How can I create new columns or remove existing columns from a dataframe?
+- How can I reformat a dataframe to meet my needs?
+
+::::
+
+
+:::: objectives
+
 - Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
 - Select certain columns in a dataframe with the **`dplyr`** function `select`.
 - Select certain rows in a dataframe according to filtering conditions with the **`dplyr`**
@@ -27,16 +35,8 @@ objectives:
 - Reshape a dataframe from long to wide format and back with the `pivot_wider` and
   `pivot_longer` commands from the **`tidyr`** package.
 - Export a dataframe to a csv file.
-questions:
-- How can I select specific rows and/or columns from a dataframe?
-- How can I combine multiple commands into a single command?
-- How can I create new columns or remove existing columns from a dataframe?
-- How can I reformat a dataframe to meet my needs?
-teaching: 20
-exercises: 10
-source: Rmd
----
 
+::::
 
 
 
@@ -49,14 +49,14 @@ Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the
 tidyverse. These packages were loaded in R's memory when we called
 `library(tidyverse)` earlier.
 
-> ## Note
->
-> The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`**
-> accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling
-> variants of different function and option names. For this lesson, we utilize
-> the American spellings of different functions; however, feel free to use
-> the regional variant for where you are teaching.
-{: .callout}
+ ## Note husk dette er en callout!
+
+ The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`**
+ accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling
+ variants of different function and option names. For this lesson, we utilize
+ the American spellings of different functions; however, feel free to use
+ the regional variant for where you are teaching.
+
 
 ## What is an R package?
 
@@ -295,27 +295,33 @@ Error in eval(expr, envir, enclos): object 'interviews_ch' not found
 Note that the final dataframe (`interviews_ch`) is the leftmost part of this
 expression.
 
-> ## Exercise
->
->  Using pipes, subset the `interviews` data to include interviews
-> where respondents were members of an irrigation association
-> (`memb_assoc`) and retain only the columns `affect_conflicts`,
-> `liv_count`, and `no_meals`.
->
-> > ## Solution
-> >
-> > 
-> > ```r
-> > interviews %>%
-> >     filter(memb_assoc == "yes") %>%
-> >     select(affect_conflicts, liv_count, no_meals)
-> > ```
-> > 
-> > ```{.error}
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ```
-> {: .solution}
-{: .challenge}
+
+:::: challenge
+
+
+## Exercise
+
+  Using pipes, subset the `interviews` data to include interviews
+ where respondents were members of an irrigation association
+ (`memb_assoc`) and retain only the columns `affect_conflicts`,
+ `liv_count`, and `no_meals`.
+::::
+:::: solution
+## Solution
+
+
+```r
+ interviews %>%
+     filter(memb_assoc == "yes") %>%
+     select(affect_conflicts, liv_count, no_meals)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+::::
+
 
 ### Mutate
 
@@ -339,34 +345,37 @@ Error in eval(expr, envir, enclos): object 'interviews' not found
 
 
 
+:::: challenge 
 
-> ## Exercise
->
->  Create a new dataframe from the `interviews` data that meets the following
->  criteria: contains only the `village` column and a new column called
->  `total_meals` containing a value that is equal to the total number of meals
->  served in the household per day on average (`no_membrs` times `no_meals`).
->  Only the rows where `total_meals` is greater than 20 should be shown in the
->  final dataframe.
->
->  **Hint**: think about how the commands should be ordered to produce this data
->  frame!
->
-> > ## Solution
-> >
-> > 
-> > ```r
-> > interviews_total_meals <- interviews %>%
-> >     mutate(total_meals = no_membrs * no_meals) %>%
-> >     filter(total_meals > 20) %>%
-> >     select(village, total_meals)
-> > ```
-> > 
-> > ```{.error}
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ```
-> {: .solution}
-{: .challenge}
+## Exercise
+
+Create a new dataframe from the `interviews` data that meets the following
+criteria: contains only the `village` column and a new column called
+`total_meals` containing a value that is equal to the total number of meals
+served in the household per day on average (`no_membrs` times `no_meals`).
+Only the rows where `total_meals` is greater than 20 should be shown in the
+final dataframe.
+
+**Hint**: think about how the commands should be ordered to produce this data
+frame!
+::::
+:::: solution
+
+## Solution
+
+ 
+ ```r
+ interviews_total_meals <- interviews %>%
+     mutate(total_meals = no_membrs * no_meals) %>%
+     filter(total_meals > 20) %>%
+     select(village, total_meals)
+ ```
+ 
+ ```{.error}
+ Error in eval(expr, envir, enclos): object 'interviews' not found
+ ```
+
+::::
 
 ### Split-apply-combine data analysis and the summarize() function
 
@@ -509,83 +518,84 @@ interviews %>%
 Error in eval(expr, envir, enclos): object 'interviews' not found
 ```
 
-> ## Exercise
->
-> How many households in the survey have an average of
-> two meals per day? Three meals per day? Are there any other numbers
-> of meals represented?
->
-> > ## Solution
-> >
-> > 
-> > ```r
-> > interviews %>%
-> >    count(no_meals)
-> > ```
-> > 
-> > ```{.error}
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ```
-> {: .solution}
->
-> Use `group_by()` and `summarize()` to find the mean, min, and max
-> number of household members for each village. Also add the number of
-> observations (hint: see `?n`).
->
-> > ## Solution
-> >
-> > 
-> > ```r
-> > interviews %>%
-> >   group_by(village) %>%
-> >   summarize(
-> >       mean_no_membrs = mean(no_membrs),
-> >       min_no_membrs = min(no_membrs),
-> >       max_no_membrs = max(no_membrs),
-> >       n = n()
-> >   )
-> > ```
-> > 
-> > ```{.error}
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ```
-> {: .solution}
->
-> What was the largest household interviewed in each month?
->
-> > ## Solution
-> >
-> > 
-> > ```r
-> > # if not already included, add month, year, and day columns
-> > library(lubridate) # load lubridate if not already loaded
-> > ```
-> > 
-> > ```{.output}
-> > 
-> > Attaching package: 'lubridate'
-> > ```
-> > 
-> > ```{.output}
-> > The following objects are masked from 'package:base':
-> > 
-> >     date, intersect, setdiff, union
-> > ```
-> > 
-> > ```r
-> > interviews %>%
-> >     mutate(month = month(interview_date),
-> >            day = day(interview_date),
-> >            year = year(interview_date)) %>%
-> >     group_by(year, month) %>%
-> >     summarize(max_no_membrs = max(no_membrs))
-> > ```
-> > 
-> > ```{.error}
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ```
-> {: .solution}
-{: .challenge}
+
+
+
+
+ ## Exercise
+
+ How many households in the survey have an average of
+ two meals per day? Three meals per day? Are there any other numbers
+ of meals represented?
+
+## Solution
+
+
+```r
+ interviews %>%
+  count(no_meals)
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+ Use `group_by()` and `summarize()` to find the mean, min, and max
+ number of household members for each village. Also add the number of
+ observations (hint: see `?n`).
+
+## Solution
+
+
+```r
+interviews %>%
+  group_by(village) %>%
+   summarize(
+       mean_no_membrs = mean(no_membrs),
+       min_no_membrs = min(no_membrs),
+       max_no_membrs = max(no_membrs),
+       n = n()
+   )
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
+ What was the largest household interviewed in each month?
+
+## Solution
+
+
+```r
+ # if not already included, add month, year, and day columns
+ library(lubridate) # load lubridate if not already loaded
+```
+
+```{.output}
+
+Attaching package: 'lubridate'
+```
+
+```{.output}
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+```
+
+```r
+ interviews %>%
+     mutate(month = month(interview_date),
+            day = day(interview_date),
+            year = year(interview_date)) %>%
+     group_by(year, month) %>%
+     summarize(max_no_membrs = max(no_membrs))
+```
+
+```{.error}
+Error in eval(expr, envir, enclos): object 'interviews' not found
+```
+
 
 
 ## Exporting data
@@ -620,4 +630,15 @@ write_csv(interviews, file = "data_output/interviews_plotting.csv")
 Error in eval(expr, envir, enclos): object 'interviews' not found
 ```
 
-{% include links.md %}
+:::: keypoints
+
+- Use the `dplyr` package to manipulate dataframes.
+- Use `select()` to choose variables from a dataframe.
+- Use `filter()` to choose data based on values.
+- Use `group_by()` and `summarize()` to work with subsets of data.
+- Use `mutate()` to create new variables.
+- Use the `tidyr` package to change the layout of dataframes.
+- Use `pivot_wider()` to go from long to wide format.
+- Use `pivot_longer()` to go from wide to long format.
+
+::::

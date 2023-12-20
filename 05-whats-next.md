@@ -2,24 +2,22 @@
 title: "What is the next step?"
 teaching: 10
 exercises: 0
-questions:
-  - "What do I do now?"
-  - "What is the next step?"
-  
-objectives:
-   - "Present suggestions for further reading,"
-   - "Tips on problems to work on to practice,"
-   
-keypoints:
-   - "Practice is important!"
-   - "Working on data that YOU find interesting is a really good idea,"
-   - "The amount of ressources online is immense."
-   - "KUB Datalab is there for your."
-   
-source: Rmd
 ---
 
 
+:::: questions
+
+- "What do I do now?"
+- "What is the next step?"
+
+::::
+
+:::: objectives
+
+- "Present suggestions for further reading,"
+- "Tips on problems to work on to practice,"
+
+::::
 
 
 ## Great sites
@@ -57,4 +55,11 @@ Our mail: kubdatalab@kb.dk
 
 
 
-{% include links.md %}
+:::: keypoints:
+   - "Practice is important!"
+   - "Working on data that YOU find interesting is a really good idea,"
+   - "The amount of ressources online is immense."
+   - "KUB Datalab is there for your."
+   
+::::
+

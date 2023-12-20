@@ -2,27 +2,24 @@
 title: "A couple of plots. And making our own functions"
 teaching: 80
 exercises: 35
-questions:
-  - "How do I create scatterplots, boxplots, and barplots?"
-  - "How can I define my own functions?"
-  
-objectives:
-   - "Produce scatter plots and boxplots using Base R."
-   - "Write your own function"
-   - "Write loops to repeat calculations"
-   - "Use logical tests in loops"
-   
-keypoints:
-   - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplots are useful for visualizing categorical data."
-   - "Functions allows you to repeat the same set of operations again and again."
-   - "Loops allows you to apply the same function to lots of data."
-   - "Logical tests allow you to apply different calculations on different sets of data."
-   
-source: Rmd
 ---
 
+:::: questions:
 
+- "How do I create scatterplots, boxplots, and barplots?"
+- "How can I define my own functions?"
+
+::::  
+
+
+:::: objectives:
+
+- "Produce scatter plots and boxplots using Base R."
+- "Write your own function"
+- "Write loops to repeat calculations"
+- "Use logical tests in loops"
+
+::::
 
 We start by loading the **`tidyverse`** package.
 
@@ -293,7 +290,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ```{.output}
-[1] 6.204436
+[1] 7.284678
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -383,4 +380,13 @@ Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
 chooses 30 bins for us, and that is normally not the right number.
 
-{% include links.md %}
+:::: keypoints
+
+- "Boxplots are useful for visualizing the distribution of a continuous variable."
+- "Barplots are useful for visualizing categorical data."
+- "Functions allows you to repeat the same set of operations again and again."
+- "Loops allows you to apply the same function to lots of data."
+- "Logical tests allow you to apply different calculations on different sets of data."
+
+::::
+
