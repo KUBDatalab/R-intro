@@ -27,20 +27,23 @@ exercises: 5
 ## What is R? What is RStudio?
 
 The term "`R`" is used to refer to both the programming language and the
-software that interprets the scripts written using it.
+software that interprets the scripts written in R.
 
-[RStudio](https://rstudio.com) is currently a very popular way to not only write
-your R scripts but also to interact with the R software. To function correctly,
-RStudio needs R and therefore both need to be installed on your computer.
-
-To make it easier to interact with R, we will use RStudio. RStudio is the most
+[RStudio](https://posit.co/) is currently a very popular way to not only write
+your R scripts but also to interact with the R software. RStudio is the most
 popular IDE (Integrated Development Environmemt) for R. An IDE is a piece of
 software that provides tools to make programming easier.
+
+To make it easier to interact with R, we will use RStudio. To function correctly,
+RStudio needs R and therefore both need to be installed on your computer.
 
 
 ## Why learn R?
 
-### R does not involve lots of pointing and clicking, and that's a good thing
+There are numerous reasons to learn and use R. In the following we will point 
+out a few of them.
+
+### R does not involve lots of pointing and clicking
 
 The learning curve might be steeper than with other software, but with R, the
 results of your analysis do not rely on remembering a succession of pointing
@@ -131,15 +134,13 @@ with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>;
 
 ## A tour of RStudio
 
-## Knowing your way around RStudio
-
-Let's start by learning about [RStudio](https://www.rstudio.com/), which is an
+Let's start by learning about [RStudio](https://posit.co/), which is an
 Integrated Development Environment (IDE) for working with R.
 
 The RStudio IDE open-source product is free under the
 [Affero General Public License (AGPL) v3](https://www.gnu.org/licenses/agpl-3.0.en.html).
 The RStudio IDE is also available with a commercial license and priority email
-support from RStudio, Inc.
+support from Posit Software, Inc.
 
 We will use the RStudio IDE to write code, navigate the files on our computer,
 inspect the variables we create, and visualize the plots we generate. RStudio
@@ -152,8 +153,24 @@ provides many shortcuts, autocompletion, and highlighting for the major file
 types you use while developing in R. RStudio makes typing easier and less
 error-prone.
 
+### The RStudio Interface
 
-## Getting set up
+Let's take a quick tour of RStudio.
+
+![RStudio interface](../fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
+
+RStudio is divided into four "panes". The placement of these
+panes and their content can be customized (see menu, Tools -> Global Options ->
+Pane Layout).
+
+The Default Layout is:
+- Top Left - **Source**: your scripts and documents
+- Bottom Left - **Console**: what R would look and be like without RStudio
+- Top Right - **Enviornment/History**: look here to see what you have done
+- Bottom Right - **Files** and more: see the contents of the project/working
+directory here, like your Script.R file
+
+### Getting set up
 
 It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder called the **working directory**. All of the
@@ -170,46 +187,29 @@ its location (allowing you to quickly navigate to it). The interface also
 (optionally) preserves custom settings and open files to make it easier to
 resume work after a break.
 
+An easy way to work like this is to create projects in RStudio.
 
-### Create a new project
+
+### Create a new project and a new script file
 
 * Under the `File` menu, click on `New project`, choose `New directory`, then
   `New project`
 * Enter a name for this new folder (or "directory") and choose a convenient
-  location for it. This will be your **working directory** for the rest of the
-  day (e.g., `~/data-carpentry`)
+  location for it. This will be your **working directory** for working on this
+  project (e.g., `~/data-carpentry`)
 * Click on `Create project`
 * Create a new file where we will type our scripts. Go to File > New File > R
   script. Click the save icon on your toolbar and save your script as
   "`script.R`".
 
 The simplest way to open an RStudio project once it has been created is to 
-navigate through your files to where the project was saved and double
+navigate through your filesystem to where the project was saved and double
 click on the `.Rproj` (blue cube) file. This will open RStudio and start your R
 session in the **same** directory as the `.Rproj` file. All your data, plots and
 scripts will now be relative to the project directory. RStudio projects have the
 added benefit of allowing you to open multiple projects at the same time each
 open to its own project directory. This allows you to keep multiple projects
 open without them interfering with each other.
-
-
-### The RStudio Interface
-
-Let's take a quick tour of RStudio.
-
-![RStudio_startup](../fig/R_00_Rstudio_01.png)
-
-RStudio is divided into four "panes". The placement of these
-panes and their content can be customized (see menu, Tools -> Global Options ->
-Pane Layout).
-
-The Default Layout is:
-- Top Left - **Source**: your scripts and documents
-- Bottom Left - **Console**: what R would look and be like without RStudio
-- Top Right - **Enviornment/History**: look here to see what you have done
-- Bottom Right - **Files** and more: see the contents of the project/working
-directory here, like your Script.R file
-
 
 ### Organizing your working directory
 
@@ -238,8 +238,7 @@ are some examples of suggested directories:
 You may want additional directories or subdirectories depending on your project
 needs, but these should form the backbone of your working directory.
 
-![Example of a working directory structure](../fig/rstudio_project_files.jpeg)
-
+![Example of a working directory structure](../fig/rstudio_project_files.jpeg){alt='A picture showing the layout of a good working directory as described above'}
 
 ### The working directory
 
@@ -271,17 +270,14 @@ dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Begin by downloading the dataset called
-"`SAFI_clean.csv`". The direct download link is:
-<https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv>. Place this downloaded file in
-the `data/` you just created. You can do this directly from R by copying and
-pasting this in your terminal (your instructor can place this chunk of code in
+Begin by downloading the dataset called ["`movieSerie.csv`"](data/movieSerie.csv). 
+Place this downloaded file in the `data/` you just created. You can do this directly 
+from R by copying and pasting this in your terminal (your instructor can place this chunk of code in
 the Etherpad):
 
 
 ```r
-download.file("https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv",
-              "data/SAFI_clean.csv", mode = "wb")
+download.file("https://raw.githubusercontent.com/KUBDatalab/R-intro/main/episodes/data/movieSerie.csv", "data/movieSerie.csv", mode = "wb")
 ```
 
 
@@ -351,6 +347,8 @@ hosted at CRAN, for anyone to download and install into their own R
 environment. You should have already installed the packages 'ggplot2'
 and 'dplyr. If you have not, please do so now using these instructions.
 
+### Installing additional packages using RStudio
+
 You can see if you have a package installed by looking in the `packages` tab
 (on the lower-right by default). You can also type the command
 `installed.packages()` into the console and examine the output.
@@ -373,24 +371,24 @@ the package you are installing to work properly, there may be other
 packages which have to be installed with them. The ‘Install
 dependencies’ option makes sure that this happens.
 
-> ## Exercise
->
-> Use both the Console and the Packages tab to confirm that you have the tidyverse
-> installed.
->
-> > ## Solution
-> > Scroll through packages tab down to ‘tidyverse’.  You can also type a few
-> > characters into the searchbox.
-> > The ‘tidyverse’ package is really a package of packages, including
-> > 'ggplot2' and 'dplyr', both of which require other packages to run correctly.
-> > All of these packages will be installed automatically. Depending on what
-> > packages have previously been installed in your R environment, the install of
-> > ‘tidyverse’ could be very quick or could take several minutes. As the install
-> > proceeds, messages relating to its progress will be written to the console.
-> > You will be able to see all of the packages which are actually being
-> > installed.
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge 
+Use both the Console and the Packages tab to confirm that you have the tidyverse
+installed.
+
+:::::::::::::::::::::::: solution
+
+Scroll through packages tab down to ‘tidyverse’.  You can also type a few
+characters into the searchbox.
+The ‘tidyverse’ package is really a package of packages, including
+'ggplot2' and 'dplyr', both of which require other packages to run correctly.
+All of these packages will be installed automatically. Depending on what
+packages have previously been installed in your R environment, the install of
+‘tidyverse’ could be very quick or could take several minutes. As the install
+proceeds, messages relating to its progress will be written to the console.
+You will be able to see all of the packages which are actually being
+installed.
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 Because the install process accesses the CRAN repository, you
 will need an Internet connection to install packages.
@@ -399,7 +397,7 @@ It is also possible to install packages from other repositories, as
 well as Github or the local file system, but we won’t be looking at these options in this lesson.
 
 
-## Installing additional packages using R code
+### Installing additional packages using R code
 
 If you were watching the console window when you started the
 install of ‘tidyverse’, you may have noticed that the line
@@ -412,8 +410,6 @@ install.packages("tidyverse")
 was written to the console before the start of the installation messages.
 
 You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.
-
-{% include links.md %}
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
