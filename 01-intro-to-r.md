@@ -2,33 +2,33 @@
 title: "Introduction to R"
 teaching: 30
 exercises: 10
-questions:
-- "What data types are available in R?"
-- "What is an object?"
-- "How can values be initially assigned to variables of different data types?"
-- "What arithmetic and logical operators can be used?"
-- "How can subsets be extracted from vectors?"
-- "How does R treat missing values?"
-- "How can we deal with missing values in R?"
-objectives: 
-- "Define the following terms as they relate to R: object, assign, call, function, arguments, options."
-- "Assign values to objects in R."
-- "Learn how to name objects."
-- "Use comments to inform script."
-- "Solve simple arithmetic operations in R."
-- "Call functions and use arguments to change their default options."
-- "Inspect the content of vectors and manipulate their content."
-- "Subset and extract values from vectors."
-- "Analyze vectors with missing data."
-keypoints:
-- "Access individual values by location using `[]`."
-- "Access arbitrary sets of data using `[c(...)]`."
-- "Use logical operations and logical vectors to access subsets of data."
-source: Rmd
 ---
 
+:::: questions
 
+- What data types are available in R?
+- What is an object?
+- How can values be initially assigned to variables of different data types?
+- What arithmetic and logical operators can be used?
+- How can subsets be extracted from vectors?
+- How does R treat missing values?
+- How can we deal with missing values in R?
 
+::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Define the following terms as they relate to R: object, assign, call, function, arguments, options.
+- Assign values to objects in R.
+- Learn how to name objects.
+- Use comments to inform script.
+- Solve simple arithmetic operations in R.
+- Call functions and use arguments to change their default options.
+- Inspect the content of vectors and manipulate their content.
+- Subset and extract values from vectors.
+- Analyze vectors with missing data.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Creating objects in R
 
@@ -57,7 +57,7 @@ assignment operator `<-`, and the value we want to give it:
 
 
 ```r
-area_hectares <- 1.0
+x <- 3
 ```
 
 `<-` is the assignment operator. It assigns values on the right to objects on
@@ -101,14 +101,17 @@ comprehensive and may seem overwhelming at first. You can install the
 [**`lintr`**](https://github.com/jimhester/lintr) package to automatically check
 for issues in the styling of your code.
 
-> ## Objects vs. variables
->
-> What are known as `objects` in `R` are known as `variables` in many other
-> programming languages. Depending on the context, `object` and `variable` can
-> have drastically different meanings. However, in this lesson, the two words
-> are used synonymously. For more information see:
-> [https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
-{: .callout}
+:::: callout
+
+## Objects vs. variables
+
+What are known as `objects` in `R` are known as `variables` in many other
+programming languages. Depending on the context, `object` and `variable` can
+have drastically different meanings. However, in this lesson, the two words
+are used synonymously. For more information see:
+[https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
+
+::::::
 
 When assigning a value to an object, R does not print anything. You
 can force R to print the value by using parentheses or by typing
@@ -117,7 +120,7 @@ the object name:
 
 ```r
 area_hectares <- 1.0    # doesn't print anything
-(area_hectares <- 1.0)  # putting parenthesis around the call prints the value of `area_hectares`
+area_hectares         # but typing the name of the object print
 ```
 
 ```{.output}
@@ -125,15 +128,14 @@ area_hectares <- 1.0    # doesn't print anything
 ```
 
 ```r
-area_hectares         # and so does typing the name of the object
+(area_hectares <- 1.0)  # putting parenthesis around the call also print
 ```
 
 ```{.output}
 [1] 1
 ```
 
-Now that R has `area_hectares` in memory, we can do arithmetic with it. For
-instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares):
+Now that R has `area_hectares` in memory, we can do arithmetic with it. For instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares): 
 
 
 ```r
@@ -144,7 +146,7 @@ instance, we may want to convert this area into acres (area in acres is 2.47 tim
 [1] 2.47
 ```
 
-We can also change an object's value by assigning it a new one:
+We can also change an object’s value by assigning it a new one:
 
 
 ```r
@@ -156,9 +158,7 @@ area_hectares <- 2.5
 [1] 6.175
 ```
 
-This means that assigning a value to one object does not change the values of
-other objects. For example, let's store the plot's area in acres
-in a new object, `area_acres`:
+This means that assigning a value to one object does not change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
 
 
 ```r
@@ -172,18 +172,20 @@ and then change `area_hectares` to 50.
 area_hectares <- 50
 ```
 
-> ## Exercise
-> 
-> What do you think is the current content of the object `area_acres`? 123.5 or
-> 6.175?
->
-> > ## Solution
-> >
-> > The value of `area_acres` is still 6.175 because you have not
-> > re-run the line `area_acres <- 2.47 * area_hectares` since
-> > changing the value of `area_hectares`.
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+## Exercise
+What do you think is the current content of the object `area_acres`? 123.5 or 6.175?
+
+:::::::::::::::::::::::: solution
+
+## Solution
+
+The value of `area_acres` is still 6.175 because you have not
+re-run the line `area_acres <- 2.47 * area_hectares` since
+changing the value of `area_hectares`.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Comments
 
@@ -193,7 +195,8 @@ or include them after any code on the line.
 
 
 ```r
-area_hectares <- 1.0			# land area in hectares
+# land area in hectares
+area_hectares <- 1.0			
 area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
@@ -209,49 +212,52 @@ out one line, you can put the cursor at any location of that line (i.e. no need
 to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
 <kbd>C</kbd>.
 
+::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Exercise
->
-> Create two variables `r_length` and `r_width` and assign them values. It should be noted that, 
-> because `length` is a built-in R function, R Studio might add "()" after you type `length` and 
-> if you leave the parentheses you will get unexpected results. 
-> This is why you might see other programmers abbreviate common words.
-> Create a third variable `r_area` and give it a value based on the current values of `r_length` 
-> and `r_width`.
-> Show that changing the values of either `r_length` and `r_width` does not affect the value of 
-> `r_area`.
-> 
-> > ## Solution
-> > 
-> > 
-> > ```r
-> > r_length <- 2.5
-> > r_width <- 3.2
-> > r_area <- r_length * r_width
-> > r_area
-> > ```
-> > 
-> > ```{.output}
-> > [1] 8
-> > ```
-> > 
-> > ```r
-> > # change the values of r_length and r_width
-> > r_length <- 7.0
-> > r_width <- 6.5
-> > # the value of r_area isn't changed
-> > r_area
-> > ```
-> > 
-> > ```{.output}
-> > [1] 8
-> > ```
-> > 
-> {: .solution}
-{: .challenge}
+## Exercise
+
+Create two variables `r_length` and `r_width` and assign them values. It should be noted that, 
+because `length` is a built-in R function, R Studio might add "()" after you type `length` and 
+if you leave the parentheses you will get unexpected results. 
+This is why you might see other programmers abbreviate common words.
+Create a third variable `r_area` and give it a value based on the current values of `r_length` 
+and `r_width`.
+Show that changing the values of either `r_length` and `r_width` does not affect the value of 
+`r_area`.
+
+:::::::::::::::::::::::: solution
+
+## Solution
 
 
-### Functions and their arguments
+```r
+r_length <- 2.5
+r_width <- 3.2
+r_area <- r_length * r_width
+r_area
+```
+
+```{.output}
+[1] 8
+```
+
+```r
+# change the values of r_length and r_width
+r_length <- 7.0
+r_width <- 6.5
+# the value of r_area isn't changed
+r_area
+```
+
+```{.output}
+[1] 8
+```
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Functions and their arguments
 
 Functions are "canned scripts" that automate more complicated sets of commands
 including operations assignments, etc. Many functions are predefined, or can be
@@ -357,50 +363,53 @@ arguments.  If you don't, someone reading your code might have to look up the
 definition of a function with unfamiliar arguments to understand what you're
 doing.
 
-> ## Exercise
->
-> Type in `?round` at the console and then look at the output in the Help pane.
-> What other functions exist that are similar to `round`?
-> How do you use the `digits` parameter in the round function?
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Exercise
+
+Type in `?round` at the console and then look at the output in the Help pane.
+What other functions exist that are similar to `round`?
+How do you use the `digits` parameter in the round function?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Vectors and data types
 
-
+#```{r, echo=FALSE, purl=TRUE}
+### Vectors and data types
+#```
 
 A vector is the most common and basic data type in R, and is pretty much
 the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of the number of household
-members for the households we've interviewed and assign
-it to a new object `hh_members`:
+the `c()` function. For example we can create a vector of the score of movies 
+on imdb and assign it to a new object `imdb_score`:
 
 
 ```r
-hh_members <- c(3, 7, 10, 6)
-hh_members
+imdb_score <- c(62, 21, 77, 80)
+imdb_score
 ```
 
 ```{.output}
-[1]  3  7 10  6
+[1] 62 21 77 80
 ```
 
 A vector can also contain characters. For example, we can have
-a vector of the building material used to construct our
-interview respondents' walls (`respondent_wall_type`):
+a vector of movie titles for corresponding to the scores (`title`):
 
 
 ```r
-respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
-respondent_wall_type
+title <- c("FTA", "Dostana", "Deliverance", "Life of Brian")
+title
 ```
 
 ```{.output}
-[1] "muddaub"     "burntbricks" "sunbricks"  
+[1] "FTA"           "Dostana"       "Deliverance"   "Life of Brian"
 ```
 
-The quotes around "muddaub", etc. are essential here. Without the quotes R
-will assume there are objects called `muddaub`, `burntbricks` and `sunbricks`. As these objects
+The quotes around "FTA", etc. are essential here. Without the quotes R
+will assume there are objects called `FTA` etc. As these objects
 don't exist in R's memory, there will be an error message.
 
 There are many functions that allow you to inspect the content of a
@@ -408,7 +417,7 @@ vector. `length()` tells you how many elements are in a particular vector:
 
 
 ```r
-length(hh_members)
+length(imdb_score)
 ```
 
 ```{.output}
@@ -416,11 +425,11 @@ length(hh_members)
 ```
 
 ```r
-length(respondent_wall_type)
+length(title)
 ```
 
 ```{.output}
-[1] 3
+[1] 4
 ```
 
 An important feature of a vector, is that all of the elements are the same type of data.
@@ -428,7 +437,7 @@ The function `class()` indicates the class (the type of element) of an object:
 
 
 ```r
-class(hh_members)
+class(imdb_score)
 ```
 
 ```{.output}
@@ -436,7 +445,7 @@ class(hh_members)
 ```
 
 ```r
-class(respondent_wall_type)
+class(title)
 ```
 
 ```{.output}
@@ -449,38 +458,38 @@ objects:
 
 
 ```r
-str(hh_members)
+str(imdb_score)
 ```
 
 ```{.output}
- num [1:4] 3 7 10 6
+ num [1:4] 62 21 77 80
 ```
 
 ```r
-str(respondent_wall_type)
+str(title)
 ```
 
 ```{.output}
- chr [1:3] "muddaub" "burntbricks" "sunbricks"
+ chr [1:4] "FTA" "Dostana" "Deliverance" "Life of Brian"
 ```
 
 You can use the `c()` function to add other elements to your vector:
 
 ```r
-possessions <- c("bicycle", "radio", "television")
-possessions <- c(possessions, "mobile_phone") # add to the end of the vector
-possessions <- c("car", possessions) # add to the beginning of the vector
-possessions
+production_country <- c("IN", "US")
+production_country <- c(production_country, "GB") # add to the end of the vector
+production_country <- c("US", production_country) # add to the beginning of the vector
+production_country
 ```
 
 ```{.output}
-[1] "car"          "bicycle"      "radio"        "television"   "mobile_phone"
+[1] "US" "IN" "US" "GB"
 ```
 
-In the first line, we take the original vector `possessions`,
-add the value `"mobile_phone"` to the end of it, and save the result back into
-`possessions`. Then we add the value `"car"` to the beginning, again saving the result
-back into `possessions`.
+First the vector `production_country` is created with two values. Then the value
+"GB" is added to the end of the vector, and the result is saved back into 
+`production_country`. After that the value "US is added to the front of the 
+vector, and again saved back into `production_country`
 
 We can do this over and over again to grow a vector, or assemble a dataset.
 As we program, this may be useful to add results that we are collecting or
@@ -503,70 +512,84 @@ Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`),
 factors (`factor`) and arrays (`array`).
 
-> ## Exercise
->
->
-> We’ve seen that atomic vectors can be of type character, numeric (or double),
->   integer, and logical. But what happens if we try to mix these types in a
->   single vector?
->
-> > ## Solution
-> >
-> > R implicitly converts them to all be the same type.
-> {: .solution}
->
-> What will happen in each of these examples? (hint: use `class()`
-> to check the data type of your objects):
->
->  
->  ```r
->  num_char <- c(1, 2, 3, "a")
->  num_logical <- c(1, 2, 3, TRUE)
->  char_logical <- c("a", "b", "c", TRUE)
->  tricky <- c(1, 2, 3, "4")
->  ```
->
->
-> Why do you think it happens?
->
-> > ## Solution
-> >
-> >  Vectors can be of only one data type. R tries to
-> > convert (coerce) the content of this vector to find a "common
-> > denominator" that doesn't lose any information.
-> {: .solution}
->
->
-> How many values in `combined_logical` are `"TRUE"` (as a character) in the
-> following example:
->
-> 
-> ```r
-> num_logical <- c(1, 2, 3, TRUE)
-> char_logical <- c("a", "b", "c", TRUE)
-> combined_logical <- c(num_logical, char_logical)
-> ```
-> &nbsp;
->
-> > ## Solution
-> >
-> > Only one. There is no memory of past data types, and the coercion
-> > happens the
-> > first time the vector is evaluated. Therefore, the `TRUE` in
-> > `num_logical`
-> > gets converted into a `1` before it gets converted into `"1"` in
-> > `combined_logical`.
-> {: .solution}
->
-> You've probably noticed that objects of different types get
->   converted into a single, shared type within a vector. In R, we
->   call converting objects from one class into another class
->   _coercion_. These conversions happen according to a hierarchy,
->   whereby some types get preferentially coerced into other
->   types. Can you draw a diagram that represents the hierarchy of how
->   these data types are coerced?
->
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Exercise
+
+We’ve seen that atomic vectors can be of type character, numeric (or double),
+integer, and logical. But what happens if we try to mix these types in a
+single vector?
+
+:::::::::::::::::::::::: solution 
+
+## Solution
+
+R implicitly converts them to all be the same type.
+
+:::::::::::::::::::::::::::::::::
+
+
+What will happen in each of these examples? (hint: use `class()`
+to check the data type of your objects):
+
+:::::::::::::::::::::::: solution
+
+
+```r
+num_char <- c(1, 2, 3, "a")
+num_logical <- c(1, 2, 3, TRUE)
+char_logical <- c("a", "b", "c", TRUE)
+tricky <- c(1, 2, 3, "4")
+```
+
+:::::::::::::::::::::::::::::::::
+
+Why do you think it happens?
+
+:::::::::::::::::::::::: solution
+
+## Solution
+
+Vectors can be of only one data type. R tries to
+convert (coerce) the content of this vector to find a "common
+denominator" that doesn't lose any information.
+
+:::::::::::::::::::::::::::::::::
+
+How many values in `combined_logical` are `"TRUE"` (as a character) in the
+following example:
+
+
+
+```r
+num_logical <- c(1, 2, 3, TRUE)
+char_logical <- c("a", "b", "c", TRUE)
+combined_logical <- c(num_logical, char_logical)
+```
+
+:::::::::::::::::::::::: solution
+
+## Solution
+
+Only one. There is no memory of past data types, and the coercion
+happens the
+first time the vector is evaluated. Therefore, the `TRUE` in
+`num_logical`
+gets converted into a `1` before it gets converted into `"1"` in
+`combined_logical`.
+
+:::::::::::::::::::::::::::::::::
+
+
+You've probably noticed that objects of different types get
+converted into a single, shared type within a vector. In R, we
+call converting objects from one class into another class
+_coercion_. These conversions happen according to a hierarchy,
+whereby some types get preferentially coerced into other
+types. Can you draw a diagram that represents the hierarchy of how
+these data types are coerced?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Subsetting vectors
@@ -576,20 +599,19 @@ or several indices in square brackets. For instance:
 
 
 ```r
-respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
-respondent_wall_type[2]
+title[2]
 ```
 
 ```{.output}
-[1] "burntbricks"
+[1] "Dostana"
 ```
 
 ```r
-respondent_wall_type[c(3, 2)]
+title[c(3, 2)]
 ```
 
 ```{.output}
-[1] "sunbricks"   "burntbricks"
+[1] "Deliverance" "Dostana"    
 ```
 
 We can also repeat the indices to create an object with more elements than the
@@ -597,13 +619,13 @@ original one:
 
 
 ```r
-more_respondent_wall_type <- respondent_wall_type[c(1, 2, 3, 2, 1, 3)]
-more_respondent_wall_type
+more_title <- title[c(1, 2, 3, 2, 1, 3)]
+more_title
 ```
 
 ```{.output}
-[1] "muddaub"     "burntbricks" "sunbricks"   "burntbricks" "muddaub"    
-[6] "sunbricks"  
+[1] "FTA"         "Dostana"     "Deliverance" "Dostana"     "FTA"        
+[6] "Deliverance"
 ```
 
 R indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R
@@ -618,12 +640,11 @@ select the element with the same index, while `FALSE` will not:
 
 
 ```r
-hh_members <- c(3, 7, 10, 6)
-hh_members[c(TRUE, FALSE, TRUE, TRUE)]
+imdb_score[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
 ```{.output}
-[1]  3 10  6
+[1] 62 77 80
 ```
 
 Typically, these logical vectors are not typed by hand, but are the output of
@@ -632,40 +653,40 @@ values above 5:
 
 
 ```r
-hh_members > 5    # will return logicals with TRUE for the indices that meet the condition
+imdb_score > 70    # will return logicals with TRUE for the indices that meet the condition
 ```
 
 ```{.output}
-[1] FALSE  TRUE  TRUE  TRUE
+[1] FALSE FALSE  TRUE  TRUE
 ```
 
 ```r
 ## so we can use this to select only the values above 5
-hh_members[hh_members > 5]
+imdb_score[imdb_score > 70]
 ```
 
 ```{.output}
-[1]  7 10  6
+[1] 77 80
 ```
 
-You can combine multiple tests using `&` (both conditions are true, AND) or `|`
-(at least one of the conditions is true, OR):
+You can combine multiple tests using `&` (both conditions are true (AND)) or `|`
+(at least one of the conditions is true, (OR)):
 
 
 ```r
-hh_members[hh_members < 4 | hh_members > 7]
+imdb_score[imdb_score < 60 | imdb_score > 77]
 ```
 
 ```{.output}
-[1]  3 10
+[1] 21 80
 ```
 
 ```r
-hh_members[hh_members >= 4 & hh_members <= 7]
+imdb_score[imdb_score >= 70 & imdb_score <= 80]
 ```
 
 ```{.output}
-[1] 7 6
+[1] 77 80
 ```
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
@@ -680,12 +701,11 @@ become tedious.
 
 
 ```r
-possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
-possessions[possessions == "car" | possessions == "bicycle"] # returns both car and bicycle
+title[title == "FTA" | title == "Dostana"] # returns both "FTA and Dostana"
 ```
 
 ```{.output}
-[1] "car"     "bicycle"
+[1] "FTA"     "Dostana"
 ```
 
 The function `%in%` allows you to test if any of the elements of a search vector
@@ -693,11 +713,11 @@ The function `%in%` allows you to test if any of the elements of a search vector
 
 
 ```r
-possessions %in% c("car", "bicycle")
+title %in% c("FTA", "Dostana")
 ```
 
 ```{.output}
-[1]  TRUE  TRUE FALSE FALSE FALSE
+[1]  TRUE  TRUE FALSE FALSE
 ```
 
 Note that the output is the same length as the search vector on the left hand
@@ -707,19 +727,11 @@ in the search vector that appear in your target vector:
 
 
 ```r
-possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
+title[title %in% c("FTA", "Dostana")]
 ```
 
 ```{.output}
-[1]  TRUE  TRUE FALSE FALSE FALSE
-```
-
-```r
-possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")]
-```
-
-```{.output}
-[1] "car"     "bicycle"
+[1] "FTA"     "Dostana"
 ```
 
 
@@ -737,8 +749,8 @@ the missing values.
 
 
 ```r
-rooms <- c(2, 1, 1, NA, 7)
-mean(rooms)
+imdb_score_na <- c(imdb_score, NA, 54, NA)
+mean(imdb_score_na)
 ```
 
 ```{.output}
@@ -746,7 +758,7 @@ mean(rooms)
 ```
 
 ```r
-max(rooms)
+max(imdb_score_na)
 ```
 
 ```{.output}
@@ -754,19 +766,19 @@ max(rooms)
 ```
 
 ```r
-mean(rooms, na.rm = TRUE)
+mean(imdb_score_na, na.rm = TRUE)
 ```
 
 ```{.output}
-[1] 2.75
+[1] 58.8
 ```
 
 ```r
-max(rooms, na.rm = TRUE)
+max(imdb_score_na, na.rm = TRUE)
 ```
 
 ```{.output}
-[1] 7
+[1] 80
 ```
 
 If your data include missing values, you may want to become familiar with the
@@ -777,16 +789,69 @@ examples.
 
 ```r
 ## Extract those elements which are not missing values.
-rooms[!is.na(rooms)]
+imdb_score_na[!is.na(imdb_score_na)]
 ```
 
 ```{.output}
-[1] 2 1 1 7
+[1] 62 21 77 80 54
 ```
 
 ```r
 ## Count the number of missing values.
-sum(is.na(rooms))
+sum(is.na(imdb_score_na))
+```
+
+```{.output}
+[1] 2
+```
+
+```r
+## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
+na.omit(imdb_score_na)
+```
+
+```{.output}
+[1] 62 21 77 80 54
+attr(,"na.action")
+[1] 5 7
+attr(,"class")
+[1] "omit"
+```
+
+```r
+## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
+imdb_score_na[complete.cases(imdb_score_na)]
+```
+
+```{.output}
+[1] 62 21 77 80 54
+```
+Recall that you can use the `typeof()` function to find the type of your atomic vector.
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Exercise
+
+1. Using this vector of rooms, create a new vector with the NAs removed.
+```r
+rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
+```
+
+2. Use the function `median()` to calculate the median of the `rooms` vector.
+
+3. Use R to figure out how many households in the set use more than 2 rooms for sleeping.
+
+:::::::::::::::::::::::: solution
+
+## Solution
+
+```r
+rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
+rooms_no_na <- rooms[!is.na(rooms)]
+# or
+rooms_no_na <- na.omit(rooms)
+# 2.
+median(rooms, na.rm = TRUE)
 ```
 
 ```{.output}
@@ -794,68 +859,26 @@ sum(is.na(rooms))
 ```
 
 ```r
-## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
-na.omit(rooms)
+# 3.
+rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
+length(rooms_above_2)
 ```
 
 ```{.output}
-[1] 2 1 1 7
-attr(,"na.action")
 [1] 4
-attr(,"class")
-[1] "omit"
 ```
 
-```r
-## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
-rooms[complete.cases(rooms)]
-```
-
-```{.output}
-[1] 2 1 1 7
-```
-Recall that you can use the `typeof()` function to find the type of your atomic vector.
-
-> ## Exercise
->
-> 1. Using this vector of rooms, create a new vector with the NAs removed.
->
->     ```r
->     rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
->     ```
-> 2. Use the function `median()` to calculate the median of the `rooms` vector.
->
-> 3. Use R to figure out how many households in the set use more than 2 rooms for sleeping.
->
-> > ## Solution
-> > 
-> > ```r
-> > rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
-> > rooms_no_na <- rooms[!is.na(rooms)]
-> > # or
-> > rooms_no_na <- na.omit(rooms)
-> > # 2.
-> > median(rooms, na.rm = TRUE)
-> > ```
-> > 
-> > ```{.output}
-> > [1] 1
-> > ```
-> > 
-> > ```r
-> > # 3.
-> > rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
-> > length(rooms_above_2)
-> > ```
-> > 
-> > ```{.output}
-> > [1] 4
-> > ```
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 Now that we have learned how to write scripts, and the basics of R's data
 structures, we are ready to start working a real dataset, and learn about data frames.
 
 
-{% include links.md %}
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Access individual values by location using `[]`.
+- Access arbitrary sets of data using `[c(...)]`.
+- Use logical operations and logical vectors to access subsets of data.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
