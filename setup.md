@@ -4,19 +4,25 @@ title: 'Reference'
 
 ## Data Sets
 
-Download the [data file](data/movieSerie.csv)
+We will work with this [data set](data/movieSerie.csv) in the course. 
 
 You do not need to download the file. We will do that together during the course.
 
 ## Software Setup
 
-::::::::::::::::::::::::::::::::::::::: discussion
+::::::::::::::::::::::::: callout
 
-### Details
+### Warning
 
 Please do NOT install R and RStudio on Onedrive or other clouddrives.
 R will work but you will not be able to install the extensions to R
 that you will need in this course!
+
+::::::::::::
+
+::::::::::::::::::::::::::::::::::::::: discussion
+
+### Installing R and RStudio
 
 **R** and **RStudio** are separate downloads and installations. R is the
 underlying statistical computing environment, but using R alone is no
@@ -25,12 +31,7 @@ using R much easier and more interactive. You need to install R before you
 install RStudio. Once installed, because RStudio is an IDE, RStudio will run R in 
 the background.  You do not need to run it separately. 
 
-After installing both programs, 
-you will need to install the **`tidyverse`** package from within RStudio. The 
-**`tidyverse`** package is a powerful collection of data science tools within **R** 
-see the [**`tidyverse`** website](https://tidyverse.tidyverse.org) for more details. 
-Follow the instructions below for your operating system, and then follow the 
-instructions to install **`tidyverse`**.
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
