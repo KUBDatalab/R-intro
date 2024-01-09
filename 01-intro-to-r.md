@@ -396,15 +396,11 @@ How do you use the `digits` parameter in the round function?
 
 ## Vectors and data types
 
-#```{r, echo=FALSE, purl=TRUE}
-### Vectors and data types
-#```
-
 A vector is the most common and basic data type in R, and is pretty much
-the workhorse of R. A vector is composed by a series of values, which can be
-either numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of the score of movies 
-on imdb and assign it to a new object `imdb_score`:
+the workhorse of R. A vector is composed by a series of values. We can assign a 
+series of values to a vector using the `c()` function. For example we can 
+create a vector containing the score of movies on imdb and assign it to an 
+object `imdb_score`:
 
 
 ```r
@@ -416,8 +412,8 @@ imdb_score
 [1] 62 21 77 80
 ```
 
-A vector can also contain characters. For example, we can have
-a vector of movie titles for corresponding to the scores (`title`):
+The vector `imdb_score` contains numbers, but a vector can also contain characters. For example, we can have
+a vector of movie titles corresponding to the scores (`title`):
 
 
 ```r
@@ -429,31 +425,33 @@ title
 [1] "FTA"           "Dostana"       "Deliverance"   "Life of Brian"
 ```
 
-The quotes around "FTA", etc. are essential here. Without the quotes R
+The quotes around "FTA", etc. are essential. Without the quotes R
 will assume there are objects called `FTA` etc. As these objects
 don't exist in R's memory, there will be an error message.
 
-There are many functions that allow you to inspect the content of a
-vector. `length()` tells you how many elements are in a particular vector:
-
-
-```r
-length(imdb_score)
-```
-
-```{.output}
-[1] 4
-```
-
-```r
-length(title)
-```
-
-```{.output}
-[1] 4
-```
-
 An important feature of a vector, is that all of the elements are the same type of data.
+
+:::: callout
+
+### Vectors and datatypes
+An **atomic vector** is the simplest R **data type** and is a linear vector of 
+a single type. Above, we saw 2 of the 6 main **atomic vector** types  that R
+uses: `"character"` and `"numeric"` (or `"double"`). These are the basic 
+building blocks that all R objects are built from. The other 4 **atomic vector** 
+types are:
+
+* `"logical"` for `TRUE` and `FALSE` (the boolean data type)
+* `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R that it's an integer)
+* `"complex"` to represent complex numbers with real and imaginary parts (e.g.,
+`1 + 4i`) and that's all we're going to say about them
+* `"raw"` for bitstreams that we won't discuss further
+
+Vectors are one of the many **data structures** that R uses. Other important
+ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`),
+factors (`factor`) and arrays (`array`).
+
+::::::
+
 The function `class()` indicates the class (the type of element) of an object:
 
 
@@ -494,10 +492,31 @@ str(title)
  chr [1:4] "FTA" "Dostana" "Deliverance" "Life of Brian"
 ```
 
+As you can see there are many functions that allow you to inspect the content 
+of a vector. Another example is `length()` that tells you how many elements are 
+in a particular vector:
+
+
+```r
+length(imdb_score)
+```
+
+```{.output}
+[1] 4
+```
+
 You can use the `c()` function to add other elements to your vector:
 
 ```r
 production_country <- c("IN", "US")
+production_country
+```
+
+```{.output}
+[1] "IN" "US"
+```
+
+```r
 production_country <- c(production_country, "GB") # add to the end of the vector
 production_country <- c("US", production_country) # add to the beginning of the vector
 production_country
@@ -509,29 +528,14 @@ production_country
 
 First the vector `production_country` is created with two values. Then the value
 "GB" is added to the end of the vector, and the result is saved back into 
-`production_country`. After that the value "US is added to the front of the 
+`production_country`. After that the value "US" is added to the front of the 
 vector, and again saved back into `production_country`
 
 We can do this over and over again to grow a vector, or assemble a dataset.
 As we program, this may be useful to add results that we are collecting or
 calculating.
 
-An **atomic vector** is the simplest R **data type** and is a linear vector of a single type. Above, we saw
-2 of the 6 main **atomic vector** types  that R
-uses: `"character"` and `"numeric"` (or `"double"`). These are the basic building blocks that
-all R objects are built from. The other 4 **atomic vector** types are:
 
-* `"logical"` for `TRUE` and `FALSE` (the boolean data type)
-* `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R that it's an integer)
-* `"complex"` to represent complex numbers with real and imaginary parts (e.g.,
-`1 + 4i`) and that's all we're going to say about them
-* `"raw"` for bitstreams that we won't discuss further
-
-You can check the type of your vector using the `typeof()` function and inputting your vector as the argument.
-
-Vectors are one of the many **data structures** that R uses. Other important
-ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`),
-factors (`factor`) and arrays (`array`).
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -635,6 +639,15 @@ title[c(3, 2)]
 [1] "Deliverance" "Dostana"    
 ```
 
+First R return the second element from the title vector, and after that R 
+returns the third and second element from the title vector.
+
+R indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R
+start counting at 1, because that's what human beings typically do. Languages in
+the C family (including C++, Java, Perl, and Python) count from 0 because that's
+simpler for computers to do.
+
+
 We can also repeat the indices to create an object with more elements than the
 original one:
 
@@ -649,15 +662,15 @@ more_title
 [6] "Deliverance"
 ```
 
-R indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R
-start counting at 1, because that's what human beings typically do. Languages in
-the C family (including C++, Java, Perl, and Python) count from 0 because that's
-simpler for computers to do.
+Here we create an new vector `more_title` containing the elements from title in 
+the order given in the `c` function
 
 ### Conditional subsetting
 
-Another common way of subsetting is by using a logical vector. `TRUE` will
-select the element with the same index, while `FALSE` will not:
+Sometimes we only want a subset of a vector, but we do not know the exact index 
+number. A common way of getting a subset without knowing the index numbers, 
+is by using a logical vector. `TRUE` will select the element with the same 
+index, while `FALSE` will not:
 
 
 ```r
@@ -670,7 +683,7 @@ imdb_score[c(TRUE, FALSE, TRUE, TRUE)]
 
 Typically, these logical vectors are not typed by hand, but are the output of
 other functions or logical tests. For instance, if you wanted to select only the
-values above 5:
+imdb_scores above 70:
 
 
 ```r
@@ -695,7 +708,7 @@ You can combine multiple tests using `&` (both conditions are true (AND)) or `|`
 
 
 ```r
-imdb_score[imdb_score < 60 | imdb_score > 77]
+imdb_score[imdb_score < 62 | imdb_score > 77]
 ```
 
 ```{.output}
@@ -703,18 +716,25 @@ imdb_score[imdb_score < 60 | imdb_score > 77]
 ```
 
 ```r
-imdb_score[imdb_score >= 70 & imdb_score <= 80]
+imdb_score[imdb_score >= 62 & imdb_score <= 77]
 ```
 
 ```{.output}
-[1] 77 80
+[1] 62 77
 ```
+
+
+:::::callout
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
 or equal to", and `==` for "equal to". The double equal sign `==` is a test for
 numerical equality between the left and right hand sides, and should not be
 confused with the single `=` sign, which performs variable assignment (similar
 to `<-`).
+
+:::::
+
+
 
 A common task is to search for certain strings in a vector.  One could use the
 "or" operator `|` to test for equality to multiple values, but this can quickly
@@ -730,7 +750,7 @@ title[title == "FTA" | title == "Dostana"] # returns both "FTA and Dostana"
 ```
 
 The function `%in%` allows you to test if any of the elements of a search vector
-(on the left hand side) are found in the target vector (on the right hand side):
+(on the right hand side) are found in the target vector (on the left hand side):
 
 
 ```r
@@ -755,6 +775,19 @@ title[title %in% c("FTA", "Dostana")]
 [1] "FTA"     "Dostana"
 ```
 
+You can also use a vector with `TRUE` and `FALSE` based on one vector to find 
+informations in another vectore. For instance if we want the imdb scores for the 
+movies "FTA" and "Dostana" we can do it like this.
+
+
+```r
+imdb_score[title %in% c("FTA", "Dostana")]
+```
+
+```{.output}
+[1] 62 21
+```
+
 
 ## Missing data
 
@@ -770,7 +803,9 @@ the missing values.
 
 
 ```r
+#Makes an new vector with NA values
 imdb_score_na <- c(imdb_score, NA, 54, NA)
+#tries to calculate mean - without ignoring NA values
 mean(imdb_score_na)
 ```
 
@@ -779,6 +814,7 @@ mean(imdb_score_na)
 ```
 
 ```r
+#tries to find the maximum value - without ignoring NA values
 max(imdb_score_na)
 ```
 
@@ -787,6 +823,7 @@ max(imdb_score_na)
 ```
 
 ```r
+#tries to calculate mean - telling R to ignore NA values
 mean(imdb_score_na, na.rm = TRUE)
 ```
 
@@ -795,6 +832,7 @@ mean(imdb_score_na, na.rm = TRUE)
 ```
 
 ```r
+#tries to find the maximum value - telling R to ignore NA values
 max(imdb_score_na, na.rm = TRUE)
 ```
 
@@ -892,8 +930,39 @@ length(rooms_above_2)
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-Now that we have learned how to write scripts, and the basics of R's data
-structures, we are ready to start working a real dataset, and learn about data frames.
+
+## Data frames
+Normaly we do not work with data in seperate vectors. Instead it would be in 
+a spreadsheet like format. In R this is called data frame
+
+A dataframe is made up by columns of vectors, so we can combine the three vectors 
+to a dataframe.
+
+
+
+```r
+df <- data.frame(title, imdb_score, production_country)
+df
+```
+
+```{.output}
+          title imdb_score production_country
+1           FTA         62                 US
+2       Dostana         21                 IN
+3   Deliverance         77                 US
+4 Life of Brian         80                 GB
+```
+
+So it is possible to make an data frame directly in R, but most of the time 
+data are collected outside R, and afterwards imported to R.
+
+Now that we have learned about  writing code, and the basics of R's data
+structures, we are ready to start working a real dataset, and learn more about 
+data frames.
+
+
+
+
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
