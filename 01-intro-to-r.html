@@ -404,41 +404,57 @@ and the value we want to give it:</p>
 <p><code>&lt;-</code> is the assignment operator. It assigns values on
 the right to objects on the left. So, after executing
 <code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>.
-The arrow can be read as 3 <strong>goes into</strong> <code>x</code>.
-For historical reasons, you can also use <code>=</code> for assignments,
-but not in every context. Because of the <a href="https://web.archive.org/web/20210121015950/https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html" class="external-link">slight</a>
+The arrow can be read as 3 <strong>goes into</strong>
+<code>x</code>.</p>
+<p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd>
+at the same time as the <kbd>-</kbd> key) will write <code>&lt;-</code>
+in a single keystroke in a PC, while typing <kbd>Option</kbd> +
+<kbd>-</kbd> (push <kbd>Option</kbd> at the same time as the
+<kbd>-</kbd> key) does the same in a Mac.</p>
+<div id="historical" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="historical" class="callout-inner">
+<h3 class="callout-title">Historical<a class="anchor" aria-label="anchor" href="#historical"></a>
+</h3>
+<div class="callout-content">
+<p>For historical reasons, you can also use <code>=</code> for
+assignments, but not in every context. Because of the <a href="https://web.archive.org/web/20210121015950/https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html" class="external-link">slight</a>
 <a href="https://web.archive.org/web/20210810114254/https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r" class="external-link">differences</a>
 in syntax, it is good practice to always use <code>&lt;-</code> for
 assignments. More generally we prefer the <code>&lt;-</code> syntax over
 <code>=</code> because it makes it clear what direction the assignment
 is operating (left assignment), and it increases the read-ability of the
 code.</p>
-<p>In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd>
-at the same time as the <kbd>-</kbd> key) will write <code>&lt;-</code>
-in a single keystroke in a PC, while typing <kbd>Option</kbd> +
-<kbd>-</kbd> (push <kbd>Option</kbd> at the same time as the
-<kbd>-</kbd> key) does the same in a Mac.</p>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="naming-objects">Naming objects<a class="anchor" aria-label="anchor" href="#naming-objects"></a></h3>
 <p>Objects can be given any name such as <code>x</code>,
 <code>current_temperature</code>, or <code>subject_id</code>. You want
-your object names to be explicit and not too long. They cannot start
-with a number (<code>2x</code> is not valid, but <code>x2</code> is). R
-is case sensitive (e.g., <code>age</code> is different from
-<code>Age</code>). There are some names that cannot be used because they
-are the names of fundamental objects in R (e.g., <code>if</code>,
-<code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">here</a>
+your object names to be explicit and not too long.</p>
+<p>They cannot start with a number (<code>2x</code> is not valid, but
+<code>x2</code> is), and R is case sensitive (e.g., <code>age</code> is
+different from <code>Age</code>). There are some names that cannot be
+used because they are the names of fundamental objects in R (e.g.,
+<code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">here</a>
 for a complete list). In general, even if it’s allowed, it’s best to not
 use them (e.g., <code>c</code>, <code>T</code>, <code>mean</code>,
 <code>data</code>, <code>df</code>, <code>weights</code>). If in doubt,
-check the help to see if the name is already in use. It’s also best to
-avoid dots (<code>.</code>) within an object name as in
+check the help to see if the name is already in use.</p>
+<p>It is best to avoid dots (<code>.</code>) within an object name as in
 <code>my.dataset</code>. There are many objects in R with dots in their
 names for historical reasons, but because dots have a special meaning in
 R (for methods) and other programming languages, it’s best to avoid
-them. It is also recommended to use nouns for object names, and verbs
-for function names. It’s important to be consistent in the styling of
-your code (where you put spaces, how you name objects, etc.). Using a
+them.</p>
+<p>It is also recommended to use nouns for object names, and verbs for
+function names. It’s important to be consistent in the styling of your
+code (where you put spaces, how you name objects, etc.). Using a
 consistent coding style makes your code clearer to read for your future
-self and your collaborators. In R, three popular style guides are <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a>, <a href="http://jef.works/R-style-guide/" class="external-link">Jean Fan’s</a> and the <a href="http://style.tidyverse.org/" class="external-link">tidyverse’s</a>. The tidyverse’s is
+self and your collaborators.</p>
+<p>In R, three popular style guides are <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a>, <a href="http://jef.works/R-style-guide/" class="external-link">Jean Fan’s</a> and the <a href="http://style.tidyverse.org/" class="external-link">tidyverse’s</a>. The tidyverse’s is
 very comprehensive and may seem overwhelming at first. You can install
 the <a href="https://github.com/jimhester/lintr" class="external-link"><strong><code>lintr</code></strong></a>
 package to automatically check for issues in the styling of your
@@ -459,6 +475,9 @@ are used synonymously. For more information see: <a href="https://cran.r-project
 </div>
 </div>
 </div>
+</div>
+<div class="section level3">
+<h3 id="printing-objects">Printing objects<a class="anchor" aria-label="anchor" href="#printing-objects"></a></h3>
 <p>When assigning a value to an object, R does not print anything. You
 can force R to print the value by using parentheses or by typing the
 object name:</p>
@@ -485,6 +504,9 @@ object name:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1</code></pre>
 </div>
+</div>
+<div class="section level3">
+<h3 id="doing-math-on-objects">Doing math on objects<a class="anchor" aria-label="anchor" href="#doing-math-on-objects"></a></h3>
 <p>Now that R has <code>area_hectares</code> in memory, we can do
 arithmetic with it. For instance, we may want to convert this area into
 acres (area in acres is 2.47 times the area in hectares):</p>
@@ -512,7 +534,7 @@ acres (area in acres is 2.47 times the area in hectares):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 6.175</code></pre>
 </div>
-<p>This means that assigning a value to one object does not change the
+<p>Assigning a value to one object does not automatically change the
 values of other objects. For example, let’s store the plot’s area in
 acres in a new object, <code>area_acres</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -546,7 +568,7 @@ acres in a new object, <code>area_acres</code>:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The value of <code>area_acres</code> is still 6.175 because you have
 not re-run the line <code>area_acres &lt;- 2.47 * area_hectares</code>
@@ -555,33 +577,6 @@ since changing the value of <code>area_hectares</code>.</p>
 </div>
 </div>
 </div>
-</section><section id="comments"><h2 class="section-heading">Comments<a class="anchor" aria-label="anchor" href="#comments"></a>
-</h2>
-<hr class="half-width"><p>All programming languages allow the programmer to include comments in
-their code. To do this in R we use the <code>#</code> character.
-Anything to the right of the <code>#</code> sign and up to the end of
-the line is treated as a comment and is ignored by R. You can start
-lines with comments or include them after any code on the line.</p>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># land area in hectares</span></span>
-<span><span class="va">area_hectares</span> <span class="op">&lt;-</span> <span class="fl">1.0</span>      </span>
-<span><span class="va">area_acres</span> <span class="op">&lt;-</span> <span class="va">area_hectares</span> <span class="op">*</span> <span class="fl">2.47</span>  <span class="co"># convert to acres</span></span>
-<span><span class="va">area_acres</span>        <span class="co"># print land area in acres.</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>[1] 2.47</code></pre>
-</div>
-<p>RStudio makes it easy to comment or uncomment a paragraph: after
-selecting the lines you want to comment, press at the same time on your
-keyboard <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If you only
-want to comment out one line, you can put the cursor at any location of
-that line (i.e. no need to select the whole line), then press
-<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.</p>
 <div id="exercise-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -608,9 +603,9 @@ of <code>r_area</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -624,7 +619,7 @@ of <code>r_area</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 8</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -643,6 +638,34 @@ of <code>r_area</code>.</p>
 </div>
 </div>
 </div>
+</div>
+</section><section id="comments"><h2 class="section-heading">Comments<a class="anchor" aria-label="anchor" href="#comments"></a>
+</h2>
+<hr class="half-width"><p>All programming languages allow the programmer to include comments in
+their code. To do this in R we use the <code>#</code> character.
+Anything to the right of the <code>#</code> sign and up to the end of
+the line is treated as a comment and is ignored by R. You can start
+lines with comments or include them after any code on the line.</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># land area in hectares</span></span>
+<span><span class="va">area_hectares</span> <span class="op">&lt;-</span> <span class="fl">1.0</span>      </span>
+<span><span class="va">area_acres</span> <span class="op">&lt;-</span> <span class="va">area_hectares</span> <span class="op">*</span> <span class="fl">2.47</span>  <span class="co"># convert to acres</span></span>
+<span><span class="va">area_acres</span>        <span class="co"># print land area in acres.</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 2.47</code></pre>
+</div>
+<p>RStudio makes it easy to comment or uncomment a paragraph: after
+selecting the lines you want to comment, press at the same time on your
+keyboard <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If you only
+want to comment out one line, you can put the cursor at any location of
+that line (i.e. no need to select the whole line), then press
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.</p>
 </section><section id="functions-and-their-arguments"><h2 class="section-heading">Functions and their arguments<a class="anchor" aria-label="anchor" href="#functions-and-their-arguments"></a>
 </h2>
 <hr class="half-width"><p>Functions are “canned scripts” that automate more complicated sets of
@@ -958,7 +981,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>R implicitly converts them to all be the same type.</p>
 </div>
@@ -983,7 +1006,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1015,7 +1038,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Vectors can be of only one data type. R tries to convert (coerce) the
 content of this vector to find a “common denominator” that doesn’t lose
@@ -1050,7 +1073,7 @@ any information.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Only one. There is no memory of past data types, and the coercion
 happens the first time the vector is evaluated. Therefore, the
@@ -1381,7 +1404,7 @@ the <code>rooms</code> vector.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1495,7 +1518,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/01-intro-to-r.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/01-intro-to-r.html",
-  "dateCreated": "2024-01-03",
+  "dateCreated": "2024-01-09",
   "dateModified": "2024-01-09",
   "datePublished": "2024-01-09"
 }
