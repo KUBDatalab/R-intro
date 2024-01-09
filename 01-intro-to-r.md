@@ -62,7 +62,18 @@ x <- 3
 
 `<-` is the assignment operator. It assigns values on the right to objects on
 the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
-be read as 3 **goes into** `x`.  For historical reasons, you can also use `=`
+be read as 3 **goes into** `x`.
+
+In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
+same time as the <kbd>-</kbd> key) will write `<- ` in a single keystroke in a
+PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the
+same time as the <kbd>-</kbd> key) does the same in a Mac.
+
+:::: callout
+
+## Historical
+
+For historical reasons, you can also use `=`
 for assignments, but not in every context. Because of the
 [slight](https://web.archive.org/web/20210121015950/https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
 [differences](https://web.archive.org/web/20210810114254/https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r)
@@ -71,29 +82,35 @@ generally we prefer the `<-` syntax over `=` because it makes it clear what
 direction the assignment is operating (left assignment), and it increases the
 read-ability of the code.
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
-same time as the <kbd>-</kbd> key) will write `<- ` in a single keystroke in a
-PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the
-same time as the <kbd>-</kbd> key) does the same in a Mac.
+::::::
+
+### Naming objects
 
 Objects can be given any name such as `x`, `current_temperature`, or
-`subject_id`. You want your object names to be explicit and not too long. They
-cannot start with a number (`2x` is not valid, but `x2` is). R is case sensitive
-(e.g., `age` is different from `Age`). There are some names that
+`subject_id`. You want your object names to be explicit and not too long. 
+
+They cannot start with a number (`2x` is not valid, but `x2` is), and R is case 
+sensitive (e.g., `age` is different from `Age`). There are some names that
 cannot be used because they are the names of fundamental objects in R (e.g.,
 `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
-for a complete list). In general, even if it's allowed, it's best to not use
-them (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). If in
-doubt, check the help to see if the name is already in use. It's also best to
+for a complete list). In general, even if it's allowed, it's best to not use 
+them (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). If in doubt, check 
+the help to see if the name is already in use.
+
+It is best to
 avoid dots (`.`) within an object name as in `my.dataset`. There are many
 objects in R with dots in their names for historical reasons, but because dots
 have a special meaning in R (for methods) and other programming languages, it's
-best to avoid them. It is also recommended to use nouns for object names, and
+best to avoid them.
+
+It is also recommended to use nouns for object names, and
 verbs for function names. It's important to be consistent in the styling of your
 code (where you put spaces, how you name objects, etc.). Using a consistent
 coding style makes your code clearer to read for your future self and your
-collaborators. In R, three popular style guides are
+collaborators.
+
+In R, three popular style guides are
 [Google's](https://google.github.io/styleguide/Rguide.xml), [Jean
 Fan's](http://jef.works/R-style-guide/) and the
 [tidyverse's](http://style.tidyverse.org/). The tidyverse's is very
@@ -112,6 +129,8 @@ are used synonymously. For more information see:
 [https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
 ::::::
+
+### Printing objects
 
 When assigning a value to an object, R does not print anything. You
 can force R to print the value by using parentheses or by typing
@@ -134,6 +153,8 @@ area_hectares         # but typing the name of the object print
 ```{.output}
 [1] 1
 ```
+
+### Doing math on objects
 
 Now that R has `area_hectares` in memory, we can do arithmetic with it. For instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares): 
 
@@ -158,7 +179,7 @@ area_hectares <- 2.5
 [1] 6.175
 ```
 
-This means that assigning a value to one object does not change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
+Assigning a value to one object does not automatically change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
 
 
 ```r
@@ -186,31 +207,6 @@ changing the value of `area_hectares`.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Comments
-
-All programming languages allow the programmer to include comments in their code. To do this in R we use the `#` character.
-Anything to the right of the `#` sign and up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments
-or include them after any code on the line.
-
-
-```r
-# land area in hectares
-area_hectares <- 1.0			
-area_acres <- area_hectares * 2.47	# convert to acres
-area_acres				# print land area in acres.
-```
-
-```{.output}
-[1] 2.47
-```
-
-RStudio makes it easy to comment or uncomment a paragraph: after selecting the
-lines you  want to comment, press at the same time on your keyboard
-<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If you only want to comment
-out one line, you can put the cursor at any location of that line (i.e. no need
-to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
-<kbd>C</kbd>.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -255,6 +251,31 @@ r_area
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Comments
+
+All programming languages allow the programmer to include comments in their code. To do this in R we use the `#` character.
+Anything to the right of the `#` sign and up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments
+or include them after any code on the line.
+
+
+```r
+# land area in hectares
+area_hectares <- 1.0			
+area_acres <- area_hectares * 2.47	# convert to acres
+area_acres				# print land area in acres.
+```
+
+```{.output}
+[1] 2.47
+```
+
+RStudio makes it easy to comment or uncomment a paragraph: after selecting the
+lines you  want to comment, press at the same time on your keyboard
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If you only want to comment
+out one line, you can put the cursor at any location of that line (i.e. no need
+to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
+<kbd>C</kbd>.
 
 
 ## Functions and their arguments
