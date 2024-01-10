@@ -100,7 +100,7 @@ aspect of your graph to convey most effectively the message from your data.
 
 Thousands of people use R daily. Many of them are willing to help you through
 mailing lists and websites such as [Stack Overflow](https://stackoverflow.com/),
-or on the [RStudio community](https://community.rstudio.com/). Questions which
+or on the [Posit Community](https://community.rstudio.com/). Questions which
 are backed up with [short, reproducible code
 snippets](https://www.tidyverse.org/help/) are more likely to attract
 knowledgeable responses.

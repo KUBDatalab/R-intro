@@ -14,7 +14,6 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-objectives:
 - Describe what a data frame is.
 - Load external data from a .csv file into a data frame.
 - Summarize the contents of a data frame.
