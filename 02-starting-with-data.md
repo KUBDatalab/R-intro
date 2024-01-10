@@ -2,21 +2,25 @@
 title: "Starting with Data"
 teaching: 30
 exercises: 10
-questions:
-- "What is a data.frame?"
-- "How can I read a complete csv file into R?"
-- "How can I get basic summary information about my dataset?"
-objectives:
-- "Describe what a data frame is."
-- "Load external data from a .csv file into a data frame."
-- "Summarize the contents of a data frame."
-- "Subset and extract values from data frames."
-keypoints:
-- "Use read_csv to read tabular data in R."
-source: Rmd
 ---
 
+:::: questions
 
+- What is a data.frame?
+- How can I read a complete csv file into R?
+- How can I get basic summary information about my dataset?
+
+::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+objectives:
+- Describe what a data frame is.
+- Load external data from a .csv file into a data frame.
+- Summarize the contents of a data frame.
+- Subset and extract values from data frames.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## What are data frames and tibbles?
 
@@ -405,4 +409,8 @@ names of the columns.
 {: .challenge}
 
 
-{% include links.md %}
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use read_csv to read tabular data in R.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
