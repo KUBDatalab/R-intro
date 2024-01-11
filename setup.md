@@ -70,7 +70,7 @@ recommend if you have any problems installing R and RStudio on your personal com
 #### If you don't have R and RStudio installed
 
 * Download R from
-  the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
+  the [CRAN website](https://cran.r-project.org/bin/windows/base/release.htm).
 * Run the `.exe` file that was just downloaded.
 * Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download).
 * Under *Installers* select **RStudio x.yy.zzz - Windows.
@@ -98,7 +98,7 @@ recommend if you have any problems installing R and RStudio on your personal com
 #### If you don't have R and RStudio installed
 
 * Download R from
-  the [CRAN website](http://cran.r-project.org/bin/macosx/).
+  the [CRAN website](https://cran.r-project.org/bin/macosx/).
 * Select the `.pkg` file for the latest R version.
 * Double click on the downloaded file to install R.
 * It is also a good idea to install [XQuartz](https://www.xquartz.org/) (needed

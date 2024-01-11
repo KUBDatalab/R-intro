@@ -881,7 +881,7 @@ Error in eval(expr, envir, enclos): object 'percent_items' not found
 >
 > * See if you can make the bars white with black outline.
 > * Try using a different colour palette (see
->   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
+>   [https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
 {: .challenge}
 
 After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.

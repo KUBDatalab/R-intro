@@ -112,8 +112,8 @@ collaborators.
 
 In R, three popular style guides are
 [Google's](https://google.github.io/styleguide/Rguide.xml), [Jean
-Fan's](http://jef.works/R-style-guide/) and the
-[tidyverse's](http://style.tidyverse.org/). The tidyverse's is very
+Fan's](https://jef.works/R-style-guide/) and the
+[tidyverse's](https://style.tidyverse.org/). The tidyverse's is very
 comprehensive and may seem overwhelming at first. You can install the
 [**`lintr`**](https://github.com/jimhester/lintr) package to automatically check
 for issues in the styling of your code.
