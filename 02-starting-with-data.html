@@ -374,33 +374,40 @@ demonstrate how to import tabular data using
 <code>read_csv()</code>.</p>
 </section><section id="presentation-of-the-safi-data"><h2 class="section-heading">Presentation of the SAFI Data<a class="anchor" aria-label="anchor" href="#presentation-of-the-safi-data"></a>
 </h2>
-<hr class="half-width"><p>The data set used (movieSerie.csv) is</p>
-<p>SAFI (Studying African Farmer-Led Irrigation) is a study looking at
-farming and irrigation methods in Tanzania and Mozambique. The survey
-data was collected through interviews conducted between November 2016
-and June 2017. For this lesson, we will be using a subset of the
-available data. For information about the full dataset, see the <a href="https://www.datacarpentry.org/socialsci-workshop/data/" class="external-link">dataset
-description</a>.</p>
-<p>We will be using a subset of the cleaned version of the dataset that
-was produced through cleaning in OpenRefine
-(<code>data/SAFI_clean.csv</code>). Each row holds information for a
-single interview respondent, and the columns represent:</p>
+<hr class="half-width"><p>The data set used movieSerie.csv is list of movies and series from
+IMDB. Each row holds information for a single movie or serie, and the
+columns represent:</p>
 <table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr class="header"><th>column_name</th>
 <th>description</th>
-</tr></thead><tbody><tr class="odd"><td>key_id</td>
-<td>Added to provide a unique Id for each observation. (The InstanceID
-field does this as well but it is not as convenient to use)</td>
-</tr><tr class="even"><td>village</td>
+</tr></thead><tbody><tr class="odd"><td>id</td>
+<td>Added to provide a unique Id for each observation.</td>
+</tr><tr class="even"><td>title</td>
 <td>Village name</td>
-</tr><tr class="odd"><td>interview_date</td>
+</tr><tr class="odd"><td>type</td>
 <td>Date of interview</td>
-</tr><tr class="even"><td>no_membrs</td>
+</tr><tr class="even"><td>description</td>
 <td>How many members in the household?</td>
-</tr><tr class="odd"><td>respondent_wall_type</td>
+</tr><tr class="odd"><td>genre</td>
 <td>What type of walls does their house have (from list)</td>
-</tr><tr class="even"><td>no_meals</td>
+</tr><tr class="even"><td>release_year</td>
 <td>How many meals do people in your household normally eat in a
 day?</td>
+</tr><tr class="odd"><td>age_certification</td>
+<td></td>
+</tr><tr class="even"><td>runtime</td>
+<td></td>
+</tr><tr class="odd"><td>seasons</td>
+<td></td>
+</tr><tr class="even"><td>imdb_id</td>
+<td></td>
+</tr><tr class="odd"><td>imdb_score</td>
+<td></td>
+</tr><tr class="even"><td>imdb_votes</td>
+<td></td>
+</tr><tr class="odd"><td>tmdb_popularity</td>
+<td></td>
+</tr><tr class="even"><td>tmdb_score</td>
+<td></td>
 </tr></tbody></table></section><section id="importing-data"><h2 class="section-heading">Importing data<a class="anchor" aria-label="anchor" href="#importing-data"></a>
 </h2>
 <hr class="half-width"><p>You are going load the data in R’s memory using the function
@@ -417,14 +424,6 @@ in most data analyses) get loaded, including
 <p>Before we can use the <code>read_csv()</code> we need to load the
 tidyverse package.</p>
 <p>After this we can read in the data set.</p>
-<div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="warning" tabindex="0"><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
 <p>The first argument <code>read_csv</code> takes is the path to til
 file. The specific path is dependent on the specific setup. If you have
 followed the recommendations for structuring your project-folder, it
@@ -452,7 +451,7 @@ doesn’t output any data because, as you might recall, assignments
 that is created.) If we want to check that our data has been loaded, we
 can see the contents of the data frame by typing its name:
 <code>interviews</code> in the console.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -463,7 +462,7 @@ can see the contents of the data frame by typing its name:
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -492,7 +491,7 @@ the <strong><code>tidyverse</code></strong>. When the data is read using
 <code>read_csv()</code>, it is stored in an object of class
 <code>tbl_df</code>, <code>tbl</code>, and <code>data.frame</code>. You
 can see the class of an object with</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -570,7 +569,7 @@ ways of specifying these coordinates can lead to results with different
 classes. This is covered in the Software Carpentry lesson <a href="https://swcarpentry.github.io/r-novice-gapminder/" class="external-link">R for
 Reproducible Scientific Analysis</a>. {: .callout}</p>
 </blockquote>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -582,7 +581,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -594,7 +593,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -606,7 +605,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -618,7 +617,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -630,7 +629,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -642,7 +641,7 @@ Reproducible Scientific Analysis</a>. {: .callout}</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -659,7 +658,7 @@ integers in increasing or decreasing order, test <code>1:10</code> and
 <code>10:1</code> for instance.</p>
 <p>You can also exclude certain indices of a data frame using the
 “<code>-</code>” sign:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -670,7 +669,7 @@ integers in increasing or decreasing order, test <code>1:10</code> and
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -683,7 +682,7 @@ integers in increasing or decreasing order, test <code>1:10</code> and
 </div>
 <p><code>tibble</code>s can be subset by calling indices (as shown
 previously), but also by calling their column names directly:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -725,7 +724,7 @@ keeping just the first through 6th rows of the interviews
 dataset.</p></li>
 </ol><blockquote>
 <h2 id="solution">Solution</h2>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -737,7 +736,7 @@ dataset.</p></li>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -750,7 +749,7 @@ dataset.</p></li>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -761,7 +760,7 @@ dataset.</p></li>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -773,7 +772,7 @@ dataset.</p></li>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -861,7 +860,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/02-starting-with-data.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/02-starting-with-data.html",
-  "dateCreated": "2024-01-15",
+  "dateCreated": "2024-01-16",
   "dateModified": "2024-01-16",
   "datePublished": "2024-01-16"
 }
