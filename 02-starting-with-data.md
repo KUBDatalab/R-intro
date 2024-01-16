@@ -43,28 +43,26 @@ We will now demonstrate how to import tabular data using `read_csv()`.
 
 ## Presentation of the SAFI Data
 
-The data set used (movieSerie.csv) is 
-
-SAFI (Studying African Farmer-Led Irrigation) is a study looking at farming
-and irrigation methods in Tanzania and Mozambique. The survey data
-was collected through interviews conducted between November 2016 and
-June 2017. For this lesson, we will be using a subset of the
-available data. For information about the full dataset, see the
-[dataset description](https://www.datacarpentry.org/socialsci-workshop/data/).
-
-We will be using a subset of the cleaned version of the dataset that
-was produced through cleaning in OpenRefine (`data/SAFI_clean.csv`). Each row holds
-information for a single interview respondent, and the columns
+The data set used movieSerie.csv is list of movies and series from IMDB. Each 
+row holds information for a single movie or serie, and the columns
 represent:
 
 | column_name | description |
 | ----------- | ----------- |
-| key_id | Added to provide a unique Id for each observation. (The InstanceID field does this as well but it is not as convenient to use) |
-| village | Village name |
-| interview_date | Date of interview |
-| no_membrs | How many members in the household? |
-| respondent_wall_type | What type of walls does their house have (from list) |
-| no_meals | How many meals do people in your household normally eat in a day? |
+|id | Added to provide a unique Id for each observation. |
+| title | Village name |
+| type | Date of interview |
+| description | How many members in the household? |
+| genre | What type of walls does their house have (from list) |
+| release_year | How many meals do people in your household normally eat in a day? |
+|age_certification||
+|runtime||
+|seasons||
+|imdb_id||
+|imdb_score||
+|imdb_votes||
+|tmdb_popularity||
+|tmdb_score||
 
 
 ## Importing data
@@ -84,12 +82,6 @@ Before we can use the `read_csv()` we need to load the tidyverse package.
 After this we can read in the data set.
 
 
-```{.warning}
-Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat <- vroom(...)
-  problems(dat)
-```
 
 The first argument `read_csv` takes is the path to til file. The specific path 
 is dependent on the specific setup. If you have followed the recommendations 
