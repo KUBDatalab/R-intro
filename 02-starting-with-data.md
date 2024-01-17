@@ -78,10 +78,16 @@ When you load  the **`tidyverse`** (`library(tidyverse)`), the core packages
 Before we can use the `read_csv()` we need to load the tidyverse package.
 
 
+```r
+library(tidyverse)
+```
 
 After this we can read in the data set.
 
 
+```r
+movieSerie <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
+```
 
 The first argument `read_csv` takes is the path to til file. The specific path 
 is dependent on the specific setup. If you have followed the recommendations 
@@ -116,17 +122,29 @@ has been loaded, we can see the contents of the data frame by typing its name:
 
 
 ```r
-interviews
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
-```
-
-```r
+movieSerie
 ## Try also
 ## view(interviews)
 ## head(interviews)
+```
+
+```{.output}
+# A tibble: 5,850 × 14
+   id       title type  genre description release_year age_certification runtime
+   <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
+ 1 ts300399 Five… SHOW  docu… "This coll…         1945 "TV-MA"                51
+ 2 tm84618  Taxi… MOVIE drama "A mentall…         1976 "R"                   114
+ 3 tm154986 Deli… MOVIE drama "Intent on…         1972 "R"                   109
+ 4 tm127384 Mont… MOVIE fant… "King Arth…         1975 "PG"                   91
+ 5 tm120801 The … MOVIE war   "12 Americ…         1967 ""                    150
+ 6 ts22164  Mont… SHOW  come… "A British…         1969 "TV-14"                30
+ 7 tm70993  Life… MOVIE come… "Brian Coh…         1979 "R"                    94
+ 8 tm14873  Dirt… MOVIE thri… "When a ma…         1971 "R"                   102
+ 9 tm119281 Bonn… MOVIE crime "In the 19…         1967 "R"                   110
+10 tm98978  The … MOVIE roma… "Two small…         1980 "R"                   104
+# ℹ 5,840 more rows
+# ℹ 6 more variables: seasons <dbl>, imdb_id <chr>, imdb_score <dbl>,
+#   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
 > ## Note
