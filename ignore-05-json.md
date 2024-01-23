@@ -37,7 +37,7 @@ The JSON format although somewhat verbose is not only Human readable but it can 
 
 We are going to read a file of data formatted as JSON, convert it into a dataframe in R then selectively create a csv file from the extracted data.
 
-The JSON file we are going to use is the [SAFI.json](../data/SAFI.json) file. This is the output file from an electronic survey system called ODK. The JSON represents the answers to a series of survey questions. The questions themselves have been replaced with unique Keys, the values are the answers.
+The JSON file we are going to use is the SAFI.json ../data/SAFI.json  file. This is the output file from an electronic survey system called ODK. The JSON represents the answers to a series of survey questions. The questions themselves have been replaced with unique Keys, the values are the answers.
 
 Because detailed surveys are by nature nested structures making it possible to record different levels of detail or selectively ask a set of specific questions based on the answer given a previous question, the structure of the answers for the survey can not only be complex and convoluted, it could easily be different from one survey respondent's set of answers to another.
 
@@ -74,16 +74,7 @@ The following object is masked from 'package:purrr':
 ```
 
 ```r
-json_data <- read_json(path='data/SAFI.json')
-```
-
-```{.warning}
-Warning in open.connection(con, "rb"): cannot open file 'data/SAFI.json': No
-such file or directory
-```
-
-```{.error}
-Error in open.connection(con, "rb"): cannot open the connection
+# json_data <- read_json(path='data/SAFI.json')
 ```
 
 We can see that a new object called json_data has appeared in our Environment. It is described as a Large list (131 elements). In this current form, our data is messy. You can have a glimpse of it with the `head()` or `view()` functions. It will look not much more structured than if you were to open the JSON file with a text editor. 
@@ -92,16 +83,7 @@ This is because, by default, the `read_json()` function's parameter `simplifyVec
 
 
 ```r
-json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
-```
-
-```{.warning}
-Warning in open.connection(con, "rb"): cannot open file 'data/SAFI.json': No
-such file or directory
-```
-
-```{.error}
-Error in open.connection(con, "rb"): cannot open the connection
+# json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
 ```
 
 
@@ -111,19 +93,8 @@ inside (these functions were loaded by `library(tidyverse)`):
 
 
 ```r
-json_data <- json_data %>% as_tibble()
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
-```
-
-```r
-glimpse(json_data)
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
+# json_data <- json_data %>% as_tibble()
+# glimpse(json_data)
 ```
 
 
@@ -135,11 +106,8 @@ So what can we do about this column of dataframes? Well first things first, we c
 
 
 ```r
-json_data$F_liv[1]
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
+# json_data$F_liv[1]
+# 
 ```
 
 
@@ -148,11 +116,7 @@ We can also choose to view the nested dataframes at all the rows of our main dat
 
 
 ```r
-json_data$F_liv[which(json_data$C06_rooms==4)]
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
+# json_data$F_liv[which(json_data$C06_rooms==4)]
 ```
 
 ## Write the JSON file to csv
@@ -161,7 +125,7 @@ If we try to write our json_data dataframe to a csv as we would usuall in a regu
 
 
 ```r
-write_csv(json_data, file = "SAFI_from_JSON.csv")
+# write_csv(json_data, file = "SAFI_from_JSON.csv")
 ```
 
 To write out as a csv, we will need to "flatten" these columns. One thing you can do to achieve this is to turn all of the columns of your dataframe to "character" types.   
@@ -169,12 +133,8 @@ To write out as a csv, we will need to "flatten" these columns. One thing you ca
 
 
 ```r
-flattened_json_data <- apply(json_data,2,as.character) %>%
-  as_tibble()
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
+# flattened_json_data <- apply(json_data,2,as.character) %>%
+#   as_tibble()
 ```
 
 
@@ -182,11 +142,7 @@ Now you can write this to a csv file:
 
 
 ```r
-write_csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'flattened_json_data' not found
+# write_csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
 ```
 
 
@@ -198,11 +154,7 @@ You can also write out the individual nested dataframes to a csv. For example:
 
 
 ```r
-write_csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'json_data' not found
+# write_csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
 ```
 
 

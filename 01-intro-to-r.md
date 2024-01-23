@@ -93,8 +93,8 @@ They cannot start with a number (`2x` is not valid, but `x2` is), and R is case
 sensitive (e.g., `age` is different from `Age`). There are some names that
 cannot be used because they are the names of fundamental objects in R (e.g.,
 `if`, `else`, `for`, see
-[here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
-for a complete list). In general, even if it's allowed, it's best to not use 
+[here for a complete list](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)). 
+In general, even if it's allowed, it's best to not use 
 them (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). If in doubt, check 
 the help to see if the name is already in use.
 
