@@ -116,20 +116,16 @@ users, there is a very large selection of third-party add-on packages which are
 freely available to extend R's native capabilities.
 
 
-<figure>
-<div class="row">
-<div class="col-md-6">
+
 <img src="./fig/r-manual.jpeg" alt="RStudio extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
-</div>
-<div class="col-md-6">
+
+
 <img src="./fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of RStudio" width="100%" style="display: block; margin: auto;" />
-</div>
-</div>
-<figcaption>
+
 RStudio extends what R can do, and makes it easier to write R code and interact
 with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">Right photo credit</a>.
-</figcaption>
-</figure>
+
+
 
 
 ## A tour of RStudio
@@ -157,7 +153,7 @@ error-prone.
 
 Let's take a quick tour of RStudio.
 
-![RStudio interface](../fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
+![RStudio interface](/fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
 
 RStudio is divided into four "panes". The placement of these
 panes and their content can be customized (see menu, Tools -> Global Options ->
@@ -238,7 +234,7 @@ are some examples of suggested directories:
 You may want additional directories or subdirectories depending on your project
 needs, but these should form the backbone of your working directory.
 
-![Example of a working directory structure](../fig/rstudio_project_files.jpeg){alt='A picture showing the layout of a good working directory as described above'}
+![Example of a working directory structure](fig/rstudio_project_files.jpeg){alt='A picture showing the layout of a good working directory as described above'}
 
 ### The working directory
 
@@ -270,7 +266,7 @@ dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Begin by downloading the dataset called ["`movieSerie.csv`"](data/movieSerie.csv). 
+Begin by downloading the dataset called ["`movieSerie.csv`"](/data/movieSerie.csv). 
 Place this downloaded file in the `data/` you just created. You can do this directly 
 from R by copying and pasting this in your terminal (your instructor can place this chunk of code in
 the Etherpad):
@@ -353,7 +349,7 @@ You can see if you have a package installed by looking in the `packages` tab
 (on the lower-right by default). You can also type the command
 `installed.packages()` into the console and examine the output.
 
-![Packages pane](../fig/packages_pane.png)
+![Packages pane](/fig/packages_pane.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
@@ -361,7 +357,7 @@ name of the package you want in the text box. As you type, packages
 matching your starting characters will be displayed in a drop-down
 list so that you can select them.
 
-![Install Packages Window](../fig/R_00_Rstudio_03.png)
+![Install Packages Window](/fig/R_00_Rstudio_03.png)
 
 At the bottom of the Install Packages window is a check box to
 ‘Install’ dependencies. This is ticked by default, which is usually

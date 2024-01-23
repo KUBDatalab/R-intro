@@ -21,7 +21,12 @@ keypoints:
 - "We can use R code to extract values of interest and place them in a csv file"
 source: Rmd
 ---
+:::: questions
 
+- "What do I do now?"
+- "What is the next step?"
+
+::::
 
 
 ## The JSON data format

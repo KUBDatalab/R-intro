@@ -22,7 +22,12 @@ keypoints:
    - "Faceting allows you to generate multiple plots based on a categorical variable."
 source: Rmd
 ---
+:::: questions
 
+- "What do I do now?"
+- "What is the next step?"
+
+::::
 
 
 We start by loading the required package. **`ggplot2`** is also included in the

@@ -19,7 +19,12 @@ keypoints:
 ---
 
 
+:::: questions
 
+- "What do I do now?"
+- "What is the next step?"
+
+::::
 
 
 ## Introduction
@@ -402,7 +407,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
     }
     invisible(names)
 }
-<bytecode: 0x556a019a45b0>
+<bytecode: 0x55d21f2d1c10>
 <environment: namespace:utils>
 ```
 
