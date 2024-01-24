@@ -49,7 +49,9 @@ Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the
 tidyverse. These packages were loaded in R's memory when we called
 `library(tidyverse)` earlier.
 
- ## Note husk dette er en callout!
+:::: callout
+
+## Note
 
  The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`**
  accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling
@@ -57,6 +59,7 @@ tidyverse. These packages were loaded in R's memory when we called
  the American spellings of different functions; however, feel free to use
  the regional variant for where you are teaching.
 
+::::::
 
 ## What is an R package?
 
@@ -104,7 +107,7 @@ We're going to learn some of the most common **`dplyr`** functions:
 ## Selecting columns and filtering rows
 
 To select columns of a dataframe, use `select()`. The first argument to this
-function is the dataframe (`interviews`), and the subsequent arguments are the
+function is the dataframe (`movieSerie`), and the subsequent arguments are the
 columns to keep, separated by commas. Alternatively, if you are selecting
 columns adjacent to each other, you can use a `:` to select a range of columns,
 read as "select columns from ___ to ___."
@@ -112,34 +115,75 @@ read as "select columns from ___ to ___."
 
 ```r
 # to select columns throughout the dataframe
-select(interviews, village, no_membrs)
+select(movieSerie, title, description)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 5,850 × 2
+   title                               description                              
+   <chr>                               <chr>                                    
+ 1 Five Came Back: The Reference Films "This collection includes 12 World War I…
+ 2 Taxi Driver                         "A mentally unstable Vietnam War veteran…
+ 3 Deliverance                         "Intent on seeing the Cahulawassee River…
+ 4 Monty Python and the Holy Grail     "King Arthur, accompanied by his squire,…
+ 5 The Dirty Dozen                     "12 American military prisoners in World…
+ 6 Monty Python's Flying Circus        "A British sketch comedy series with the…
+ 7 Life of Brian                       "Brian Cohen is an average young Jewish …
+ 8 Dirty Harry                         "When a madman dubbed 'Scorpio' terroriz…
+ 9 Bonnie and Clyde                    "In the 1930s, bored waitress Bonnie Par…
+10 The Blue Lagoon                     "Two small children and a ship's cook su…
+# ℹ 5,840 more rows
 ```
 
 ```r
 # to select a series of connected columns
-select(interviews, village:respondent_wall_type)
+select(movieSerie, title:description)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 5,850 × 4
+   title                               type  genre         description          
+   <chr>                               <chr> <chr>         <chr>                
+ 1 Five Came Back: The Reference Films SHOW  documentation "This collection inc…
+ 2 Taxi Driver                         MOVIE drama         "A mentally unstable…
+ 3 Deliverance                         MOVIE drama         "Intent on seeing th…
+ 4 Monty Python and the Holy Grail     MOVIE fantasy       "King Arthur, accomp…
+ 5 The Dirty Dozen                     MOVIE war           "12 American militar…
+ 6 Monty Python's Flying Circus        SHOW  comedy        "A British sketch co…
+ 7 Life of Brian                       MOVIE comedy        "Brian Cohen is an a…
+ 8 Dirty Harry                         MOVIE thriller      "When a madman dubbe…
+ 9 Bonnie and Clyde                    MOVIE crime         "In the 1930s, bored…
+10 The Blue Lagoon                     MOVIE romance       "Two small children …
+# ℹ 5,840 more rows
 ```
 
 To choose rows based on specific criteria, we can use the `filter()` function.
 The argument after the dataframe is the condition we want our final
-dataframe to adhere to (e.g. village name is Chirodzo): 
+dataframe to adhere to (e.g. age_certification is PG-13): 
 
 
 ```r
-# filters observations where village name is "Chirodzo" 
-filter(interviews, village == "Chirodzo")
+# filters observations where age_certification name is "PG-13" 
+filter(movieSerie, age_certification == "PG-13")
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 451 × 14
+   id       title type  genre description release_year age_certification runtime
+   <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
+ 1 tm67378  The … MOVIE west… "An arroga…         1966 PG-13                 117
+ 2 tm145608 Awak… MOVIE drama "Dr. Malco…         1990 PG-13                 120
+ 3 tm147710 Nati… MOVIE come… "It's Chri…         1989 PG-13                  97
+ 4 tm142895 Lean… MOVIE drama "When prin…         1989 PG-13                 105
+ 5 tm107744 Miss… MOVIE thri… "When Etha…         1996 PG-13                 110
+ 6 tm122434 Forr… MOVIE drama "A man wit…         1994 PG-13                 142
+ 7 tm191110 Tita… MOVIE drama "101-year-…         1997 PG-13                 194
+ 8 tm27395  Miss… MOVIE thri… "With comp…         2000 PG-13                 123
+ 9 tm113513 Dumb… MOVIE come… "Lloyd and…         1994 PG-13                 107
+10 tm192405 Gatt… MOVIE scifi "In a futu…         1997 PG-13                 106
+# ℹ 441 more rows
+# ℹ 6 more variables: seasons <dbl>, imdb_id <chr>, imdb_score <dbl>,
+#   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
 We can also specify multiple conditions within the `filter()` function. We can
@@ -153,13 +197,28 @@ commas:
 ```r
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
-filter(interviews, village == "Chirodzo", 
-                   no_membrs > 4, 
-                   no_meals > 2)
+filter(movieSerie, age_certification == "PG-13",
+                   runtime > 100,
+                   imdb_score < 6.0)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 60 × 14
+   id       title type  genre description release_year age_certification runtime
+   <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
+ 1 tm12499  The … MOVIE thri… "Angela Be…         1995 PG-13                 114
+ 2 tm93055  Grow… MOVIE come… "After the…         2010 PG-13                 102
+ 3 tm159901 Miss… MOVIE acti… "After her…         2005 PG-13                 115
+ 4 tm88045  How … MOVIE come… "After bei…         2010 PG-13                 121
+ 5 tm700    10,0… MOVIE acti… "A prehist…         2008 PG-13                 109
+ 6 tm39487  Catc… MOVIE drama "Gray Whee…         2006 PG-13                 111
+ 7 tm130574 Did … MOVIE come… "In New Yo…         2009 PG-13                 103
+ 8 tm148041 What… MOVIE come… "What's Yo…         2009 PG-13                 192
+ 9 tm237621 The … MOVIE horr… "Two buddi…         2009 PG-13                 122
+10 tm59289  Rowd… MOVIE acti… "A small-t…         2012 PG-13                 143
+# ℹ 50 more rows
+# ℹ 6 more variables: seasons <dbl>, imdb_id <chr>, imdb_score <dbl>,
+#   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
 We can also form "and" statements with the `&` operator instead of commas:
@@ -168,13 +227,28 @@ We can also form "and" statements with the `&` operator instead of commas:
 ```r
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
-filter(interviews, village == "Chirodzo" & 
-                   no_membrs > 4 & 
-                   no_meals > 2)
+filter(movieSerie, age_certification == "PG-13" & 
+                   runtime > 100 & 
+                   imdb_score < 6.0)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 60 × 14
+   id       title type  genre description release_year age_certification runtime
+   <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
+ 1 tm12499  The … MOVIE thri… "Angela Be…         1995 PG-13                 114
+ 2 tm93055  Grow… MOVIE come… "After the…         2010 PG-13                 102
+ 3 tm159901 Miss… MOVIE acti… "After her…         2005 PG-13                 115
+ 4 tm88045  How … MOVIE come… "After bei…         2010 PG-13                 121
+ 5 tm700    10,0… MOVIE acti… "A prehist…         2008 PG-13                 109
+ 6 tm39487  Catc… MOVIE drama "Gray Whee…         2006 PG-13                 111
+ 7 tm130574 Did … MOVIE come… "In New Yo…         2009 PG-13                 103
+ 8 tm148041 What… MOVIE come… "What's Yo…         2009 PG-13                 192
+ 9 tm237621 The … MOVIE horr… "Two buddi…         2009 PG-13                 122
+10 tm59289  Rowd… MOVIE acti… "A small-t…         2012 PG-13                 143
+# ℹ 50 more rows
+# ℹ 6 more variables: seasons <dbl>, imdb_id <chr>, imdb_score <dbl>,
+#   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
@@ -184,11 +258,28 @@ To form "or" statements we use the logical operator for "or," which is the verti
 ```r
 # filters observations with "|" logical operator
 # output dataframe satisfies AT LEAST ONE of the specified conditions
-filter(interviews, village == "Chirodzo" | village == "Ruaca")
+filter(movieSerie, age_certification == "PG-13" | 
+                   runtime > 100 | 
+                   imdb_score < 6.0)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 2,852 × 14
+   id       title type  genre description release_year age_certification runtime
+   <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
+ 1 tm84618  Taxi… MOVIE drama A mentally…         1976 "R"                   114
+ 2 tm154986 Deli… MOVIE drama Intent on …         1972 "R"                   109
+ 3 tm120801 The … MOVIE war   12 America…         1967 ""                    150
+ 4 tm14873  Dirt… MOVIE thri… When a mad…         1971 "R"                   102
+ 5 tm119281 Bonn… MOVIE crime In the 193…         1967 "R"                   110
+ 6 tm98978  The … MOVIE roma… Two small …         1980 "R"                   104
+ 7 tm44204  The … MOVIE acti… A team of …         1961 ""                    158
+ 8 tm67378  The … MOVIE west… An arrogan…         1966 "PG-13"               117
+ 9 tm16479  Whit… MOVIE roma… Two talent…         1954 ""                    115
+10 tm89386  Hitl… MOVIE hist… A keen chr…         1977 "PG"                  150
+# ℹ 2,842 more rows
+# ℹ 6 more variables: seasons <dbl>, imdb_id <chr>, imdb_score <dbl>,
+#   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
 
@@ -202,19 +293,8 @@ that as input to the next function, like this:
 
 
 ```r
-interviews2 <- filter(interviews, village == "Chirodzo")
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
-```
-
-```r
-interviews_ch <- select(interviews2, village:respondent_wall_type)
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews2' not found
+movieSerie2 <- filter(movieSerie, age_certification == "PG-13")
+movieSerie_ch <- select(movieSerie2, title:description)
 ```
 
 This is readable, but can clutter up your workspace with lots of objects that
@@ -225,17 +305,13 @@ You can also nest functions (i.e. one function inside of another), like this:
 
 
 ```r
-interviews_ch <- select(filter(interviews, village == "Chirodzo"),
-                         village:respondent_wall_type)
+movieSerie_ch <- select(filter(movieSerie, age_certification == "PG-13"),
+                         title:description)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
-```
-
-This is handy, but can be difficult to read if too many functions are nested, as
-R evaluates the expression from the inside out (in this case, filtering, then
-selecting).
+This is handy, as R evaluates the expression from the inside out (in this case, 
+filtering, then selecting), but it can be difficult to read if too many 
+functions are nested, 
 
 The last option, *pipes*, are a recent addition to R. Pipes let you take the
 output of one function and send it directly to the next, which is useful when
@@ -247,26 +323,39 @@ are made available via the **`magrittr`** package, installed automatically with
 
 
 ```r
-interviews %>%
-    filter(village == "Chirodzo") %>%
-    select(village:respondent_wall_type)
+movieSerie %>%
+    filter(age_certification == "PG-13") %>%
+    select(title,description)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 451 × 2
+   title                                 description                            
+   <chr>                                 <chr>                                  
+ 1 The Professionals                     "An arrogant Texas millionaire hires f…
+ 2 Awakenings                            "Dr. Malcolm Sayer, a shy research phy…
+ 3 National Lampoon's Christmas Vacation "It's Christmastime, and the Griswolds…
+ 4 Lean On Me                            "When principal Joe Clark takes over d…
+ 5 Mission: Impossible                   "When Ethan Hunt, the leader of a crac…
+ 6 Forrest Gump                          "A man with a low IQ has accomplished …
+ 7 Titanic                               "101-year-old Rose DeWitt Bukater tell…
+ 8 Mission: Impossible II                "With computer genius Luther Stickell …
+ 9 Dumb and Dumber                       "Lloyd and Harry are two men whose stu…
+10 Gattaca                               "In a future society in the era of ind…
+# ℹ 441 more rows
 ```
 
-In the above code, we use the pipe to send the `interviews` dataset first
-through `filter()` to keep rows where `village` is "Chirodzo", then through
-`select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
+In the above code, we use the pipe to send the `movieSerie` dataset first
+through `filter()` to keep rows where `age_certification` is "PG-13", then through
+`select()` to keep only the `title` and `description` columns. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we take the dataframe `interviews`, *then* we `filter`
-for rows with `village == "Chirodzo"`, *then* we `select` columns `no_membrs` and
-`years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
+in the above example, we take the dataframe `movieSerie`, *then* we `filter`
+for rows with `age_certification == "PG-13"`, *then* we `select` columns `title` and
+`description`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex data wrangling operations.
 
@@ -275,24 +364,31 @@ can assign it a new name:
 
 
 ```r
-interviews_ch <- interviews %>%
-    filter(village == "Chirodzo") %>%
-    select(village:respondent_wall_type)
+movieSerie_ch <- movieSerie %>%
+    filter(age_certification == "PG-13") %>%
+    select(title,description)
+
+movieSerie_ch
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 451 × 2
+   title                                 description                            
+   <chr>                                 <chr>                                  
+ 1 The Professionals                     "An arrogant Texas millionaire hires f…
+ 2 Awakenings                            "Dr. Malcolm Sayer, a shy research phy…
+ 3 National Lampoon's Christmas Vacation "It's Christmastime, and the Griswolds…
+ 4 Lean On Me                            "When principal Joe Clark takes over d…
+ 5 Mission: Impossible                   "When Ethan Hunt, the leader of a crac…
+ 6 Forrest Gump                          "A man with a low IQ has accomplished …
+ 7 Titanic                               "101-year-old Rose DeWitt Bukater tell…
+ 8 Mission: Impossible II                "With computer genius Luther Stickell …
+ 9 Dumb and Dumber                       "Lloyd and Harry are two men whose stu…
+10 Gattaca                               "In a future society in the era of ind…
+# ℹ 441 more rows
 ```
 
-```r
-interviews_ch
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews_ch' not found
-```
-
-Note that the final dataframe (`interviews_ch`) is the leftmost part of this
+Note that the final dataframe (`movieSerie_ch`) is the leftmost part of this
 expression.
 
 
@@ -301,83 +397,103 @@ expression.
 
 ## Exercise
 
-  Using pipes, subset the `interviews` data to include interviews
- where respondents were members of an irrigation association
- (`memb_assoc`) and retain only the columns `affect_conflicts`,
- `liv_count`, and `no_meals`.
+Using pipes, subset the `movieSerie` data set to include movieSerie
+have a `release_year` greater than 1980 and retain only the columns `title`,
+ `runtime`, and `age_certification`.
 ::::
 :::: solution
 ## Solution
 
 
 ```r
- interviews %>%
-     filter(memb_assoc == "yes") %>%
-     select(affect_conflicts, liv_count, no_meals)
+movieSerie %>%
+     filter(release_year > 1980) %>%
+     select(title, runtime, age_certification)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 5,815 × 3
+   title                       runtime age_certification
+   <chr>                         <dbl> <chr>            
+ 1 Seinfeld                         24 TV-PG            
+ 2 GoodFellas                      145 R                
+ 3 Full Metal Jacket               117 R                
+ 4 Once Upon a Time in America     139 R                
+ 5 When Harry Met Sally...          96 R                
+ 6 A Nightmare on Elm Street        91 R                
+ 7 Steel Magnolias                 119 PG               
+ 8 Police Academy                   97 R                
+ 9 Christine                       110 R                
+10 Knight Rider                     51 TV-PG            
+# ℹ 5,805 more rows
 ```
 
 ::::
 
 
-### Mutate
+## Mutate
 
 Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions, or to find the ratio of values in
 two columns. For this we'll use `mutate()`.
 
-We might be interested in the number of meals served in a given household
-(i.e. number of people times the number of meals served):
+We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 
 ```r
-interviews %>%
-    mutate(people_per_room = no_membrs * no_meals)
+movieSerie %>%
+  mutate(score_difference = imdb_score - tmdb_score) %>% 
+  select(imdb_score, tmdb_score, score_difference)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 5,850 × 3
+   imdb_score tmdb_score score_difference
+        <dbl>      <dbl>            <dbl>
+ 1       NA        NA             NA     
+ 2        8.2       8.18           0.0210
+ 3        7.7       7.3            0.400 
+ 4        8.2       7.81           0.389 
+ 5        7.7       7.6            0.100 
+ 6        8.8       8.31           0.494 
+ 7        8         7.8            0.200 
+ 8        7.7       7.5            0.200 
+ 9        7.7       7.5            0.200 
+10        5.8       6.16          -0.356 
+# ℹ 5,840 more rows
 ```
-
-
 
 
 :::: challenge 
 
 ## Exercise
 
-Create a new dataframe from the `interviews` data that meets the following
-criteria: contains only the `village` column and a new column called
-`total_meals` containing a value that is equal to the total number of meals
-served in the household per day on average (`no_membrs` times `no_meals`).
-Only the rows where `total_meals` is greater than 20 should be shown in the
+Create a new dataframe from the `movieSerie` data set that meets the following
+criteria: contains only the `title` column and a new column called
+`total_score` containing a value that is equal to the total number of scores on 
+both imdb and tmdb (`imdb_score` plus `tmdb_score`).
+Only the rows where `total_score` is greater than 15 should be shown in the
 final dataframe.
 
-**Hint**: think about how the commands should be ordered to produce this data
+**Hint**: think about how the commands should be ordered to produce the data
 frame!
-::::
+
 :::: solution
 
 ## Solution
 
- 
- ```r
- interviews_total_meals <- interviews %>%
-     mutate(total_meals = no_membrs * no_meals) %>%
-     filter(total_meals > 20) %>%
-     select(village, total_meals)
- ```
- 
- ```{.error}
- Error in eval(expr, envir, enclos): object 'interviews' not found
- ```
 
+```r
+movieSerie_total_score <- movieSerie %>%
+  mutate(total_score = imdb_score + tmdb_score) %>%
+  filter(total_score > 15) %>%
+  select(title, total_score)
+```
+
+::::::::
 ::::
 
-### Split-apply-combine data analysis and the summarize() function
+## Split-apply-combine data analysis and the summarize() function
 
 Many data analysis tasks can be approached using the *split-apply-combine*
 paradigm: split the data into groups, apply some analysis to each group, and
@@ -388,20 +504,34 @@ the `group_by()` function.
 #### The `summarize()` function
 
 `group_by()` is often used together with `summarize()`, which collapses each
-group into a single-row summary of that group.  `group_by()` takes as arguments
+group into a single-row summary of that group. `group_by()` takes as arguments
 the column names that contain the **categorical** variables for which you want
-to calculate the summary statistics. So to compute the average household size by
-village:
+to calculate the summary statistics. So to compute the average imdb_score by
+age_certification:
 
 
 ```r
-interviews %>%
-    group_by(village) %>%
-    summarize(mean_no_membrs = mean(no_membrs))
+movieSerie %>%
+    group_by(age_certification) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 12 × 2
+   age_certification mean_imdb_score
+   <chr>                       <dbl>
+ 1 ""                           6.25
+ 2 "G"                          6.37
+ 3 "NC-17"                      6.15
+ 4 "PG"                         6.23
+ 5 "PG-13"                      6.43
+ 6 "R"                          6.29
+ 7 "TV-14"                      7.22
+ 8 "TV-G"                       6.33
+ 9 "TV-MA"                      7.02
+10 "TV-PG"                      6.92
+11 "TV-Y"                       6.55
+12 "TV-Y7"                      6.84
 ```
 
 You may also have noticed that the output from these calls doesn't run off the
@@ -411,13 +541,34 @@ You can also group by multiple columns:
 
 
 ```r
-interviews %>%
-    group_by(village, respondent_wall_type) %>%
-    summarize(mean_no_membrs = mean(no_membrs))
+movieSerie %>%
+    group_by(age_certification, type) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+`summarise()` has grouped output by 'age_certification'. You can override using
+the `.groups` argument.
+```
+
+```{.output}
+# A tibble: 13 × 3
+# Groups:   age_certification [12]
+   age_certification type  mean_imdb_score
+   <chr>             <chr>           <dbl>
+ 1 ""                MOVIE            6.20
+ 2 ""                SHOW             6.86
+ 3 "G"               MOVIE            6.37
+ 4 "NC-17"           MOVIE            6.15
+ 5 "PG"              MOVIE            6.23
+ 6 "PG-13"           MOVIE            6.43
+ 7 "R"               MOVIE            6.29
+ 8 "TV-14"           SHOW             7.22
+ 9 "TV-G"            SHOW             6.33
+10 "TV-MA"           SHOW             7.02
+11 "TV-PG"           SHOW             6.92
+12 "TV-Y"            SHOW             6.55
+13 "TV-Y7"           SHOW             6.84
 ```
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
@@ -425,67 +576,149 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 
 ```r
-interviews %>%
-    group_by(village, respondent_wall_type) %>%
-    summarize(mean_no_membrs = mean(no_membrs)) %>%
+movieSerie %>%
+    group_by(age_certification, type) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) %>%
     ungroup()
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+`summarise()` has grouped output by 'age_certification'. You can override using
+the `.groups` argument.
+```
+
+```{.output}
+# A tibble: 13 × 3
+   age_certification type  mean_imdb_score
+   <chr>             <chr>           <dbl>
+ 1 ""                MOVIE            6.20
+ 2 ""                SHOW             6.86
+ 3 "G"               MOVIE            6.37
+ 4 "NC-17"           MOVIE            6.15
+ 5 "PG"              MOVIE            6.23
+ 6 "PG-13"           MOVIE            6.43
+ 7 "R"               MOVIE            6.29
+ 8 "TV-14"           SHOW             7.22
+ 9 "TV-G"            SHOW             6.33
+10 "TV-MA"           SHOW             7.02
+11 "TV-PG"           SHOW             6.92
+12 "TV-Y"            SHOW             6.55
+13 "TV-Y7"           SHOW             6.84
 ```
 
 
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
-column indicating the minimum household size for each village for each group
-(type of wall):
+column indicating the maximum imdb_score given to a movie or serie:
 
 
 ```r
-interviews %>%
-    group_by(village, respondent_wall_type) %>%
-    summarize(mean_no_membrs = mean(no_membrs),
-              min_membrs = min(no_membrs))
+movieSerie %>%
+    group_by(age_certification, type) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
+              max_imdb_score = max(imdb_score, na.rm = TRUE))
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+`summarise()` has grouped output by 'age_certification'. You can override using
+the `.groups` argument.
+```
+
+```{.output}
+# A tibble: 13 × 4
+# Groups:   age_certification [12]
+   age_certification type  mean_imdb_score max_imdb_score
+   <chr>             <chr>           <dbl>          <dbl>
+ 1 ""                MOVIE            6.20            9.1
+ 2 ""                SHOW             6.86            8.9
+ 3 "G"               MOVIE            6.37            9.1
+ 4 "NC-17"           MOVIE            6.15            8.4
+ 5 "PG"              MOVIE            6.23            8.9
+ 6 "PG-13"           MOVIE            6.43            8.8
+ 7 "R"               MOVIE            6.29            8.7
+ 8 "TV-14"           SHOW             7.22            9.5
+ 9 "TV-G"            SHOW             6.33            9.3
+10 "TV-MA"           SHOW             7.02            9.5
+11 "TV-PG"           SHOW             6.92            9.6
+12 "TV-Y"            SHOW             6.55            8.7
+13 "TV-Y7"           SHOW             6.84            9.3
 ```
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
-For instance, we can sort on `min_membrs` to put the group with the smallest
-household first:
+For instance, we can sort on `min_imdb_score` to put the group with the smallest
+imdb_score first:
 
 
 
 ```r
-interviews %>%
-    group_by(village, respondent_wall_type) %>%
-    summarize(mean_no_membrs = mean(no_membrs),
-              min_membrs = min(no_membrs)) %>%
-    arrange(min_membrs)
+movieSerie %>%
+    group_by(age_certification, type) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
+              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
+    arrange(max_imdb_score)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+`summarise()` has grouped output by 'age_certification'. You can override using
+the `.groups` argument.
+```
+
+```{.output}
+# A tibble: 13 × 4
+# Groups:   age_certification [12]
+   age_certification type  mean_imdb_score max_imdb_score
+   <chr>             <chr>           <dbl>          <dbl>
+ 1 "NC-17"           MOVIE            6.15            8.4
+ 2 "R"               MOVIE            6.29            8.7
+ 3 "TV-Y"            SHOW             6.55            8.7
+ 4 "PG-13"           MOVIE            6.43            8.8
+ 5 ""                SHOW             6.86            8.9
+ 6 "PG"              MOVIE            6.23            8.9
+ 7 ""                MOVIE            6.20            9.1
+ 8 "G"               MOVIE            6.37            9.1
+ 9 "TV-G"            SHOW             6.33            9.3
+10 "TV-Y7"           SHOW             6.84            9.3
+11 "TV-14"           SHOW             7.22            9.5
+12 "TV-MA"           SHOW             7.02            9.5
+13 "TV-PG"           SHOW             6.92            9.6
 ```
 
 To sort in descending order, we need to add the `desc()` function. If we want to
-sort the results by decreasing order of minimum household size:
+sort the results by decreasing order of minimum imdb_score:
 
 
 ```r
-interviews %>%
-    group_by(village, respondent_wall_type) %>%
-    summarize(mean_no_membrs = mean(no_membrs),
-              min_membrs = min(no_membrs)) %>%
-    arrange(desc(min_membrs))
+movieSerie %>%
+    group_by(age_certification, type) %>%
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
+              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
+    arrange(desc(max_imdb_score))
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+`summarise()` has grouped output by 'age_certification'. You can override using
+the `.groups` argument.
+```
+
+```{.output}
+# A tibble: 13 × 4
+# Groups:   age_certification [12]
+   age_certification type  mean_imdb_score max_imdb_score
+   <chr>             <chr>           <dbl>          <dbl>
+ 1 "TV-PG"           SHOW             6.92            9.6
+ 2 "TV-14"           SHOW             7.22            9.5
+ 3 "TV-MA"           SHOW             7.02            9.5
+ 4 "TV-G"            SHOW             6.33            9.3
+ 5 "TV-Y7"           SHOW             6.84            9.3
+ 6 ""                MOVIE            6.20            9.1
+ 7 "G"               MOVIE            6.37            9.1
+ 8 ""                SHOW             6.86            8.9
+ 9 "PG"              MOVIE            6.23            8.9
+10 "PG-13"           MOVIE            6.43            8.8
+11 "R"               MOVIE            6.29            8.7
+12 "TV-Y"            SHOW             6.55            8.7
+13 "NC-17"           MOVIE            6.15            8.4
 ```
 
 #### Counting
@@ -497,12 +730,25 @@ each village, we would do:
 
 
 ```r
-interviews %>%
-    count(village)
+movieSerie %>%
+    count(release_year)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 63 × 2
+   release_year     n
+          <dbl> <int>
+ 1         1945     1
+ 2         1954     2
+ 3         1956     1
+ 4         1958     1
+ 5         1959     1
+ 6         1960     1
+ 7         1961     1
+ 8         1963     1
+ 9         1966     1
+10         1967     2
+# ℹ 53 more rows
 ```
 
 For convenience, `count()` provides the `sort` argument to get results in
@@ -510,23 +756,37 @@ decreasing order:
 
 
 ```r
-interviews %>%
-    count(village, sort = TRUE)
+movieSerie %>%
+    count(release_year, sort = TRUE)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 63 × 2
+   release_year     n
+          <dbl> <int>
+ 1         2019   836
+ 2         2020   814
+ 3         2021   787
+ 4         2018   773
+ 5         2017   563
+ 6         2022   371
+ 7         2016   362
+ 8         2015   223
+ 9         2014   153
+10         2013   135
+# ℹ 53 more rows
 ```
 
 
+::::::::::::::::::::::::::::::::::::: challenge
 
+## Exercise
 
+How many households in the survey have an average of
+two meals per day? Three meals per day? Are there any other numbers
+of meals represented?
 
- ## Exercise
-
- How many households in the survey have an average of
- two meals per day? Three meals per day? Are there any other numbers
- of meals represented?
+:::::::::::::::::::::::: solution
 
 ## Solution
 
@@ -543,6 +803,10 @@ Error in eval(expr, envir, enclos): object 'interviews' not found
  Use `group_by()` and `summarize()` to find the mean, min, and max
  number of household members for each village. Also add the number of
  observations (hint: see `?n`).
+ 
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::: solution
 
 ## Solution
 
@@ -563,6 +827,10 @@ Error in eval(expr, envir, enclos): object 'interviews' not found
 ```
 
  What was the largest household interviewed in each month?
+ 
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::: solution
 
 ## Solution
 
@@ -596,7 +864,8 @@ The following objects are masked from 'package:base':
 Error in eval(expr, envir, enclos): object 'interviews' not found
 ```
 
-
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Exporting data
 
@@ -616,19 +885,14 @@ it. In contrast, our script will generate the contents of the `data_output`
 directory, so even if the files it contains are deleted, we can always
 re-generate them.
 
-
-
 Now we can save this dataframe to our `data_output` directory.
 
 
 ```r
-write_csv(interviews, file = "data_output/interviews_plotting.csv")
+write_csv(movieSerie_ch, file = "data_output/movieSerie_changed.csv")
 ```
 
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
-```
 
 :::: keypoints
 
