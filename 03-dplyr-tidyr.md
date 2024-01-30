@@ -507,31 +507,38 @@ the `group_by()` function.
 group into a single-row summary of that group. `group_by()` takes as arguments
 the column names that contain the **categorical** variables for which you want
 to calculate the summary statistics. So to compute the average imdb_score by
-age_certification:
+genre:
 
 
 ```r
 movieSerie %>%
-    group_by(age_certification) %>%
+    group_by(genre) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
 ```{.output}
-# A tibble: 12 × 2
-   age_certification mean_imdb_score
-   <chr>                       <dbl>
- 1 ""                           6.25
- 2 "G"                          6.37
- 3 "NC-17"                      6.15
- 4 "PG"                         6.23
- 5 "PG-13"                      6.43
- 6 "R"                          6.29
- 7 "TV-14"                      7.22
- 8 "TV-G"                       6.33
- 9 "TV-MA"                      7.02
-10 "TV-PG"                      6.92
-11 "TV-Y"                       6.55
-12 "TV-Y7"                      6.84
+# A tibble: 19 × 2
+   genre         mean_imdb_score
+   <chr>                   <dbl>
+ 1 action                   6.28
+ 2 animation                6.55
+ 3 comedy                   6.33
+ 4 crime                    6.73
+ 5 documentation            7.07
+ 6 drama                    6.73
+ 7 family                   6.21
+ 8 fantasy                  6.23
+ 9 history                  6.69
+10 horror                   5.45
+11 music                    6.62
+12 reality                  6.32
+13 romance                  6.07
+14 scifi                    6.69
+15 sport                    6.68
+16 thriller                 6.12
+17 war                      6.98
+18 western                  6.23
+19 <NA>                     7.25
 ```
 
 You may also have noticed that the output from these calls doesn't run off the
@@ -542,33 +549,31 @@ You can also group by multiple columns:
 
 ```r
 movieSerie %>%
-    group_by(age_certification, type) %>%
+    group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
 ```{.output}
-`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.
+`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
-# A tibble: 13 × 3
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score
-   <chr>             <chr>           <dbl>
- 1 ""                MOVIE            6.20
- 2 ""                SHOW             6.86
- 3 "G"               MOVIE            6.37
- 4 "NC-17"           MOVIE            6.15
- 5 "PG"              MOVIE            6.23
- 6 "PG-13"           MOVIE            6.43
- 7 "R"               MOVIE            6.29
- 8 "TV-14"           SHOW             7.22
- 9 "TV-G"            SHOW             6.33
-10 "TV-MA"           SHOW             7.02
-11 "TV-PG"           SHOW             6.92
-12 "TV-Y"            SHOW             6.55
-13 "TV-Y7"           SHOW             6.84
+# A tibble: 38 × 3
+# Groups:   genre [19]
+   genre         type  mean_imdb_score
+   <chr>         <chr>           <dbl>
+ 1 action        MOVIE            5.94
+ 2 action        SHOW             6.87
+ 3 animation     MOVIE            6.32
+ 4 animation     SHOW             6.68
+ 5 comedy        MOVIE            6.09
+ 6 comedy        SHOW             6.98
+ 7 crime         MOVIE            6.39
+ 8 crime         SHOW             7.09
+ 9 documentation MOVIE            6.99
+10 documentation SHOW             7.18
+# ℹ 28 more rows
 ```
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
@@ -577,33 +582,31 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 ```r
 movieSerie %>%
-    group_by(age_certification, type) %>%
+    group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) %>%
     ungroup()
 ```
 
 ```{.output}
-`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.
+`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
-# A tibble: 13 × 3
-   age_certification type  mean_imdb_score
-   <chr>             <chr>           <dbl>
- 1 ""                MOVIE            6.20
- 2 ""                SHOW             6.86
- 3 "G"               MOVIE            6.37
- 4 "NC-17"           MOVIE            6.15
- 5 "PG"              MOVIE            6.23
- 6 "PG-13"           MOVIE            6.43
- 7 "R"               MOVIE            6.29
- 8 "TV-14"           SHOW             7.22
- 9 "TV-G"            SHOW             6.33
-10 "TV-MA"           SHOW             7.02
-11 "TV-PG"           SHOW             6.92
-12 "TV-Y"            SHOW             6.55
-13 "TV-Y7"           SHOW             6.84
+# A tibble: 38 × 3
+   genre         type  mean_imdb_score
+   <chr>         <chr>           <dbl>
+ 1 action        MOVIE            5.94
+ 2 action        SHOW             6.87
+ 3 animation     MOVIE            6.32
+ 4 animation     SHOW             6.68
+ 5 comedy        MOVIE            6.09
+ 6 comedy        SHOW             6.98
+ 7 crime         MOVIE            6.39
+ 8 crime         SHOW             7.09
+ 9 documentation MOVIE            6.99
+10 documentation SHOW             7.18
+# ℹ 28 more rows
 ```
 
 
@@ -615,34 +618,32 @@ column indicating the maximum imdb_score given to a movie or serie:
 
 ```r
 movieSerie %>%
-    group_by(age_certification, type) %>%
+    group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE))
 ```
 
 ```{.output}
-`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.
+`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
-# A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   <chr>             <chr>           <dbl>          <dbl>
- 1 ""                MOVIE            6.20            9.1
- 2 ""                SHOW             6.86            8.9
- 3 "G"               MOVIE            6.37            9.1
- 4 "NC-17"           MOVIE            6.15            8.4
- 5 "PG"              MOVIE            6.23            8.9
- 6 "PG-13"           MOVIE            6.43            8.8
- 7 "R"               MOVIE            6.29            8.7
- 8 "TV-14"           SHOW             7.22            9.5
- 9 "TV-G"            SHOW             6.33            9.3
-10 "TV-MA"           SHOW             7.02            9.5
-11 "TV-PG"           SHOW             6.92            9.6
-12 "TV-Y"            SHOW             6.55            8.7
-13 "TV-Y7"           SHOW             6.84            9.3
+# A tibble: 38 × 4
+# Groups:   genre [19]
+   genre         type  mean_imdb_score max_imdb_score
+   <chr>         <chr>           <dbl>          <dbl>
+ 1 action        MOVIE            5.94            9.1
+ 2 action        SHOW             6.87            9  
+ 3 animation     MOVIE            6.32            9.1
+ 4 animation     SHOW             6.68            9  
+ 5 comedy        MOVIE            6.09            8.7
+ 6 comedy        SHOW             6.98            9.2
+ 7 crime         MOVIE            6.39            8.6
+ 8 crime         SHOW             7.09            8.8
+ 9 documentation MOVIE            6.99            8.9
+10 documentation SHOW             7.18            9.3
+# ℹ 28 more rows
 ```
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
@@ -653,35 +654,33 @@ imdb_score first:
 
 ```r
 movieSerie %>%
-    group_by(age_certification, type) %>%
+    group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
     arrange(max_imdb_score)
 ```
 
 ```{.output}
-`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.
+`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
-# A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   <chr>             <chr>           <dbl>          <dbl>
- 1 "NC-17"           MOVIE            6.15            8.4
- 2 "R"               MOVIE            6.29            8.7
- 3 "TV-Y"            SHOW             6.55            8.7
- 4 "PG-13"           MOVIE            6.43            8.8
- 5 ""                SHOW             6.86            8.9
- 6 "PG"              MOVIE            6.23            8.9
- 7 ""                MOVIE            6.20            9.1
- 8 "G"               MOVIE            6.37            9.1
- 9 "TV-G"            SHOW             6.33            9.3
-10 "TV-Y7"           SHOW             6.84            9.3
-11 "TV-14"           SHOW             7.22            9.5
-12 "TV-MA"           SHOW             7.02            9.5
-13 "TV-PG"           SHOW             6.92            9.6
+# A tibble: 38 × 4
+# Groups:   genre [19]
+   genre   type  mean_imdb_score max_imdb_score
+   <chr>   <chr>           <dbl>          <dbl>
+ 1 music   SHOW             6.3             6.9
+ 2 horror  SHOW             6.19            7  
+ 3 sport   MOVIE            6.27            7.4
+ 4 history MOVIE            6.43            7.5
+ 5 reality MOVIE            7.15            7.5
+ 6 western SHOW             7.45            7.6
+ 7 family  MOVIE            5.81            7.7
+ 8 fantasy SHOW             6.87            7.7
+ 9 <NA>    MOVIE            7.1             7.7
+10 sport   SHOW             7.9             7.9
+# ℹ 28 more rows
 ```
 
 To sort in descending order, we need to add the `desc()` function. If we want to
@@ -690,35 +689,33 @@ sort the results by decreasing order of minimum imdb_score:
 
 ```r
 movieSerie %>%
-    group_by(age_certification, type) %>%
+    group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
     arrange(desc(max_imdb_score))
 ```
 
 ```{.output}
-`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.
+`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
-# A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   <chr>             <chr>           <dbl>          <dbl>
- 1 "TV-PG"           SHOW             6.92            9.6
- 2 "TV-14"           SHOW             7.22            9.5
- 3 "TV-MA"           SHOW             7.02            9.5
- 4 "TV-G"            SHOW             6.33            9.3
- 5 "TV-Y7"           SHOW             6.84            9.3
- 6 ""                MOVIE            6.20            9.1
- 7 "G"               MOVIE            6.37            9.1
- 8 ""                SHOW             6.86            8.9
- 9 "PG"              MOVIE            6.23            8.9
-10 "PG-13"           MOVIE            6.43            8.8
-11 "R"               MOVIE            6.29            8.7
-12 "TV-Y"            SHOW             6.55            8.7
-13 "NC-17"           MOVIE            6.15            8.4
+# A tibble: 38 × 4
+# Groups:   genre [19]
+   genre         type  mean_imdb_score max_imdb_score
+   <chr>         <chr>           <dbl>          <dbl>
+ 1 <NA>          SHOW             7.32            9.6
+ 2 drama         SHOW             7.19            9.5
+ 3 reality       SHOW             6.31            9.5
+ 4 documentation SHOW             7.18            9.3
+ 5 scifi         SHOW             7.08            9.3
+ 6 comedy        SHOW             6.98            9.2
+ 7 action        MOVIE            5.94            9.1
+ 8 animation     MOVIE            6.32            9.1
+ 9 action        SHOW             6.87            9  
+10 animation     SHOW             6.68            9  
+# ℹ 28 more rows
 ```
 
 #### Counting
@@ -782,86 +779,80 @@ movieSerie %>%
 
 ## Exercise
 
-How many households in the survey have an average of
-two meals per day? Three meals per day? Are there any other numbers
-of meals represented?
+1. How many moview and series are there for each age_certification?
+
+2. Use `group_by()` and `summarize()` to find the mean, min, and max for 
+tmdb_score. Also add the number of observations (hint: see `?n`).
 
 :::::::::::::::::::::::: solution
 
-## Solution
+## Solution 1
 
 
 ```r
- interviews %>%
-  count(no_meals)
+ movieSerie %>%
+  count(age_certification)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+```{.output}
+# A tibble: 12 × 2
+   age_certification     n
+   <chr>             <int>
+ 1 ""                 2619
+ 2 "G"                 124
+ 3 "NC-17"              16
+ 4 "PG"                233
+ 5 "PG-13"             451
+ 6 "R"                 556
+ 7 "TV-14"             474
+ 8 "TV-G"               79
+ 9 "TV-MA"             883
+10 "TV-PG"             188
+11 "TV-Y"              107
+12 "TV-Y7"             120
 ```
 
- Use `group_by()` and `summarize()` to find the mean, min, and max
- number of household members for each village. Also add the number of
- observations (hint: see `?n`).
- 
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
-## Solution
+## Solution 2
 
 
 ```r
-interviews %>%
-  group_by(village) %>%
+movieSerie %>%
+  group_by(genre) %>%
    summarize(
-       mean_no_membrs = mean(no_membrs),
-       min_no_membrs = min(no_membrs),
-       max_no_membrs = max(no_membrs),
+       mean_tmdb_score = mean(tmdb_score, na.rm = TRUE),
+       min_tmdb_score = min(tmdb_score, na.rm = TRUE),
+       max_tmdb_score = max(tmdb_score, na.rm = TRUE),
        n = n()
    )
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
-```
-
- What was the largest household interviewed in each month?
- 
-:::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::: solution
-
-## Solution
-
-
-```r
- # if not already included, add month, year, and day columns
- library(lubridate) # load lubridate if not already loaded
-```
-
 ```{.output}
-
-Attaching package: 'lubridate'
-```
-
-```{.output}
-The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union
-```
-
-```r
- interviews %>%
-     mutate(month = month(interview_date),
-            day = day(interview_date),
-            year = year(interview_date)) %>%
-     group_by(year, month) %>%
-     summarize(max_no_membrs = max(no_membrs))
-```
-
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 19 × 5
+   genre         mean_tmdb_score min_tmdb_score max_tmdb_score     n
+   <chr>                   <dbl>          <dbl>          <dbl> <int>
+ 1 action                   6.75            2            10      365
+ 2 animation                7.31            2            10      317
+ 3 comedy                   6.59            1            10     1305
+ 4 crime                    6.92            3.8          10      238
+ 5 documentation            7.11            1            10      665
+ 6 drama                    6.96            1            10     1421
+ 7 family                   7.14            1            10      113
+ 8 fantasy                  6.77            2            10       88
+ 9 history                  6.94            5.8          10       21
+10 horror                   5.83            2.8           8.5    114
+11 music                    7.09            5.3           8.8     59
+12 reality                  7.19            1            10      171
+13 romance                  6.42            2             9.3    232
+14 scifi                    7.17            0.5           9.5    239
+15 sport                    6.8             5             8.3      4
+16 thriller                 6.39            3.7          10      377
+17 war                      6.93            4.8           8.8     46
+18 western                  6.30            3.6           8.15    16
+19 <NA>                     7.06            1            10       59
 ```
 
 :::::::::::::::::::::::::::::::::
