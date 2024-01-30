@@ -789,7 +789,7 @@ only the columns <code>title</code>, <code>runtime</code>, and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -880,7 +880,7 @@ to produce the data frame!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -909,33 +909,40 @@ of the <code>group_by()</code> function.</p>
 summary of that group. <code>group_by()</code> takes as arguments the
 column names that contain the <strong>categorical</strong> variables for
 which you want to calculate the summary statistics. So to compute the
-average imdb_score by age_certification:</p>
+average imdb_score by genre:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 12 × 2
-   age_certification mean_imdb_score
-   &lt;chr&gt;                       &lt;dbl&gt;
- 1 ""                           6.25
- 2 "G"                          6.37
- 3 "NC-17"                      6.15
- 4 "PG"                         6.23
- 5 "PG-13"                      6.43
- 6 "R"                          6.29
- 7 "TV-14"                      7.22
- 8 "TV-G"                       6.33
- 9 "TV-MA"                      7.02
-10 "TV-PG"                      6.92
-11 "TV-Y"                       6.55
-12 "TV-Y7"                      6.84</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 19 × 2
+   genre         mean_imdb_score
+   &lt;chr&gt;                   &lt;dbl&gt;
+ 1 action                   6.28
+ 2 animation                6.55
+ 3 comedy                   6.33
+ 4 crime                    6.73
+ 5 documentation            7.07
+ 6 drama                    6.73
+ 7 family                   6.21
+ 8 fantasy                  6.23
+ 9 history                  6.69
+10 horror                   5.45
+11 music                    6.62
+12 reality                  6.32
+13 romance                  6.07
+14 scifi                    6.69
+15 sport                    6.68
+16 thriller                 6.12
+17 war                      6.98
+18 western                  6.23
+19 &lt;NA&gt;                     7.25</code></pre>
 </div>
 <p>You may also have noticed that the output from these calls doesn’t
 run off the screen anymore. It’s one of the advantages of
@@ -946,35 +953,33 @@ run off the screen anymore. It’s one of the advantages of
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 13 × 3
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score
-   &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt;
- 1 ""                MOVIE            6.20
- 2 ""                SHOW             6.86
- 3 "G"               MOVIE            6.37
- 4 "NC-17"           MOVIE            6.15
- 5 "PG"              MOVIE            6.23
- 6 "PG-13"           MOVIE            6.43
- 7 "R"               MOVIE            6.29
- 8 "TV-14"           SHOW             7.22
- 9 "TV-G"            SHOW             6.33
-10 "TV-MA"           SHOW             7.02
-11 "TV-PG"           SHOW             6.92
-12 "TV-Y"            SHOW             6.55
-13 "TV-Y7"           SHOW             6.84</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 38 × 3
+# Groups:   genre [19]
+   genre         type  mean_imdb_score
+   &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;
+ 1 action        MOVIE            5.94
+ 2 action        SHOW             6.87
+ 3 animation     MOVIE            6.32
+ 4 animation     SHOW             6.68
+ 5 comedy        MOVIE            6.09
+ 6 comedy        SHOW             6.98
+ 7 crime         MOVIE            6.39
+ 8 crime         SHOW             7.09
+ 9 documentation MOVIE            6.99
+10 documentation SHOW             7.18
+# ℹ 28 more rows</code></pre>
 </div>
 <p>Note that the output is a grouped tibble. To obtain an ungrouped
 tibble, use the <code>ungroup</code> function:</p>
@@ -983,35 +988,33 @@ tibble, use the <code>ungroup</code> function:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 13 × 3
-   age_certification type  mean_imdb_score
-   &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt;
- 1 ""                MOVIE            6.20
- 2 ""                SHOW             6.86
- 3 "G"               MOVIE            6.37
- 4 "NC-17"           MOVIE            6.15
- 5 "PG"              MOVIE            6.23
- 6 "PG-13"           MOVIE            6.43
- 7 "R"               MOVIE            6.29
- 8 "TV-14"           SHOW             7.22
- 9 "TV-G"            SHOW             6.33
-10 "TV-MA"           SHOW             7.02
-11 "TV-PG"           SHOW             6.92
-12 "TV-Y"            SHOW             6.55
-13 "TV-Y7"           SHOW             6.84</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 38 × 3
+   genre         type  mean_imdb_score
+   &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;
+ 1 action        MOVIE            5.94
+ 2 action        SHOW             6.87
+ 3 animation     MOVIE            6.32
+ 4 animation     SHOW             6.68
+ 5 comedy        MOVIE            6.09
+ 6 comedy        SHOW             6.98
+ 7 crime         MOVIE            6.39
+ 8 crime         SHOW             7.09
+ 9 documentation MOVIE            6.99
+10 documentation SHOW             7.18
+# ℹ 28 more rows</code></pre>
 </div>
 <p>Once the data are grouped, you can also summarize multiple variables
 at the same time (and not necessarily on the same variable). For
@@ -1022,36 +1025,34 @@ to a movie or serie:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
- 1 ""                MOVIE            6.20            9.1
- 2 ""                SHOW             6.86            8.9
- 3 "G"               MOVIE            6.37            9.1
- 4 "NC-17"           MOVIE            6.15            8.4
- 5 "PG"              MOVIE            6.23            8.9
- 6 "PG-13"           MOVIE            6.43            8.8
- 7 "R"               MOVIE            6.29            8.7
- 8 "TV-14"           SHOW             7.22            9.5
- 9 "TV-G"            SHOW             6.33            9.3
-10 "TV-MA"           SHOW             7.02            9.5
-11 "TV-PG"           SHOW             6.92            9.6
-12 "TV-Y"            SHOW             6.55            8.7
-13 "TV-Y7"           SHOW             6.84            9.3</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 38 × 4
+# Groups:   genre [19]
+   genre         type  mean_imdb_score max_imdb_score
+   &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
+ 1 action        MOVIE            5.94            9.1
+ 2 action        SHOW             6.87            9  
+ 3 animation     MOVIE            6.32            9.1
+ 4 animation     SHOW             6.68            9  
+ 5 comedy        MOVIE            6.09            8.7
+ 6 comedy        SHOW             6.98            9.2
+ 7 crime         MOVIE            6.39            8.6
+ 8 crime         SHOW             7.09            8.8
+ 9 documentation MOVIE            6.99            8.9
+10 documentation SHOW             7.18            9.3
+# ℹ 28 more rows</code></pre>
 </div>
 <p>It is sometimes useful to rearrange the result of a query to inspect
 the values. For instance, we can sort on <code>min_imdb_score</code> to
@@ -1061,7 +1062,7 @@ put the group with the smallest imdb_score first:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">max_imdb_score</span><span class="op">)</span></span></code></pre>
@@ -1069,29 +1070,27 @@ put the group with the smallest imdb_score first:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
- 1 "NC-17"           MOVIE            6.15            8.4
- 2 "R"               MOVIE            6.29            8.7
- 3 "TV-Y"            SHOW             6.55            8.7
- 4 "PG-13"           MOVIE            6.43            8.8
- 5 ""                SHOW             6.86            8.9
- 6 "PG"              MOVIE            6.23            8.9
- 7 ""                MOVIE            6.20            9.1
- 8 "G"               MOVIE            6.37            9.1
- 9 "TV-G"            SHOW             6.33            9.3
-10 "TV-Y7"           SHOW             6.84            9.3
-11 "TV-14"           SHOW             7.22            9.5
-12 "TV-MA"           SHOW             7.02            9.5
-13 "TV-PG"           SHOW             6.92            9.6</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 38 × 4
+# Groups:   genre [19]
+   genre   type  mean_imdb_score max_imdb_score
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
+ 1 music   SHOW             6.3             6.9
+ 2 horror  SHOW             6.19            7  
+ 3 sport   MOVIE            6.27            7.4
+ 4 history MOVIE            6.43            7.5
+ 5 reality MOVIE            7.15            7.5
+ 6 western SHOW             7.45            7.6
+ 7 family  MOVIE            5.81            7.7
+ 8 fantasy SHOW             6.87            7.7
+ 9 &lt;NA&gt;    MOVIE            7.1             7.7
+10 sport   SHOW             7.9             7.9
+# ℹ 28 more rows</code></pre>
 </div>
 <p>To sort in descending order, we need to add the <code>desc()</code>
 function. If we want to sort the results by decreasing order of minimum
@@ -1101,7 +1100,7 @@ imdb_score:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">age_certification</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">max_imdb_score</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -1109,29 +1108,27 @@ imdb_score:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'age_certification'. You can override using
-the `.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 13 × 4
-# Groups:   age_certification [12]
-   age_certification type  mean_imdb_score max_imdb_score
-   &lt;chr&gt;             &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
- 1 "TV-PG"           SHOW             6.92            9.6
- 2 "TV-14"           SHOW             7.22            9.5
- 3 "TV-MA"           SHOW             7.02            9.5
- 4 "TV-G"            SHOW             6.33            9.3
- 5 "TV-Y7"           SHOW             6.84            9.3
- 6 ""                MOVIE            6.20            9.1
- 7 "G"               MOVIE            6.37            9.1
- 8 ""                SHOW             6.86            8.9
- 9 "PG"              MOVIE            6.23            8.9
-10 "PG-13"           MOVIE            6.43            8.8
-11 "R"               MOVIE            6.29            8.7
-12 "TV-Y"            SHOW             6.55            8.7
-13 "NC-17"           MOVIE            6.15            8.4</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 38 × 4
+# Groups:   genre [19]
+   genre         type  mean_imdb_score max_imdb_score
+   &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
+ 1 &lt;NA&gt;          SHOW             7.32            9.6
+ 2 drama         SHOW             7.19            9.5
+ 3 reality       SHOW             6.31            9.5
+ 4 documentation SHOW             7.18            9.3
+ 5 scifi         SHOW             7.08            9.3
+ 6 comedy        SHOW             6.98            9.2
+ 7 action        MOVIE            5.94            9.1
+ 8 animation     MOVIE            6.32            9.1
+ 9 action        SHOW             6.87            9  
+10 animation     SHOW             6.68            9  
+# ℹ 28 more rows</code></pre>
 </div>
 </div>
 <div class="section level4">
@@ -1201,34 +1198,47 @@ argument to get results in decreasing order:</p>
 <h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-2"></a>
 </h3>
 <div class="callout-content">
-<p>How many households in the survey have an average of two meals per
-day? Three meals per day? Are there any other numbers of meals
-represented?</p>
-</div>
+<ol style="list-style-type: decimal"><li><p>How many moview and series are there for each
+age_certification?</p></li>
+<li><p>Use <code>group_by()</code> and <code>summarize()</code> to find
+the mean, min, and max for tmdb_score. Also add the number of
+observations (hint: see <code>?n</code>).</p></li>
+</ol></div>
 </div>
 </div>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3">Solution 1</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span> <span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">age_certification</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 12 × 2
+   age_certification     n
+   &lt;chr&gt;             &lt;int&gt;
+ 1 ""                 2619
+ 2 "G"                 124
+ 3 "NC-17"              16
+ 4 "PG"                233
+ 5 "PG-13"             451
+ 6 "R"                 556
+ 7 "TV-14"             474
+ 8 "TV-G"               79
+ 9 "TV-MA"             883
+10 "TV-PG"             188
+11 "TV-Y"              107
+12 "TV-Y7"             120</code></pre>
 </div>
-<p>Use <code>group_by()</code> and <code>summarize()</code> to find the
-mean, min, and max number of household members for each village. Also
-add the number of observations (hint: see <code>?n</code>).</p>
 </div>
 </div>
 </div>
@@ -1236,75 +1246,48 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution4">Solution 2</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>   <span class="fu">summarize</span><span class="op">(</span></span>
-<span>       mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>       min_no_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>       max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
+<span>       mean_tmdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">tmdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>       min_tmdb_score <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">tmdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>       max_tmdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">tmdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>       n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span></span>
 <span>   <span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
-</div>
-<p>What was the largest household interviewed in each month?</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
-</button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb49">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span> <span class="co"># if not already included, add month, year, and day columns</span></span>
-<span> <span class="kw">library</span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span> <span class="co"># load lubridate if not already loaded</span></span></code></pre>
-</div>
-<div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>
-Attaching package: 'lubridate'</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb52">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>     <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>            day <span class="op">=</span> <span class="fu">day</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>            year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>     <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>     <span class="fu">summarize</span><span class="op">(</span>max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews' not found</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 19 × 5
+   genre         mean_tmdb_score min_tmdb_score max_tmdb_score     n
+   &lt;chr&gt;                   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;
+ 1 action                   6.75            2            10      365
+ 2 animation                7.31            2            10      317
+ 3 comedy                   6.59            1            10     1305
+ 4 crime                    6.92            3.8          10      238
+ 5 documentation            7.11            1            10      665
+ 6 drama                    6.96            1            10     1421
+ 7 family                   7.14            1            10      113
+ 8 fantasy                  6.77            2            10       88
+ 9 history                  6.94            5.8          10       21
+10 horror                   5.83            2.8           8.5    114
+11 music                    7.09            5.3           8.8     59
+12 reality                  7.19            1            10      171
+13 romance                  6.42            2             9.3    232
+14 scifi                    7.17            0.5           9.5    239
+15 sport                    6.8             5             8.3      4
+16 thriller                 6.39            3.7          10      377
+17 war                      6.93            4.8           8.8     46
+18 western                  6.30            3.6           8.15    16
+19 &lt;NA&gt;                     7.06            1            10       59</code></pre>
 </div>
 </div>
 </div>
@@ -1331,7 +1314,7 @@ modify it. In contrast, our script will generate the contents of the
 deleted, we can always re-generate them.</p>
 <p>Now we can save this dataframe to our <code>data_output</code>
 directory.</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1419,7 +1402,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/instructor/03-dplyr-tidyr.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/03-dplyr-tidyr.html",
-  "dateCreated": "2024-01-24",
+  "dateCreated": "2024-01-30",
   "dateModified": "2024-01-30",
   "datePublished": "2024-01-30"
 }
