@@ -690,40 +690,6 @@ other packages, so for the functionality contained in the package you
 are installing to work properly, there may be other packages which have
 to be installed with them. The ‘Install dependencies’ option makes sure
 that this happens.</p>
-<div id="challenge1" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
-<div class="callout-content">
-<p>Use both the Console and the Packages tab to confirm that you have
-the tidyverse installed.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<p>Scroll through packages tab down to ‘tidyverse’. You can also type a
-few characters into the searchbox. The ‘tidyverse’ package is really a
-package of packages, including ‘ggplot2’ and ‘dplyr’, both of which
-require other packages to run correctly. All of these packages will be
-installed automatically. Depending on what packages have previously been
-installed in your R environment, the install of ‘tidyverse’ could be
-very quick or could take several minutes. As the install proceeds,
-messages relating to its progress will be written to the console. You
-will be able to see all of the packages which are actually being
-installed.</p>
-</div>
-</div>
-</div>
-</div>
 <p>Because the install process accesses the CRAN repository, you will
 need an Internet connection to install packages.</p>
 <p>It is also possible to install packages from other repositories, as
@@ -746,6 +712,42 @@ messages.</p>
 <p>You could also have installed the
 <strong><code>tidyverse</code></strong> packages by running this command
 directly at the R terminal.</p>
+<div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+</h3>
+<div class="callout-content">
+<p>Use both the Console and the Packages tab to confirm that you have
+the tidyverse installed.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>Scroll through packages tab down to ‘tidyverse’. You can also type a
+few characters into the searchbox. The ‘tidyverse’ package is really a
+package of packages, including ‘ggplot2’ and ‘dplyr’, both of which
+require other packages to run correctly. All of these packages will be
+installed automatically. Depending on what packages have previously been
+installed in your R environment, the install of ‘tidyverse’ could be
+very quick or could take several minutes. As the install proceeds,
+messages relating to its progress will be written to the console. You
+will be able to see all of the packages which are actually being
+installed.</p>
+<p>In the console. If you write tidy it should put up if it is
+installed. Look for tidyverse::</p>
+</div>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -4942,7 +4944,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 6.338807</code></pre>
+<pre class="output" tabindex="0"><code>[1] 6.543714</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized
