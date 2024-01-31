@@ -4666,44 +4666,37 @@ any links that you are not going to use.
         </div>
 <div class="questions:">
 <ul>
-<li>“How do I create scatterplots, boxplots, and barplots?”</li>
-<li>“How can I define my own functions?”</li>
+<li>How do I create scatterplots, boxplots, and barplots?</li>
+<li>How can I define my own functions?</li>
 </ul>
 </div>
 <div class="objectives:">
 <ul>
-<li>“Produce scatter plots and boxplots using Base R.”</li>
-<li>“Write your own function”</li>
-<li>“Write loops to repeat calculations”</li>
-<li>“Use logical tests in loops”</li>
+<li>Produce scatter plots and boxplots using Base R.</li>
+<li>Write your own function</li>
+<li>Write loops to repeat calculations</li>
+<li>Use logical tests in loops</li>
 </ul>
 </div>
-<p>We start by loading the <strong><code>tidyverse</code></strong>
-package.</p>
+<p>In case you have made changes to the original object we made. We read
+in the data in a new object</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
-</div>
-<p>If not still in the workspace, load the data we saved in the previous
-lesson.</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"../data_output/interviews_plotting.csv"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">movieSerie_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/movieSerie.csv"</span>, na <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"NA"</span>, <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: '../data_output/interviews_plotting.csv' does not exist in current working directory ('/home/runner/work/R-intro/R-intro/site/built').</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/data_output/interviews_plotting.csv"</span><span class="op">)</span></span></code></pre>
+<pre class="output" tabindex="0"><code>Rows: 5850 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (7): id, title, type, genre, description, age_certification, imdb_id
+dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <section id="scatterplots"><h2 class="section-heading">Scatterplots<a class="anchor" aria-label="anchor" href="#scatterplots"></a>
 </h2>
@@ -4715,53 +4708,39 @@ variables.</p>
 <p>The default plot function in Base R takes two vectors, one containing
 the values of the x-axis and one containing the values for the y-axis.
 Here we use the $-notation:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_membrs</span>, <span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">release_year</span>, <span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">imdb_score</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews_plotting' not found</code></pre>
-</div>
-<p>Scatterplots are useful for showing that sort for relationships in
+<figure><img src="../fig/04-functions-plots-rendered-first-scatterplot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Scatterplots are useful for showing that sort for relationships in
 the data. Here it does not appear that the correlation exists; there is
 no clear trend.</p>
 <p>We might want to adjust the labels on the axes, and add a main
 title:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_membrs</span>, <span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_meals</span>, </span>
-<span>     main <span class="op">=</span> <span class="st">"Relation between number of members of households, and number of meals served"</span>,</span>
-<span>     xlab <span class="op">=</span> <span class="st">"Years lived"</span>,</span>
-<span>     ylab <span class="op">=</span> <span class="st">"Items owned"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">release_year</span>, <span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">imdb_score</span>, </span>
+<span>     main <span class="op">=</span> <span class="st">"Relation between release date and their imdb_score"</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Release year"</span>,</span>
+<span>     ylab <span class="op">=</span> <span class="st">"imdb score"</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews_plotting' not found</code></pre>
-</div>
-</section><section id="boxplots"><h2 class="section-heading">Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"></a>
+<figure><img src="../fig/04-functions-plots-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="boxplots"><h2 class="section-heading">Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"></a>
 </h2>
 <hr class="half-width">
 <p>We can use boxplots to visualize the distribution of number of
-household members for each wall type:</p>
-<div class="codewrapper sourceCode" id="cb9">
+imdb_score for genre:</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">boxplot</span><span class="op">(</span><span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_membrs</span><span class="op">~</span><span class="va">interviews_plotting</span><span class="op">$</span><span class="va">respondent_wall_type</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">boxplot</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">imdb_score</span><span class="op">~</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">genre</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(predvars, data, env): object 'interviews_plotting' not found</code></pre>
-</div>
-<p>Two new things happens here. First, we are using a new way of telling
+<p><img src="../fig/04-functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure">
+Two new things happens here. First, we are using a new way of telling
 the plot function what relationship we want to visualise. The function
 notation y~x, tells the boxplot function that we want to visualise y as
 a function of x. In this case we want to visualise the number of people,
@@ -4782,18 +4761,13 @@ ignore.</p>
 </h2>
 <hr class="half-width">
 <p>Another useful plottype are histograms.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">interviews_plotting</span><span class="op">$</span><span class="va">no_membrs</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">runtime</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'interviews_plotting' not found</code></pre>
-</div>
-<p>Histograms counts the number of observations in our data, that lies
+<figure><img src="../fig/04-functions-plots-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Histograms counts the number of observations in our data, that lies
 between two values. Here the “breaks” between the values on the x-axis
 corresponds nicely to the number of people, but they do not have to.</p>
 </section><section id="writing-our-own-functions"><h2 class="section-heading">Writing our own functions<a class="anchor" aria-label="anchor" href="#writing-our-own-functions"></a>
@@ -4807,7 +4781,7 @@ other more experienced programmers have written the code.</p>
 <p>We can write our own functions, where we collect several operations
 into one function.</p>
 <p>Functions in R are defined in this way:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4826,21 +4800,36 @@ do. We assign the result of some_function(x) to a temporary result, use
 that as the input to a second function, and the result of that as the
 input to a third function. The result of the last calculation we do,
 will be returned as the output of our function.</p>
-<blockquote>
-<h2 id="exercise">Exercise</h2>
+<div id="exercise" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="exercise" class="callout-inner">
+<h3 class="callout-title">Exercise:<a class="anchor" aria-label="anchor" href="#exercise"></a>
+</h3>
+<div class="callout-content">
 <p>Write a function that calculates the average value of a numeric
 vector, takes the square root of that average, and returns the
 result</p>
-<blockquote>
-<h2 id="solution">Solution</h2>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
 <p>One way to do this would be:</p>
 <p>root_mean &lt;- function(x){ sqrt(mean(x, na.rm=T)) }</p>
 <p>Another way could be:</p>
-<p>root_mean &lt;- function(x){ temp &lt;- mean(x, na.rm =T) result
+<p>root_mean &lt;- function(x){ temp &lt;- mean(x, na.rm =T)&gt; result
 &lt;- sqrt(temp) result }</p>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
+</div>
+</div>
+</div>
+</div>
 </section><section id="logical-tests-in-functions"><h2 class="section-heading">Logical tests in functions<a class="anchor" aria-label="anchor" href="#logical-tests-in-functions"></a>
 </h2>
 <hr class="half-width">
@@ -4869,7 +4858,7 @@ data.</p>
 </h3>
 <p>For loops are constructs used to apply one or more functions on a
 series of data.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4907,7 +4896,7 @@ difference in speed.</p>
 <p>The Sys.time() function will tell us what time our computer thinks it
 is. If we run that just before, and just after our loop, we can
 calculate how long it took to run.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4923,7 +4912,7 @@ calculate how long it took to run.</p>
 1 to 10 would be use the fact that sqrt() is a vectorized function that
 will calculate the square root of every element in a vector used as
 input to it:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4935,7 +4924,7 @@ input to it:</p>
 </div>
 <p>And we can then compare how much faster the latter vectorized
 solution is.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4944,7 +4933,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 6.523428</code></pre>
+<pre class="output" tabindex="0"><code>[1] 6.588854</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized
@@ -4957,7 +4946,7 @@ a luxury we have.</p>
 </h3>
 <p>While loops are loops that execute the code - as long as some
 criterium is satisfied.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5001,7 +4990,7 @@ sometimes we just want a bit more color.</p>
 already encountered. It produces plots in a structured way, and comes
 with a lot of extensions, that enables us to plot almost anything.</p>
 <p>The basic structure of ggplots are:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5010,7 +4999,7 @@ with a lot of extensions, that enables us to plot almost anything.</p>
 </div>
 <p>ggplot takes some data. Typically we will provide the data using the
 pipe: <code>%&gt;%</code></p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5027,7 +5016,7 @@ added <code>geom_point</code> which produces a scatter-plot. Other
 functions are more intuitively named. <code>geom_col</code> gives us a
 column-plot, <code>geom_histogram</code> a histogram etc.</p>
 <p>Let us try to make a histogram like we saw earlier:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5052,14 +5041,14 @@ normally not the right number.</p>
 </h3>
 <div class="callout-content">
 <ul>
-<li>“Boxplots are useful for visualizing the distribution of a
-continuous variable.”</li>
-<li>“Barplots are useful for visualizing categorical data.”</li>
-<li>“Functions allows you to repeat the same set of operations again and
-again.”</li>
-<li>“Loops allows you to apply the same function to lots of data.”</li>
-<li>“Logical tests allow you to apply different calculations on
-different sets of data.”</li>
+<li>Boxplots are useful for visualizing the distribution of a continuous
+variable.</li>
+<li>Barplots are useful for visualizing categorical data.</li>
+<li>Functions allows you to repeat the same set of operations again and
+again.</li>
+<li>Loops allows you to apply the same function to lots of data.</li>
+<li>Logical tests allow you to apply different calculations on different
+sets of data.</li>
 </ul>
 </div>
 </div>
