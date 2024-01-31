@@ -153,7 +153,7 @@ error-prone.
 
 Let's take a quick tour of RStudio.
 
-![RStudio interface](/fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
+![RStudio interface](fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
 
 RStudio is divided into four "panes". The placement of these
 panes and their content can be customized (see menu, Tools -> Global Options ->
@@ -349,7 +349,7 @@ You can see if you have a package installed by looking in the `packages` tab
 (on the lower-right by default). You can also type the command
 `installed.packages()` into the console and examine the output.
 
-![Packages pane](/fig/packages_pane.png)
+![Packages pane](fig/packages_pane.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
@@ -357,7 +357,7 @@ name of the package you want in the text box. As you type, packages
 matching your starting characters will be displayed in a drop-down
 list so that you can select them.
 
-![Install Packages Window](/fig/R_00_Rstudio_03.png)
+![Install Packages Window](fig/R_00_Rstudio_03.png)
 
 At the bottom of the Install Packages window is a check box to
 ‘Install’ dependencies. This is ticked by default, which is usually
@@ -366,25 +366,6 @@ built into other packages, so for the functionality contained in
 the package you are installing to work properly, there may be other
 packages which have to be installed with them. The ‘Install
 dependencies’ option makes sure that this happens.
-
-::::::::::::::::::::::::::::::::::::: challenge 
-Use both the Console and the Packages tab to confirm that you have the tidyverse
-installed.
-
-:::::::::::::::::::::::: solution
-
-Scroll through packages tab down to ‘tidyverse’.  You can also type a few
-characters into the searchbox.
-The ‘tidyverse’ package is really a package of packages, including
-'ggplot2' and 'dplyr', both of which require other packages to run correctly.
-All of these packages will be installed automatically. Depending on what
-packages have previously been installed in your R environment, the install of
-‘tidyverse’ could be very quick or could take several minutes. As the install
-proceeds, messages relating to its progress will be written to the console.
-You will be able to see all of the packages which are actually being
-installed.
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 Because the install process accesses the CRAN repository, you
 will need an Internet connection to install packages.
@@ -406,6 +387,28 @@ install.packages("tidyverse")
 was written to the console before the start of the installation messages.
 
 You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.
+
+::::::::::::::::::::::::::::::::::::: challenge 
+Use both the Console and the Packages tab to confirm that you have the tidyverse
+installed.
+
+:::::::::::::::::::::::: solution
+
+Scroll through packages tab down to ‘tidyverse’. You can also type a few
+characters into the searchbox.
+The ‘tidyverse’ package is really a package of packages, including
+'ggplot2' and 'dplyr', both of which require other packages to run correctly.
+All of these packages will be installed automatically. Depending on what
+packages have previously been installed in your R environment, the install of
+‘tidyverse’ could be very quick or could take several minutes. As the install
+proceeds, messages relating to its progress will be written to the console.
+You will be able to see all of the packages which are actually being
+installed.
+
+In the console. If you write tidy it should put up if it is installed. Look for tidyverse::
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
