@@ -6,42 +6,40 @@ exercises: 35
 
 :::: questions:
 
-- "How do I create scatterplots, boxplots, and barplots?"
-- "How can I define my own functions?"
+- How do I create scatterplots, boxplots, and barplots?
+- How can I define my own functions?
 
 ::::  
 
 
 :::: objectives:
 
-- "Produce scatter plots and boxplots using Base R."
-- "Write your own function"
-- "Write loops to repeat calculations"
-- "Use logical tests in loops"
+- Produce scatter plots and boxplots using Base R.
+- Write your own function
+- Write loops to repeat calculations
+- Use logical tests in loops
 
 ::::
 
-We start by loading the **`tidyverse`** package.
+
+
+In case you have made changes to the original object we made. We read in the data
+in a new object
 
 
 ```r
-library(tidyverse)
+movieSerie_plotting <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
 ```
 
-If not still in the workspace, load the data we saved in the previous lesson.
+```{.output}
+Rows: 5850 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (7): id, title, type, genre, description, age_certification, imdb_id
+dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
 
-
-```r
-interviews_plotting <- read_csv("../data_output/interviews_plotting.csv")
-```
-
-```{.error}
-Error: '../data_output/interviews_plotting.csv' does not exist in current working directory ('/home/runner/work/R-intro/R-intro/site/built').
-```
-
-
-```r
-interviews_plotting <- read_csv("/data_output/interviews_plotting.csv")
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 
@@ -57,13 +55,10 @@ $-notation:
 
 
 ```r
-plot(interviews_plotting$no_membrs, interviews_plotting$no_meals)
+plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
-```
-
+<img src="fig/04-functions-plots-rendered-first-scatterplot-1.png" style="display: block; margin: auto;" />
 
 Scatterplots are useful for showing that sort for relationships in the data.
 Here it does not appear that the correlation exists; there is no clear trend.
@@ -71,27 +66,23 @@ Here it does not appear that the correlation exists; there is no clear trend.
 We might want to adjust the labels on the axes, and add a main title:
 
 ```r
-plot(interviews_plotting$no_membrs, interviews_plotting$no_meals, 
-     main = "Relation between number of members of households, and number of meals served",
-     xlab = "Years lived",
-     ylab = "Items owned")
+plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score, 
+     main = "Relation between release date and their imdb_score",
+     xlab = "Release year",
+     ylab = "imdb score")
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
-```
+<img src="fig/04-functions-plots-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
-We can use boxplots to visualize the distribution of number of household members for each wall type:
+We can use boxplots to visualize the distribution of number of imdb_score for genre:
 
 ```r
-boxplot(interviews_plotting$no_membrs~interviews_plotting$respondent_wall_type)
+boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
 ```
 
-```{.error}
-Error in eval(predvars, data, env): object 'interviews_plotting' not found
-```
+<img src="fig/04-functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -111,27 +102,19 @@ outliers.
 Depending on the data, and the nature of the analyses we are going to do,
 outliers are either very interesting, or something that we can ignore.
 
-
-
 ## Histograms
 
 Another useful plottype are histograms. 
 
 ```r
-hist(interviews_plotting$no_membrs)
+hist(movieSerie_plotting$runtime)
 ```
 
-```{.error}
-Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
-```
+<img src="fig/04-functions-plots-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
 nicely to the number of people, but they do not have to.
-
-
-
-
 
 ## Writing our own functions ##
 
@@ -166,32 +149,34 @@ the input to a second function, and the result of that as the input to a third
 function. The result of the last calculation we do, will be returned as the 
 output of our function.
 
-> ## Exercise
->
-> Write a function that calculates the average value of a numeric vector, 
-> takes the square root of that average, and returns the result
->
-> > ## Solution
-> > One way to do this would be:
-> > 
-> > root_mean <- function(x){
-> >              sqrt(mean(x, na.rm=T))
-> >               }
-> > 
-> > Another way could be:
-> > 
-> > root_mean <- function(x){
-> >              temp <- mean(x, na.rm =T)
-> >              result <- sqrt(temp)
-> >              result
-> > }
-> > 
-> > 
-> > 
-> {: .solution}
-{: .challenge}
+:::: challenge
 
-## Logical tests in functions ##
+## Exercise:
+
+Write a function that calculates the average value of a numeric vector, 
+takes the square root of that average, and returns the result
+
+::::
+
+:::: solution
+
+## Solution
+One way to do this would be:
+ 
+root_mean <- function(x){
+              sqrt(mean(x, na.rm=T))
+               }
+ 
+ Another way could be:
+ 
+ root_mean <- function(x){
+              temp <- mean(x, na.rm =T)>             result <- sqrt(temp)
+              result
+ }
+ 
+::::
+
+## Logical tests in functions
 Some times we want to do something different to the data, depending on the
 data. We can control the flow of the code using the if() construction.
 
@@ -290,7 +275,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ```{.output}
-[1] 6.691236
+[1] 6.708521
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -382,11 +367,11 @@ chooses 30 bins for us, and that is normally not the right number.
 
 :::: keypoints
 
-- "Boxplots are useful for visualizing the distribution of a continuous variable."
-- "Barplots are useful for visualizing categorical data."
-- "Functions allows you to repeat the same set of operations again and again."
-- "Loops allows you to apply the same function to lots of data."
-- "Logical tests allow you to apply different calculations on different sets of data."
+- Boxplots are useful for visualizing the distribution of a continuous variable.
+- Barplots are useful for visualizing categorical data.
+- Functions allows you to repeat the same set of operations again and again.
+- Loops allows you to apply the same function to lots of data.
+- Logical tests allow you to apply different calculations on different sets of data.
 
 ::::
 

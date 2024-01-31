@@ -400,8 +400,11 @@ expression.
 Using pipes, subset the `movieSerie` data set to include movieSerie
 have a `release_year` greater than 1980 and retain only the columns `title`,
  `runtime`, and `age_certification`.
+ 
 ::::
+
 :::: solution
+
 ## Solution
 
 
