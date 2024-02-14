@@ -1357,7 +1357,7 @@ movieSerie["title"]       # Result is a tibble
 
 movieSerie[, "title"]     # Result is a tibble
 
-movieSerie[["movieSerie"]]     # Result is a vector
+movieSerie[["title"]]     # Result is a vector
 
 movieSerie$title          # Result is a vector
 ```

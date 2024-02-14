@@ -291,7 +291,7 @@ is called *calling* the function. An example of a function call is:
 
 
 ```r
-b <- sqrt(a)
+b <- sqrt(area_acres)
 ```
 Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
 calculates the square root, and returns the value which is then assigned to
