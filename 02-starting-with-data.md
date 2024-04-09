@@ -143,7 +143,7 @@ movieSerie
 ## head(movieSerie)
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -173,7 +173,7 @@ the data is read using `read_csv()`, it is stored in an object of class
 class(movieSerie)
 ```
 
-```{.output}
+```output
 [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
 ```
 
@@ -239,7 +239,7 @@ want from it. Row numbers come first, followed by column numbers.
 movieSerie[1, 1]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 1
   id      
   <chr>   
@@ -251,7 +251,7 @@ movieSerie[1, 1]
 movieSerie[1, 6]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 1
   release_year
          <dbl>
@@ -263,7 +263,7 @@ movieSerie[1, 6]
 movieSerie[[1]]
 ```
 
-```{.output}
+```output
    [1] "ts300399"  "tm84618"   "tm154986"  "tm127384"  "tm120801"  "ts22164"  
    [7] "tm70993"   "tm14873"   "tm119281"  "tm98978"   "tm44204"   "tm67378"  
   [13] "tm69997"   "tm16479"   "tm135083"  "tm89386"   "tm156453"  "tm14350"  
@@ -1246,7 +1246,7 @@ movieSerie[[1]]
 movieSerie[1]
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 1
    id      
    <chr>   
@@ -1268,7 +1268,7 @@ movieSerie[1]
 movieSerie[1:3, 7]
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 1
   age_certification
   <chr>            
@@ -1282,7 +1282,7 @@ movieSerie[1:3, 7]
 movieSerie[3, ]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 14
   id       title  type  genre description release_year age_certification runtime
   <chr>    <chr>  <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -1306,7 +1306,7 @@ You can also exclude certain indices of a data frame using the "`-`" sign:
 movieSerie[, -1]          # The whole tibble, except the first column
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 13
    title  type  genre description release_year age_certification runtime seasons
    <chr>  <chr> <chr> <chr>              <dbl> <chr>               <dbl>   <dbl>
@@ -1329,7 +1329,7 @@ movieSerie[, -1]          # The whole tibble, except the first column
 movieSerie[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
-```{.output}
+```output
 # A tibble: 5,725 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -1421,7 +1421,7 @@ movieSerie_last <- movieSerie[n_rows, ]
 movieSerie_middle <- movieSerie[median(1:n_rows), ]
 ```
 
-```{.error}
+```error
 Error in `movieSerie[median(1:n_rows), ]`:
 ! Can't subset rows with `median(1:n_rows)`.
 ✖ Can't convert from `i` <double> to <integer> due to loss of precision.

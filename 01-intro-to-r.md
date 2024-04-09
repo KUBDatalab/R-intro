@@ -39,7 +39,7 @@ You can get output from R simply by typing math in the console:
 3 + 5
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -47,7 +47,7 @@ You can get output from R simply by typing math in the console:
 12 / 7
 ```
 
-```{.output}
+```output
 [1] 1.714286
 ```
 
@@ -142,7 +142,7 @@ area_hectares <- 1.0    # doesn't print anything
 area_hectares         # but typing the name of the object print
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -150,7 +150,7 @@ area_hectares         # but typing the name of the object print
 (area_hectares <- 1.0)  # putting parenthesis around the call also print
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -163,7 +163,7 @@ Now that R has `area_hectares` in memory, we can do arithmetic with it. For inst
 2.47 * area_hectares
 ```
 
-```{.output}
+```output
 [1] 2.47
 ```
 
@@ -175,7 +175,7 @@ area_hectares <- 2.5
 2.47 * area_hectares
 ```
 
-```{.output}
+```output
 [1] 6.175
 ```
 
@@ -233,7 +233,7 @@ r_area <- r_length * r_width
 r_area
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -245,7 +245,7 @@ r_width <- 6.5
 r_area
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -266,7 +266,7 @@ area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
 
-```{.output}
+```output
 [1] 2.47
 ```
 
@@ -317,7 +317,7 @@ Let's try a function that can take multiple arguments: `round()`.
 round(3.14159)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -333,7 +333,7 @@ help for this function using `?round`.
 args(round)
 ```
 
-```{.output}
+```output
 function (x, digits = 0) 
 NULL
 ```
@@ -351,7 +351,7 @@ type `digits=2` or however many we want.
 round(3.14159, digits = 2)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -363,7 +363,7 @@ don't have to name them:
 round(3.14159, 2)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -374,7 +374,7 @@ And if you do name the arguments, you can switch their order:
 round(digits = 2, x = 3.14159)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -408,7 +408,7 @@ imdb_score <- c(62, 21, 77, 80)
 imdb_score
 ```
 
-```{.output}
+```output
 [1] 62 21 77 80
 ```
 
@@ -421,7 +421,7 @@ title <- c("FTA", "Dostana", "Deliverance", "Life of Brian")
 title
 ```
 
-```{.output}
+```output
 [1] "FTA"           "Dostana"       "Deliverance"   "Life of Brian"
 ```
 
@@ -459,7 +459,7 @@ The function `class()` indicates the class (the type of element) of an object:
 class(imdb_score)
 ```
 
-```{.output}
+```output
 [1] "numeric"
 ```
 
@@ -467,7 +467,7 @@ class(imdb_score)
 class(title)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -480,7 +480,7 @@ objects:
 str(imdb_score)
 ```
 
-```{.output}
+```output
  num [1:4] 62 21 77 80
 ```
 
@@ -488,7 +488,7 @@ str(imdb_score)
 str(title)
 ```
 
-```{.output}
+```output
  chr [1:4] "FTA" "Dostana" "Deliverance" "Life of Brian"
 ```
 
@@ -501,7 +501,7 @@ in a particular vector:
 length(imdb_score)
 ```
 
-```{.output}
+```output
 [1] 4
 ```
 
@@ -512,7 +512,7 @@ production_country <- c("IN", "US")
 production_country
 ```
 
-```{.output}
+```output
 [1] "IN" "US"
 ```
 
@@ -522,7 +522,7 @@ production_country <- c("US", production_country) # add to the beginning of the 
 production_country
 ```
 
-```{.output}
+```output
 [1] "US" "IN" "US" "GB"
 ```
 
@@ -627,7 +627,7 @@ or several indices in square brackets. For instance:
 title[2]
 ```
 
-```{.output}
+```output
 [1] "Dostana"
 ```
 
@@ -635,7 +635,7 @@ title[2]
 title[c(3, 2)]
 ```
 
-```{.output}
+```output
 [1] "Deliverance" "Dostana"    
 ```
 
@@ -657,7 +657,7 @@ more_title <- title[c(1, 2, 3, 2, 1, 3)]
 more_title
 ```
 
-```{.output}
+```output
 [1] "FTA"         "Dostana"     "Deliverance" "Dostana"     "FTA"        
 [6] "Deliverance"
 ```
@@ -677,7 +677,7 @@ index, while `FALSE` will not:
 imdb_score[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
-```{.output}
+```output
 [1] 62 77 80
 ```
 
@@ -690,7 +690,7 @@ imdb_scores above 70:
 imdb_score > 70    # will return logicals with TRUE for the indices that meet the condition
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE  TRUE  TRUE
 ```
 
@@ -699,7 +699,7 @@ imdb_score > 70    # will return logicals with TRUE for the indices that meet th
 imdb_score[imdb_score > 70]
 ```
 
-```{.output}
+```output
 [1] 77 80
 ```
 
@@ -711,7 +711,7 @@ You can combine multiple tests using `&` (both conditions are true (AND)) or `|`
 imdb_score[imdb_score < 62 | imdb_score > 77]
 ```
 
-```{.output}
+```output
 [1] 21 80
 ```
 
@@ -719,7 +719,7 @@ imdb_score[imdb_score < 62 | imdb_score > 77]
 imdb_score[imdb_score >= 62 & imdb_score <= 77]
 ```
 
-```{.output}
+```output
 [1] 62 77
 ```
 
@@ -745,7 +745,7 @@ become tedious.
 title[title == "FTA" | title == "Dostana"] # returns both "FTA and Dostana"
 ```
 
-```{.output}
+```output
 [1] "FTA"     "Dostana"
 ```
 
@@ -757,7 +757,7 @@ The function `%in%` allows you to test if any of the elements of a search vector
 title %in% c("FTA", "Dostana")
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE FALSE FALSE
 ```
 
@@ -771,7 +771,7 @@ in the search vector that appear in your target vector:
 title[title %in% c("FTA", "Dostana")]
 ```
 
-```{.output}
+```output
 [1] "FTA"     "Dostana"
 ```
 
@@ -784,7 +784,7 @@ movies "FTA" and "Dostana" we can do it like this.
 imdb_score[title %in% c("FTA", "Dostana")]
 ```
 
-```{.output}
+```output
 [1] 62 21
 ```
 
@@ -809,7 +809,7 @@ imdb_score_na <- c(imdb_score, NA, 54, NA)
 mean(imdb_score_na)
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -818,7 +818,7 @@ mean(imdb_score_na)
 max(imdb_score_na)
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -827,7 +827,7 @@ max(imdb_score_na)
 mean(imdb_score_na, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 58.8
 ```
 
@@ -836,7 +836,7 @@ mean(imdb_score_na, na.rm = TRUE)
 max(imdb_score_na, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 80
 ```
 
@@ -851,7 +851,7 @@ examples.
 imdb_score_na[!is.na(imdb_score_na)]
 ```
 
-```{.output}
+```output
 [1] 62 21 77 80 54
 ```
 
@@ -860,7 +860,7 @@ imdb_score_na[!is.na(imdb_score_na)]
 sum(is.na(imdb_score_na))
 ```
 
-```{.output}
+```output
 [1] 2
 ```
 
@@ -869,7 +869,7 @@ sum(is.na(imdb_score_na))
 na.omit(imdb_score_na)
 ```
 
-```{.output}
+```output
 [1] 62 21 77 80 54
 attr(,"na.action")
 [1] 5 7
@@ -882,7 +882,7 @@ attr(,"class")
 imdb_score_na[complete.cases(imdb_score_na)]
 ```
 
-```{.output}
+```output
 [1] 62 21 77 80 54
 ```
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
@@ -913,7 +913,7 @@ rooms_no_na <- na.omit(rooms)
 median(rooms, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -923,7 +923,7 @@ rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
 length(rooms_above_2)
 ```
 
-```{.output}
+```output
 [1] 4
 ```
 
@@ -945,7 +945,7 @@ df <- data.frame(title, imdb_score, production_country)
 df
 ```
 
-```{.output}
+```output
           title imdb_score production_country
 1           FTA         62                 US
 2       Dostana         21                 IN

@@ -31,7 +31,7 @@ in a new object
 movieSerie_plotting <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
 ```
 
-```{.output}
+```output
 Rows: 5850 Columns: 14
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -212,7 +212,7 @@ for(i in 1:10){
 }
 ```
 
-```{.output}
+```output
 [1] 1
 [1] 1.414214
 [1] 1.732051
@@ -274,8 +274,8 @@ And we can then compare how much faster the latter vectorized solution is.
 as.numeric(for_time)/as.numeric(vect_time)
 ```
 
-```{.output}
-[1] 6.537692
+```output
+[1] 6.699441
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -293,7 +293,7 @@ while(i <= 10){
 }
 ```
 
-```{.output}
+```output
 [1] 1
 [1] 1.414214
 [1] 1.732051
@@ -359,7 +359,7 @@ interviews_plotting %>%
   geom_histogram()
 ```
 
-```{.error}
+```error
 Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
 ```
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically

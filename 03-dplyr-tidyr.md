@@ -118,7 +118,7 @@ read as "select columns from ___ to ___."
 select(movieSerie, title, description)
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 2
    title                               description                              
    <chr>                               <chr>                                    
@@ -140,7 +140,7 @@ select(movieSerie, title, description)
 select(movieSerie, title:description)
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 4
    title                               type  genre         description          
    <chr>                               <chr> <chr>         <chr>                
@@ -167,7 +167,7 @@ dataframe to adhere to (e.g. age_certification is PG-13):
 filter(movieSerie, age_certification == "PG-13")
 ```
 
-```{.output}
+```output
 # A tibble: 451 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -202,7 +202,7 @@ filter(movieSerie, age_certification == "PG-13",
                    imdb_score < 6.0)
 ```
 
-```{.output}
+```output
 # A tibble: 60 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -232,7 +232,7 @@ filter(movieSerie, age_certification == "PG-13" &
                    imdb_score < 6.0)
 ```
 
-```{.output}
+```output
 # A tibble: 60 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -263,7 +263,7 @@ filter(movieSerie, age_certification == "PG-13" |
                    imdb_score < 6.0)
 ```
 
-```{.output}
+```output
 # A tibble: 2,852 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -328,7 +328,7 @@ movieSerie %>%
     select(title,description)
 ```
 
-```{.output}
+```output
 # A tibble: 451 × 2
    title                                 description                            
    <chr>                                 <chr>                                  
@@ -371,7 +371,7 @@ movieSerie_ch <- movieSerie %>%
 movieSerie_ch
 ```
 
-```{.output}
+```output
 # A tibble: 451 × 2
    title                                 description                            
    <chr>                                 <chr>                                  
@@ -414,7 +414,7 @@ movieSerie %>%
      select(title, runtime, age_certification)
 ```
 
-```{.output}
+```output
 # A tibble: 5,815 × 3
    title                       runtime age_certification
    <chr>                         <dbl> <chr>            
@@ -449,7 +449,7 @@ movieSerie %>%
   select(imdb_score, tmdb_score, score_difference)
 ```
 
-```{.output}
+```output
 # A tibble: 5,850 × 3
    imdb_score tmdb_score score_difference
         <dbl>      <dbl>            <dbl>
@@ -519,7 +519,7 @@ movieSerie %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```{.output}
+```output
 # A tibble: 19 × 2
    genre         mean_imdb_score
    <chr>                   <dbl>
@@ -556,12 +556,12 @@ movieSerie %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 38 × 3
 # Groups:   genre [19]
    genre         type  mean_imdb_score
@@ -590,12 +590,12 @@ movieSerie %>%
     ungroup()
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 38 × 3
    genre         type  mean_imdb_score
    <chr>         <chr>           <dbl>
@@ -626,12 +626,12 @@ movieSerie %>%
               max_imdb_score = max(imdb_score, na.rm = TRUE))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre         type  mean_imdb_score max_imdb_score
@@ -663,12 +663,12 @@ movieSerie %>%
     arrange(max_imdb_score)
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre   type  mean_imdb_score max_imdb_score
@@ -698,12 +698,12 @@ movieSerie %>%
     arrange(desc(max_imdb_score))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre         type  mean_imdb_score max_imdb_score
@@ -734,7 +734,7 @@ movieSerie %>%
     count(release_year)
 ```
 
-```{.output}
+```output
 # A tibble: 63 × 2
    release_year     n
           <dbl> <int>
@@ -760,7 +760,7 @@ movieSerie %>%
     count(release_year, sort = TRUE)
 ```
 
-```{.output}
+```output
 # A tibble: 63 × 2
    release_year     n
           <dbl> <int>
@@ -797,7 +797,7 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
   count(age_certification)
 ```
 
-```{.output}
+```output
 # A tibble: 12 × 2
    age_certification     n
    <chr>             <int>
@@ -833,7 +833,7 @@ movieSerie %>%
    )
 ```
 
-```{.output}
+```output
 # A tibble: 19 × 5
    genre         mean_tmdb_score min_tmdb_score max_tmdb_score     n
    <chr>                   <dbl>          <dbl>          <dbl> <int>
