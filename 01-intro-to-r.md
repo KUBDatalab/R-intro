@@ -35,19 +35,19 @@ exercises: 10
 You can get output from R simply by typing math in the console:
 
 
-```r
+``` r
 3 + 5
 ```
 
-```output
+``` output
 [1] 8
 ```
 
-```r
+``` r
 12 / 7
 ```
 
-```output
+``` output
 [1] 1.714286
 ```
 
@@ -56,7 +56,7 @@ _objects_. To create an object, we need to give it a name followed by the
 assignment operator `<-`, and the value we want to give it:
 
 
-```r
+``` r
 x <- 3
 ```
 
@@ -137,20 +137,20 @@ can force R to print the value by using parentheses or by typing
 the object name:
 
 
-```r
+``` r
 area_hectares <- 1.0    # doesn't print anything
 area_hectares         # but typing the name of the object print
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 (area_hectares <- 1.0)  # putting parenthesis around the call also print
 ```
 
-```output
+``` output
 [1] 1
 ```
 
@@ -159,37 +159,37 @@ area_hectares         # but typing the name of the object print
 Now that R has `area_hectares` in memory, we can do arithmetic with it. For instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares): 
 
 
-```r
+``` r
 2.47 * area_hectares
 ```
 
-```output
+``` output
 [1] 2.47
 ```
 
 We can also change an object’s value by assigning it a new one:
 
 
-```r
+``` r
 area_hectares <- 2.5
 2.47 * area_hectares
 ```
 
-```output
+``` output
 [1] 6.175
 ```
 
 Assigning a value to one object does not automatically change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
 
 
-```r
+``` r
 area_acres <- 2.47 * area_hectares
 ```
 
 and then change `area_hectares` to 50.
 
 
-```r
+``` r
 area_hectares <- 50
 ```
 
@@ -226,18 +226,18 @@ Show that changing the values of either `r_length` and `r_width` does not affect
 ## Solution
 
 
-```r
+``` r
 r_length <- 2.5
 r_width <- 3.2
 r_area <- r_length * r_width
 r_area
 ```
 
-```output
+``` output
 [1] 8
 ```
 
-```r
+``` r
 # change the values of r_length and r_width
 r_length <- 7.0
 r_width <- 6.5
@@ -245,7 +245,7 @@ r_width <- 6.5
 r_area
 ```
 
-```output
+``` output
 [1] 8
 ```
 
@@ -259,14 +259,14 @@ Anything to the right of the `#` sign and up to the end of the line is treated a
 or include them after any code on the line.
 
 
-```r
+``` r
 # land area in hectares
 area_hectares <- 1.0			
 area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
 
-```output
+``` output
 [1] 2.47
 ```
 
@@ -290,7 +290,7 @@ output) is the square root of that number. Executing a function ('running it')
 is called *calling* the function. An example of a function call is:
 
 
-```r
+``` r
 b <- sqrt(area_acres)
 ```
 Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
@@ -313,11 +313,11 @@ of your choice which will be used instead of the default.
 Let's try a function that can take multiple arguments: `round()`.
 
 
-```r
+``` r
 round(3.14159)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
@@ -329,17 +329,17 @@ information about the `round` function.  We can use `args(round)` or look at the
 help for this function using `?round`.
 
 
-```r
+``` r
 args(round)
 ```
 
-```output
-function (x, digits = 0) 
+``` output
+function (x, digits = 0, ...) 
 NULL
 ```
 
 
-```r
+``` r
 ?round
 ```
 
@@ -347,11 +347,11 @@ We see that if we want a different number of digits, we can
 type `digits=2` or however many we want.
 
 
-```r
+``` r
 round(3.14159, digits = 2)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
@@ -359,22 +359,22 @@ If you provide the arguments in the exact same order as they are defined you
 don't have to name them:
 
 
-```r
+``` r
 round(3.14159, 2)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
 And if you do name the arguments, you can switch their order:
 
 
-```r
+``` r
 round(digits = 2, x = 3.14159)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
@@ -403,12 +403,12 @@ create a vector containing the score of movies on imdb and assign it to an
 object `imdb_score`:
 
 
-```r
+``` r
 imdb_score <- c(62, 21, 77, 80)
 imdb_score
 ```
 
-```output
+``` output
 [1] 62 21 77 80
 ```
 
@@ -416,12 +416,12 @@ The vector `imdb_score` contains numbers, but a vector can also contain characte
 a vector of movie titles corresponding to the scores (`title`):
 
 
-```r
+``` r
 title <- c("FTA", "Dostana", "Deliverance", "Life of Brian")
 title
 ```
 
-```output
+``` output
 [1] "FTA"           "Dostana"       "Deliverance"   "Life of Brian"
 ```
 
@@ -455,19 +455,19 @@ factors (`factor`) and arrays (`array`).
 The function `class()` indicates the class (the type of element) of an object:
 
 
-```r
+``` r
 class(imdb_score)
 ```
 
-```output
+``` output
 [1] "numeric"
 ```
 
-```r
+``` r
 class(title)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
@@ -476,19 +476,19 @@ elements. It is a useful function when working with large and complex
 objects:
 
 
-```r
+``` r
 str(imdb_score)
 ```
 
-```output
+``` output
  num [1:4] 62 21 77 80
 ```
 
-```r
+``` r
 str(title)
 ```
 
-```output
+``` output
  chr [1:4] "FTA" "Dostana" "Deliverance" "Life of Brian"
 ```
 
@@ -497,32 +497,32 @@ of a vector. Another example is `length()` that tells you how many elements are
 in a particular vector:
 
 
-```r
+``` r
 length(imdb_score)
 ```
 
-```output
+``` output
 [1] 4
 ```
 
 You can use the `c()` function to add other elements to your vector:
 
-```r
+``` r
 production_country <- c("IN", "US")
 production_country
 ```
 
-```output
+``` output
 [1] "IN" "US"
 ```
 
-```r
+``` r
 production_country <- c(production_country, "GB") # add to the end of the vector
 production_country <- c("US", production_country) # add to the beginning of the vector
 production_country
 ```
 
-```output
+``` output
 [1] "US" "IN" "US" "GB"
 ```
 
@@ -560,7 +560,7 @@ to check the data type of your objects):
 :::::::::::::::::::::::: solution
 
 
-```r
+``` r
 num_char <- c(1, 2, 3, "a")
 num_logical <- c(1, 2, 3, TRUE)
 char_logical <- c("a", "b", "c", TRUE)
@@ -586,7 +586,7 @@ following example:
 
 
 
-```r
+``` r
 num_logical <- c(1, 2, 3, TRUE)
 char_logical <- c("a", "b", "c", TRUE)
 combined_logical <- c(num_logical, char_logical)
@@ -623,19 +623,19 @@ If we want to extract one or several values from a vector, we must provide one
 or several indices in square brackets. For instance:
 
 
-```r
+``` r
 title[2]
 ```
 
-```output
+``` output
 [1] "Dostana"
 ```
 
-```r
+``` r
 title[c(3, 2)]
 ```
 
-```output
+``` output
 [1] "Deliverance" "Dostana"    
 ```
 
@@ -652,12 +652,12 @@ We can also repeat the indices to create an object with more elements than the
 original one:
 
 
-```r
+``` r
 more_title <- title[c(1, 2, 3, 2, 1, 3)]
 more_title
 ```
 
-```output
+``` output
 [1] "FTA"         "Dostana"     "Deliverance" "Dostana"     "FTA"        
 [6] "Deliverance"
 ```
@@ -673,11 +673,11 @@ is by using a logical vector. `TRUE` will select the element with the same
 index, while `FALSE` will not:
 
 
-```r
+``` r
 imdb_score[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
-```output
+``` output
 [1] 62 77 80
 ```
 
@@ -686,20 +686,20 @@ other functions or logical tests. For instance, if you wanted to select only the
 imdb_scores above 70:
 
 
-```r
+``` r
 imdb_score > 70    # will return logicals with TRUE for the indices that meet the condition
 ```
 
-```output
+``` output
 [1] FALSE FALSE  TRUE  TRUE
 ```
 
-```r
+``` r
 ## so we can use this to select only the values above 5
 imdb_score[imdb_score > 70]
 ```
 
-```output
+``` output
 [1] 77 80
 ```
 
@@ -707,19 +707,19 @@ You can combine multiple tests using `&` (both conditions are true (AND)) or `|`
 (at least one of the conditions is true, (OR)):
 
 
-```r
+``` r
 imdb_score[imdb_score < 62 | imdb_score > 77]
 ```
 
-```output
+``` output
 [1] 21 80
 ```
 
-```r
+``` r
 imdb_score[imdb_score >= 62 & imdb_score <= 77]
 ```
 
-```output
+``` output
 [1] 62 77
 ```
 
@@ -741,11 +741,11 @@ A common task is to search for certain strings in a vector.  One could use the
 become tedious. 
 
 
-```r
+``` r
 title[title == "FTA" | title == "Dostana"] # returns both "FTA and Dostana"
 ```
 
-```output
+``` output
 [1] "FTA"     "Dostana"
 ```
 
@@ -753,11 +753,11 @@ The function `%in%` allows you to test if any of the elements of a search vector
 (on the right hand side) are found in the target vector (on the left hand side):
 
 
-```r
+``` r
 title %in% c("FTA", "Dostana")
 ```
 
-```output
+``` output
 [1]  TRUE  TRUE FALSE FALSE
 ```
 
@@ -767,11 +767,11 @@ somewhere in the target vector. Thus, you can use `%in%` to select the elements
 in the search vector that appear in your target vector:
 
 
-```r
+``` r
 title[title %in% c("FTA", "Dostana")]
 ```
 
-```output
+``` output
 [1] "FTA"     "Dostana"
 ```
 
@@ -780,11 +780,11 @@ informations in another vectore. For instance if we want the imdb scores for the
 movies "FTA" and "Dostana" we can do it like this.
 
 
-```r
+``` r
 imdb_score[title %in% c("FTA", "Dostana")]
 ```
 
-```output
+``` output
 [1] 62 21
 ```
 
@@ -802,41 +802,41 @@ You can add the argument `na.rm=TRUE` to calculate the result while ignoring
 the missing values.
 
 
-```r
+``` r
 #Makes an new vector with NA values
 imdb_score_na <- c(imdb_score, NA, 54, NA)
 #tries to calculate mean - without ignoring NA values
 mean(imdb_score_na)
 ```
 
-```output
+``` output
 [1] NA
 ```
 
-```r
+``` r
 #tries to find the maximum value - without ignoring NA values
 max(imdb_score_na)
 ```
 
-```output
+``` output
 [1] NA
 ```
 
-```r
+``` r
 #tries to calculate mean - telling R to ignore NA values
 mean(imdb_score_na, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 58.8
 ```
 
-```r
+``` r
 #tries to find the maximum value - telling R to ignore NA values
 max(imdb_score_na, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 80
 ```
 
@@ -846,30 +846,30 @@ examples.
 
 
 
-```r
+``` r
 ## Extract those elements which are not missing values.
 imdb_score_na[!is.na(imdb_score_na)]
 ```
 
-```output
+``` output
 [1] 62 21 77 80 54
 ```
 
-```r
+``` r
 ## Count the number of missing values.
 sum(is.na(imdb_score_na))
 ```
 
-```output
+``` output
 [1] 2
 ```
 
-```r
+``` r
 ## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 na.omit(imdb_score_na)
 ```
 
-```output
+``` output
 [1] 62 21 77 80 54
 attr(,"na.action")
 [1] 5 7
@@ -877,12 +877,12 @@ attr(,"class")
 [1] "omit"
 ```
 
-```r
+``` r
 ## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 imdb_score_na[complete.cases(imdb_score_na)]
 ```
 
-```output
+``` output
 [1] 62 21 77 80 54
 ```
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
@@ -904,7 +904,7 @@ rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
 
 ## Solution
 
-```r
+``` r
 rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
 rooms_no_na <- rooms[!is.na(rooms)]
 # or
@@ -913,17 +913,17 @@ rooms_no_na <- na.omit(rooms)
 median(rooms, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 # 3.
 rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
 length(rooms_above_2)
 ```
 
-```output
+``` output
 [1] 4
 ```
 
@@ -940,12 +940,12 @@ to a dataframe.
 
 
 
-```r
+``` r
 df <- data.frame(title, imdb_score, production_country)
 df
 ```
 
-```output
+``` output
           title imdb_score production_country
 1           FTA         62                 US
 2       Dostana         21                 IN

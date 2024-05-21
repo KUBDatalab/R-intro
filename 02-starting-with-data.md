@@ -95,14 +95,14 @@ desirable qualities. [Read more about tibbles here](https://tibble.tidyverse.org
 Before we can use the `read_csv()` we need to load the tidyverse package.
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
 After this we can read in the data set.
 
 
-```r
+``` r
 movieSerie <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
 ```
 
@@ -136,14 +136,14 @@ has been loaded, we can see the content of the data frame by typing its name:
 `movieSerie` in the console.
 
 
-```r
+``` r
 movieSerie
 ## Try also
 ## view(movieSerie)
 ## head(movieSerie)
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -169,11 +169,11 @@ the data is read using `read_csv()`, it is stored in an object of class
 `tbl_df`, `tbl`,  and `data.frame`. You can see the class of an object with
 
 
-```r
+``` r
 class(movieSerie)
 ```
 
-```output
+``` output
 [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
 ```
 
@@ -234,36 +234,36 @@ extract some specific data from it, we need to specify the "coordinates" we
 want from it. Row numbers come first, followed by column numbers.
 
 
-```r
+``` r
 ## first element in the first column of the tibble
 movieSerie[1, 1]
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   id      
   <chr>   
 1 ts300399
 ```
 
-```r
+``` r
 ## first element in the 6th column of the tibble 
 movieSerie[1, 6]
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   release_year
          <dbl>
 1         1945
 ```
 
-```r
+``` r
 ## first column of the tibble (as a vector)
 movieSerie[[1]]
 ```
 
-```output
+``` output
    [1] "ts300399"  "tm84618"   "tm154986"  "tm127384"  "tm120801"  "ts22164"  
    [7] "tm70993"   "tm14873"   "tm119281"  "tm98978"   "tm44204"   "tm67378"  
   [13] "tm69997"   "tm16479"   "tm135083"  "tm89386"   "tm156453"  "tm14350"  
@@ -1241,12 +1241,12 @@ movieSerie[[1]]
 [5845] "tm1074617" "tm1014599" "tm898842"  "tm1059008" "tm1035612" "ts271048" 
 ```
 
-```r
+``` r
 ## first column of the tibble
 movieSerie[1]
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 1
    id      
    <chr>   
@@ -1263,12 +1263,12 @@ movieSerie[1]
 # ℹ 5,840 more rows
 ```
 
-```r
+``` r
 ## first three elements in the 7th column of the tibble
 movieSerie[1:3, 7]
 ```
 
-```output
+``` output
 # A tibble: 3 × 1
   age_certification
   <chr>            
@@ -1277,12 +1277,12 @@ movieSerie[1:3, 7]
 3 R                
 ```
 
-```r
+``` r
 ## the 3rd row of the tibble
 movieSerie[3, ]
 ```
 
-```output
+``` output
 # A tibble: 1 × 14
   id       title  type  genre description release_year age_certification runtime
   <chr>    <chr>  <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -1291,7 +1291,7 @@ movieSerie[3, ]
 #   imdb_votes <dbl>, tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
-```r
+``` r
 ## equivalent to head_movieSerie <- head(movieSerie)
 head_movieSerie <- movieSerie[1:6, ]
 ```
@@ -1302,11 +1302,11 @@ or decreasing order, test `1:10` and `10:1` for instance.
 You can also exclude certain indices of a data frame using the "`-`" sign:
 
 
-```r
+``` r
 movieSerie[, -1]          # The whole tibble, except the first column
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 13
    title  type  genre description release_year age_certification runtime seasons
    <chr>  <chr> <chr> <chr>              <dbl> <chr>               <dbl>   <dbl>
@@ -1325,11 +1325,11 @@ movieSerie[, -1]          # The whole tibble, except the first column
 #   tmdb_popularity <dbl>, tmdb_score <dbl>
 ```
 
-```r
+``` r
 movieSerie[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
-```output
+``` output
 # A tibble: 5,725 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -1352,7 +1352,7 @@ movieSerie[-c(7:131), ]   # Equivalent to head(interviews)
 calling their column names directly:
 
 
-```r
+``` r
 movieSerie["title"]       # Result is a tibble
 
 movieSerie[, "title"]     # Result is a tibble
@@ -1408,7 +1408,7 @@ you've learned about sequences in R to extract the middle row!
 ## Solution
 
 
-```r
+``` r
 # 1.
 movieSerie_100 <- movieSerie[100, ]
 
@@ -1421,13 +1421,13 @@ movieSerie_last <- movieSerie[n_rows, ]
 movieSerie_middle <- movieSerie[median(1:n_rows), ]
 ```
 
-```error
+``` error
 Error in `movieSerie[median(1:n_rows), ]`:
 ! Can't subset rows with `median(1:n_rows)`.
 ✖ Can't convert from `i` <double> to <integer> due to loss of precision.
 ```
 
-```r
+``` r
 # 4.
 movieSerie_head <- movieSerie[-(7:n_rows), ]
 ```

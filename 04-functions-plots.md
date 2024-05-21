@@ -27,11 +27,11 @@ In case you have made changes to the original object we made. We read in the dat
 in a new object
 
 
-```r
+``` r
 movieSerie_plotting <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
 ```
 
-```output
+``` output
 Rows: 5850 Columns: 14
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -54,7 +54,7 @@ of the x-axis and one containing the values for the y-axis. Here we use the
 $-notation:
 
 
-```r
+``` r
 plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
 ```
 
@@ -65,7 +65,7 @@ Here it does not appear that the correlation exists; there is no clear trend.
 
 We might want to adjust the labels on the axes, and add a main title:
 
-```r
+``` r
 plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score, 
      main = "Relation between release date and their imdb_score",
      xlab = "Release year",
@@ -78,7 +78,7 @@ plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score,
 ## Boxplots 
 We can use boxplots to visualize the distribution of number of imdb_score for genre:
 
-```r
+``` r
 boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
 ```
 
@@ -106,7 +106,7 @@ outliers are either very interesting, or something that we can ignore.
 
 Another useful plottype are histograms. 
 
-```r
+``` r
 hist(movieSerie_plotting$runtime)
 ```
 
@@ -129,7 +129,7 @@ function.
 
 Functions in R are defined in this way:
 
-```r
+``` r
 function_name <- function(x){
   temporary_result_1 <- some_function(x)
   temporary_result_2 <- some_other_function(temporary_result_1)
@@ -205,14 +205,14 @@ Loops are constructs we use to do the same operations on lots of data.
 For loops are constructs used to apply one or more functions on a series of data.
 
 
-```r
+``` r
 for(i in 1:10){
   temp <- sqrt(i)
   print(temp)
 }
 ```
 
-```output
+``` output
 [1] 1
 [1] 1.414214
 [1] 1.732051
@@ -242,7 +242,7 @@ The Sys.time() function will tell us what time our computer thinks it is.
 If we run that just before, and just after our loop, we can calculate how long
 it took to run.
 
-```r
+``` r
 tic <- Sys.time()
 for(i in 1:1000){
   temp <- sqrt(i)
@@ -260,7 +260,7 @@ would be use the fact that sqrt() is a vectorized function that will calculate
 the square root of every element in a vector used as input to it:
 
 
-```r
+``` r
 tic <- Sys.time()
 sqrt(1:1000)
 toc <- Sys.time()
@@ -270,12 +270,12 @@ vect_time
 
 And we can then compare how much faster the latter vectorized solution is.
 
-```r
+``` r
 as.numeric(for_time)/as.numeric(vect_time)
 ```
 
-```output
-[1] 6.946203
+``` output
+[1] 9.695247
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -285,7 +285,7 @@ But that is not always a luxury we have.
 ### while loops
 While loops are loops that execute the code - as long as some criterium is satisfied.
 
-```r
+``` r
 i <- 1
 while(i <= 10){
   print(sqrt(i))
@@ -293,7 +293,7 @@ while(i <= 10){
 }
 ```
 
-```output
+``` output
 [1] 1
 [1] 1.414214
 [1] 1.732051
@@ -327,7 +327,7 @@ extensions, that enables us to plot almost anything.
 
 The basic structure of ggplots are:
 
-```r
+``` r
 ggplot(data, mapping = aes(x=x, y=y)) +
   geom_point()
 ```
@@ -335,7 +335,7 @@ ggplot(data, mapping = aes(x=x, y=y)) +
 ggplot takes some data. Typically we will provide the data using the pipe: ` %>% `  
 
 
-```r
+``` r
 data %>% 
   ggplot(mapping = aes(x=x, y=y)) +
     geom_point()
@@ -353,13 +353,13 @@ gives us a column-plot, `geom_histogram` a histogram etc.
 
 Let us try to make a histogram like we saw earlier:
 
-```r
+``` r
 interviews_plotting %>% 
   ggplot(aes(x=no_membrs)) +
   geom_histogram()
 ```
 
-```error
+``` error
 Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
 ```
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically

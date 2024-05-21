@@ -113,12 +113,12 @@ columns adjacent to each other, you can use a `:` to select a range of columns,
 read as "select columns from ___ to ___."
 
 
-```r
+``` r
 # to select columns throughout the dataframe
 select(movieSerie, title, description)
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 2
    title                               description                              
    <chr>                               <chr>                                    
@@ -135,12 +135,12 @@ select(movieSerie, title, description)
 # ℹ 5,840 more rows
 ```
 
-```r
+``` r
 # to select a series of connected columns
 select(movieSerie, title:description)
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 4
    title                               type  genre         description          
    <chr>                               <chr> <chr>         <chr>                
@@ -162,12 +162,12 @@ The argument after the dataframe is the condition we want our final
 dataframe to adhere to (e.g. age_certification is PG-13): 
 
 
-```r
+``` r
 # filters observations where age_certification name is "PG-13" 
 filter(movieSerie, age_certification == "PG-13")
 ```
 
-```output
+``` output
 # A tibble: 451 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -194,7 +194,7 @@ our desired conditions as arguments in the `filter()` function, separated by
 commas:
 
 
-```r
+``` r
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(movieSerie, age_certification == "PG-13",
@@ -202,7 +202,7 @@ filter(movieSerie, age_certification == "PG-13",
                    imdb_score < 6.0)
 ```
 
-```output
+``` output
 # A tibble: 60 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -224,7 +224,7 @@ filter(movieSerie, age_certification == "PG-13",
 We can also form "and" statements with the `&` operator instead of commas:
 
 
-```r
+``` r
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(movieSerie, age_certification == "PG-13" & 
@@ -232,7 +232,7 @@ filter(movieSerie, age_certification == "PG-13" &
                    imdb_score < 6.0)
 ```
 
-```output
+``` output
 # A tibble: 60 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -255,7 +255,7 @@ In an "or" statement, observations must meet *at least one* of the specified con
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
 
 
-```r
+``` r
 # filters observations with "|" logical operator
 # output dataframe satisfies AT LEAST ONE of the specified conditions
 filter(movieSerie, age_certification == "PG-13" | 
@@ -263,7 +263,7 @@ filter(movieSerie, age_certification == "PG-13" |
                    imdb_score < 6.0)
 ```
 
-```output
+``` output
 # A tibble: 2,852 × 14
    id       title type  genre description release_year age_certification runtime
    <chr>    <chr> <chr> <chr> <chr>              <dbl> <chr>               <dbl>
@@ -292,7 +292,7 @@ With intermediate steps, you create a temporary dataframe and use
 that as input to the next function, like this:
 
 
-```r
+``` r
 movieSerie2 <- filter(movieSerie, age_certification == "PG-13")
 movieSerie_ch <- select(movieSerie2, title:description)
 ```
@@ -304,7 +304,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 
-```r
+``` r
 movieSerie_ch <- select(filter(movieSerie, age_certification == "PG-13"),
                          title:description)
 ```
@@ -322,13 +322,13 @@ are made available via the **`magrittr`** package, installed automatically with
 <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
 
 
-```r
+``` r
 movieSerie %>%
     filter(age_certification == "PG-13") %>%
     select(title,description)
 ```
 
-```output
+``` output
 # A tibble: 451 × 2
    title                                 description                            
    <chr>                                 <chr>                                  
@@ -363,7 +363,7 @@ If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
 
 
-```r
+``` r
 movieSerie_ch <- movieSerie %>%
     filter(age_certification == "PG-13") %>%
     select(title,description)
@@ -371,7 +371,7 @@ movieSerie_ch <- movieSerie %>%
 movieSerie_ch
 ```
 
-```output
+``` output
 # A tibble: 451 × 2
    title                                 description                            
    <chr>                                 <chr>                                  
@@ -408,13 +408,13 @@ have a `release_year` greater than 1980 and retain only the columns `title`,
 ## Solution
 
 
-```r
+``` r
 movieSerie %>%
      filter(release_year > 1980) %>%
      select(title, runtime, age_certification)
 ```
 
-```output
+``` output
 # A tibble: 5,815 × 3
    title                       runtime age_certification
    <chr>                         <dbl> <chr>            
@@ -443,13 +443,13 @@ two columns. For this we'll use `mutate()`.
 We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 
-```r
+``` r
 movieSerie %>%
   mutate(score_difference = imdb_score - tmdb_score) %>% 
   select(imdb_score, tmdb_score, score_difference)
 ```
 
-```output
+``` output
 # A tibble: 5,850 × 3
    imdb_score tmdb_score score_difference
         <dbl>      <dbl>            <dbl>
@@ -486,7 +486,7 @@ frame!
 ## Solution
 
 
-```r
+``` r
 movieSerie_total_score <- movieSerie %>%
   mutate(total_score = imdb_score + tmdb_score) %>%
   filter(total_score > 15) %>%
@@ -513,13 +513,13 @@ to calculate the summary statistics. So to compute the average imdb_score by
 genre:
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```output
+``` output
 # A tibble: 19 × 2
    genre         mean_imdb_score
    <chr>                   <dbl>
@@ -550,18 +550,18 @@ screen anymore. It's one of the advantages of `tbl_df` over dataframe.
 You can also group by multiple columns:
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 38 × 3
 # Groups:   genre [19]
    genre         type  mean_imdb_score
@@ -583,19 +583,19 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) %>%
     ungroup()
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 38 × 3
    genre         type  mean_imdb_score
    <chr>         <chr>           <dbl>
@@ -619,19 +619,19 @@ time (and not necessarily on the same variable). For instance, we could add a
 column indicating the maximum imdb_score given to a movie or serie:
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre         type  mean_imdb_score max_imdb_score
@@ -655,7 +655,7 @@ imdb_score first:
 
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
@@ -663,12 +663,12 @@ movieSerie %>%
     arrange(max_imdb_score)
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre   type  mean_imdb_score max_imdb_score
@@ -690,7 +690,7 @@ To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum imdb_score:
 
 
-```r
+``` r
 movieSerie %>%
     group_by(genre, type) %>%
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
@@ -698,12 +698,12 @@ movieSerie %>%
     arrange(desc(max_imdb_score))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'genre'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 38 × 4
 # Groups:   genre [19]
    genre         type  mean_imdb_score max_imdb_score
@@ -729,12 +729,12 @@ for each factor or combination of factors. For this task, **`dplyr`** provides
 each village, we would do:
 
 
-```r
+``` r
 movieSerie %>%
     count(release_year)
 ```
 
-```output
+``` output
 # A tibble: 63 × 2
    release_year     n
           <dbl> <int>
@@ -755,12 +755,12 @@ For convenience, `count()` provides the `sort` argument to get results in
 decreasing order:
 
 
-```r
+``` r
 movieSerie %>%
     count(release_year, sort = TRUE)
 ```
 
-```output
+``` output
 # A tibble: 63 × 2
    release_year     n
           <dbl> <int>
@@ -792,12 +792,12 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 ## Solution 1
 
 
-```r
+``` r
  movieSerie %>%
   count(age_certification)
 ```
 
-```output
+``` output
 # A tibble: 12 × 2
    age_certification     n
    <chr>             <int>
@@ -822,7 +822,7 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 ## Solution 2
 
 
-```r
+``` r
 movieSerie %>%
   group_by(genre) %>%
    summarize(
@@ -833,7 +833,7 @@ movieSerie %>%
    )
 ```
 
-```output
+``` output
 # A tibble: 19 × 5
    genre         mean_tmdb_score min_tmdb_score max_tmdb_score     n
    <chr>                   <dbl>          <dbl>          <dbl> <int>
@@ -882,7 +882,7 @@ re-generate them.
 Now we can save this dataframe to our `data_output` directory.
 
 
-```r
+``` r
 write_csv(movieSerie_ch, file = "data_output/movieSerie_changed.csv")
 ```
 

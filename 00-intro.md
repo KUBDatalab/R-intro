@@ -260,7 +260,7 @@ clicking on the "New Folder" button in the file pane (bottom right), or directly
 from R by typing at console:
 
 
-```r
+``` r
 dir.create("data")
 dir.create("data_output")
 dir.create("fig_output")
@@ -272,7 +272,7 @@ from R by copying and pasting this in your terminal (your instructor can place t
 the Etherpad):
 
 
-```r
+``` r
 download.file("https://raw.githubusercontent.com/KUBDatalab/R-intro/main/episodes/data/movieSerie.csv", "data/movieSerie.csv", mode = "wb")
 ```
 
@@ -380,7 +380,7 @@ If you were watching the console window when you started the
 install of ‘tidyverse’, you may have noticed that the line
 
 
-```r
+``` r
 install.packages("tidyverse")
 ```
 
