@@ -695,7 +695,7 @@ imdb_score > 70    # will return logicals with TRUE for the indices that meet th
 ```
 
 ``` r
-## so we can use this to select only the values above 5
+## so we can use this to select only the values above 70
 imdb_score[imdb_score > 70]
 ```
 
