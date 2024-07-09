@@ -27,7 +27,7 @@
             <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
-        
+
       </div>
     </div>
     <div class="selector-container">
@@ -56,7 +56,7 @@
             </li>
           </ul></li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Instructor View <i data-feather="chevron-down"></i>
@@ -179,7 +179,7 @@
                 </div><!--/div.accordion-flush-->
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
-      
+
             <hr></div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordionFlush11">
@@ -198,7 +198,7 @@
     <div class="accordion-header" id="flush-heading1">
         <a href="index.html">Setup</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -207,7 +207,7 @@
     <div class="accordion-header" id="flush-heading2">
         <a href="00-intro.html">1. Before we Start</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -216,7 +216,7 @@
     <div class="accordion-header" id="flush-heading3">
         <a href="01-intro-to-r.html">2. Introduction to R</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -225,7 +225,7 @@
     <div class="accordion-header" id="flush-heading4">
         <a href="02-starting-with-data.html">3. Starting with Data</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -239,7 +239,7 @@
         </span>
       </button>
     </div><!--/div.accordion-header-->
-        
+
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-is-an-r-package">What is an R package?</a></li>
@@ -252,7 +252,7 @@
 <li><a href="#exporting-data">Exporting data</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -261,7 +261,7 @@
     <div class="accordion-header" id="flush-heading6">
         <a href="04-functions-plots.html">5. A couple of plots. And making our own functions</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -270,7 +270,7 @@
     <div class="accordion-header" id="flush-heading7">
         <a href="whats-next.html">6. What is the next step?</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -301,10 +301,10 @@
               </div>
             </div>
             <hr class="half-width resources"><a href="../instructor/aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
-            
+
             </div>
           </div><!-- /div.accordion -->
         </div><!-- /div.sidebar-inner -->
@@ -325,20 +325,20 @@
           Previous: Starting with Data
         </a>
         <a class="chapter-link float-end" href="../instructor/04-functions-plots.html" rel="next">
-          Next: A couple of plots.... 
+          Next: A couple of plots....
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr and tidyr</h1>
-        <p>Last updated on 2024-07-02 |
-        
+        <p>Last updated on 2024-07-09 |
+
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/03-dplyr-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        
-        
-        
+
+
+
         <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
-        
+
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -425,8 +425,8 @@ teaching.</p>
 </div>
 </div>
 </div>
-<section id="what-is-an-r-package"><h2 class="section-heading">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a>
-</h2>
+<section><h2 class="section-heading" id="what-is-an-r-package">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a>
+<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a></h2>
 <hr class="half-width"><p>The package <strong><code>dplyr</code></strong> provides easy tools
 for the most common data wrangling tasks. It is built to work directly
 with dataframes, with many common tasks optimized by being written in a
@@ -457,9 +457,9 @@ check out this <a href="https://github.com/rstudio/cheatsheets/raw/master/data-t
 data transformation with <strong><code>dplyr</code></strong>
 cheatsheet</a> and this <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf" class="external-link">one
 about <strong><code>tidyr</code></strong></a>.</p>
-</section><section id="learning-dplyr-and-tidyr"><h2 class="section-heading">Learning <strong><code>dplyr</code></strong> and
+</section><section><h2 class="section-heading" id="learning-dplyr-and-tidyr">Learning <strong><code>dplyr</code></strong> and
 <strong><code>tidyr</code></strong><a class="anchor" aria-label="anchor" href="#learning-dplyr-and-tidyr"></a>
-</h2>
+<a class="anchor" aria-label="anchor" href="#learning-dplyr-and-tidyr"></a></h2>
 <hr class="half-width"><p>We are working with the same dataset as earlier. Refer to the
 previous lesson to download the data, if you do not have it loaded.</p>
 <p>We’re going to learn some of the most common
@@ -478,8 +478,8 @@ statistics on grouped data</li>
 <code>arrange()</code>: sort results</li>
 <li>
 <code>count()</code>: count discrete values</li>
-</ul></section><section id="selecting-columns-and-filtering-rows"><h2 class="section-heading">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a>
-</h2>
+</ul></section><section><h2 class="section-heading" id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a>
+<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h2>
 <hr class="half-width"><p>To select columns of a dataframe, use <code>select()</code>. The
 first argument to this function is the dataframe
 (<code>movieSerie</code>), and the subsequent arguments are the columns
@@ -497,8 +497,8 @@ range of columns, read as “select columns from ___ to ___.”</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 5,850 × 2
-   title                               description                              
-   &lt;chr&gt;                               &lt;chr&gt;                                    
+   title                               description
+   &lt;chr&gt;                               &lt;chr&gt;
  1 Five Came Back: The Reference Films "This collection includes 12 World War I…
  2 Taxi Driver                         "A mentally unstable Vietnam War veteran…
  3 Deliverance                         "Intent on seeing the Cahulawassee River…
@@ -522,8 +522,8 @@ range of columns, read as “select columns from ___ to ___.”</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 5,850 × 4
-   title                               type  genre         description          
-   &lt;chr&gt;                               &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;                
+   title                               type  genre         description
+   &lt;chr&gt;                               &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;
  1 Five Came Back: The Reference Films SHOW  documentation "This collection inc…
  2 Taxi Driver                         MOVIE drama         "A mentally unstable…
  3 Deliverance                         MOVIE drama         "Intent on seeing th…
@@ -669,8 +669,8 @@ operator for “or,” which is the vertical bar (|):</p>
 # ℹ 6 more variables: seasons &lt;dbl&gt;, imdb_id &lt;chr&gt;, imdb_score &lt;dbl&gt;,
 #   imdb_votes &lt;dbl&gt;, tmdb_popularity &lt;dbl&gt;, tmdb_score &lt;dbl&gt;</code></pre>
 </div>
-</section><section id="pipes"><h2 class="section-heading">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a>
-</h2>
+</section><section><h2 class="section-heading" id="pipes">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a>
+<a class="anchor" aria-label="anchor" href="#pipes"></a></h2>
 <hr class="half-width"><p>What if you want to select and filter at the same time? There are
 three ways to do this: use intermediate steps, nested functions, or
 pipes.</p>
@@ -719,8 +719,8 @@ RStudio, you can type the pipe with:<br>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 451 × 2
-   title                                 description                            
-   &lt;chr&gt;                                 &lt;chr&gt;                                  
+   title                                 description
+   &lt;chr&gt;                                 &lt;chr&gt;
  1 The Professionals                     "An arrogant Texas millionaire hires f…
  2 Awakenings                            "Dr. Malcolm Sayer, a shy research phy…
  3 National Lampoon's Christmas Vacation "It's Christmastime, and the Griswolds…
@@ -767,8 +767,8 @@ data, we can assign it a new name:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 451 × 2
-   title                                 description                            
-   &lt;chr&gt;                                 &lt;chr&gt;                                  
+   title                                 description
+   &lt;chr&gt;                                 &lt;chr&gt;
  1 The Professionals                     "An arrogant Texas millionaire hires f…
  2 Awakenings                            "Dr. Malcolm Sayer, a shy research phy…
  3 National Lampoon's Christmas Vacation "It's Christmastime, and the Griswolds…
@@ -803,7 +803,7 @@ only the columns <code>title</code>, <code>runtime</code>, and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -818,25 +818,25 @@ only the columns <code>title</code>, <code>runtime</code>, and
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 5,815 × 3
    title                       runtime age_certification
-   &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;            
- 1 Seinfeld                         24 TV-PG            
- 2 GoodFellas                      145 R                
- 3 Full Metal Jacket               117 R                
- 4 Once Upon a Time in America     139 R                
- 5 When Harry Met Sally...          96 R                
- 6 A Nightmare on Elm Street        91 R                
- 7 Steel Magnolias                 119 PG               
- 8 Police Academy                   97 R                
- 9 Christine                       110 R                
-10 Knight Rider                     51 TV-PG            
+   &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;
+ 1 Seinfeld                         24 TV-PG
+ 2 GoodFellas                      145 R
+ 3 Full Metal Jacket               117 R
+ 4 Once Upon a Time in America     139 R
+ 5 When Harry Met Sally...          96 R
+ 6 A Nightmare on Elm Street        91 R
+ 7 Steel Magnolias                 119 PG
+ 8 Police Academy                   97 R
+ 9 Christine                       110 R
+10 Knight Rider                     51 TV-PG
 # ℹ 5,805 more rows</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="mutate"><h2 class="section-heading">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a>
-</h2>
+</section><section><h2 class="section-heading" id="mutate">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a>
+<a class="anchor" aria-label="anchor" href="#mutate"></a></h2>
 <hr class="half-width"><p>Frequently you’ll want to create new columns based on the values in
 existing columns, for example to do unit conversions, or to find the
 ratio of values in two columns. For this we’ll use
@@ -857,16 +857,16 @@ vs tmdb:</p>
 <pre class="output" tabindex="0"><code># A tibble: 5,850 × 3
    imdb_score tmdb_score score_difference
         &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
- 1       NA        NA             NA     
+ 1       NA        NA             NA
  2        8.2       8.18           0.0210
- 3        7.7       7.3            0.400 
- 4        8.2       7.81           0.389 
- 5        7.7       7.6            0.100 
- 6        8.8       8.31           0.494 
- 7        8         7.8            0.200 
- 8        7.7       7.5            0.200 
- 9        7.7       7.5            0.200 
-10        5.8       6.16          -0.356 
+ 3        7.7       7.3            0.400
+ 4        8.2       7.81           0.389
+ 5        7.7       7.6            0.100
+ 6        8.8       8.31           0.494
+ 7        8         7.8            0.200
+ 8        7.7       7.5            0.200
+ 9        7.7       7.5            0.200
+10        5.8       6.16          -0.356
 # ℹ 5,840 more rows</code></pre>
 </div>
 <div id="exercise-1" class="callout challenge">
@@ -894,7 +894,7 @@ to produce the data frame!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -909,8 +909,8 @@ to produce the data frame!</p>
 </div>
 </div>
 </div>
-</section><section id="split-apply-combine-data-analysis-and-the-summarize-function"><h2 class="section-heading">Split-apply-combine data analysis and the summarize() function<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a>
-</h2>
+</section><section><h2 class="section-heading" id="split-apply-combine-data-analysis-and-the-summarize-function">Split-apply-combine data analysis and the summarize() function<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a>
+<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a></h2>
 <hr class="half-width"><p>Many data analysis tasks can be approached using the
 <em>split-apply-combine</em> paradigm: split the data into groups, apply
 some analysis to each group, and then combine the results.
@@ -1057,9 +1057,9 @@ to a movie or serie:</p>
    genre         type  mean_imdb_score max_imdb_score
    &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
  1 action        MOVIE            5.94            9.1
- 2 action        SHOW             6.87            9  
+ 2 action        SHOW             6.87            9
  3 animation     MOVIE            6.32            9.1
- 4 animation     SHOW             6.68            9  
+ 4 animation     SHOW             6.68            9
  5 comedy        MOVIE            6.09            8.7
  6 comedy        SHOW             6.98            9.2
  7 crime         MOVIE            6.39            8.6
@@ -1095,7 +1095,7 @@ put the group with the smallest imdb_score first:</p>
    genre   type  mean_imdb_score max_imdb_score
    &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;
  1 music   SHOW             6.3             6.9
- 2 horror  SHOW             6.19            7  
+ 2 horror  SHOW             6.19            7
  3 sport   MOVIE            6.27            7.4
  4 history MOVIE            6.43            7.5
  5 reality MOVIE            7.15            7.5
@@ -1140,8 +1140,8 @@ imdb_score:</p>
  6 comedy        SHOW             6.98            9.2
  7 action        MOVIE            5.94            9.1
  8 animation     MOVIE            6.32            9.1
- 9 action        SHOW             6.87            9  
-10 animation     SHOW             6.68            9  
+ 9 action        SHOW             6.87            9
+10 animation     SHOW             6.68            9
 # ℹ 28 more rows</code></pre>
 </div>
 </div>
@@ -1225,7 +1225,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1262,7 +1262,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1308,8 +1308,8 @@ observations (hint: see <code>?n</code>).</p></li>
 </div>
 </div>
 </div>
-</section><section id="exporting-data"><h2 class="section-heading">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
-</h2>
+</section><section><h2 class="section-heading" id="exporting-data">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
+<a class="anchor" aria-label="anchor" href="#exporting-data"></a></h2>
 <hr class="half-width"><p>Now that you have learned how to use
 <strong><code>dplyr</code></strong> to extract information from or
 summarize your raw data, you may want to export these new data sets to
@@ -1355,9 +1355,9 @@ dataframes.</li>
 </ul></div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
@@ -1371,7 +1371,7 @@ any links that you are not going to use.
           Previous: Starting with Data
         </a>
         <a class="chapter-link float-end" href="../instructor/04-functions-plots.html" rel="next">
-          Next: A couple of plots.... 
+          Next: A couple of plots....
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1382,18 +1382,18 @@ any links that you are not going to use.
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/03-dplyr-tidyr.Rmd" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/KUBDatalab/R-intro/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/KUBDatalab/R-intro/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/KUBDatalab/R-intro/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -1417,8 +1417,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-intro/instructor/03-dplyr-tidyr.html",
   "identifier": "https://KUBDatalab.github.io/R-intro/instructor/03-dplyr-tidyr.html",
   "dateCreated": "2024-06-12",
-  "dateModified": "2024-07-02",
-  "datePublished": "2024-07-02"
+  "dateModified": "2024-07-09",
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
