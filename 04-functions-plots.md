@@ -275,7 +275,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 10.21674
+[1] 6.733975
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -360,7 +360,7 @@ interviews_plotting %>%
 ```
 
 ``` error
-Error in eval(expr, envir, enclos): object 'interviews_plotting' not found
+Error: object 'interviews_plotting' not found
 ```
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
 chooses 30 bins for us, and that is normally not the right number.
