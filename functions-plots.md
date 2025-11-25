@@ -58,7 +58,7 @@ $-notation:
 plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
 ```
 
-<img src="fig/04-functions-plots-rendered-first-scatterplot-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-first-scatterplot-1.png" style="display: block; margin: auto;" />
 
 Scatterplots are useful for showing that sort for relationships in the data.
 Here it does not appear that the correlation exists; there is no clear trend.
@@ -72,7 +72,7 @@ plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score,
      ylab = "imdb score")
 ```
 
-<img src="fig/04-functions-plots-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
@@ -82,7 +82,7 @@ We can use boxplots to visualize the distribution of number of imdb_score for ge
 boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
 ```
 
-<img src="fig/04-functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -110,7 +110,7 @@ Another useful plottype are histograms.
 hist(movieSerie_plotting$runtime)
 ```
 
-<img src="fig/04-functions-plots-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -275,7 +275,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.868677
+[1] 4.69102
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general

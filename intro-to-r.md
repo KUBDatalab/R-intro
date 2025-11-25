@@ -339,6 +339,13 @@ NULL
 ```
 
 
+:::: callout
+
+## NULL
+´args()´ som funktion giver ikke et egentligt resultat. Funktionen har en sideeffekt, hvor den printer noget, men hvor `round()` giver et resultat som vi kan gemme og arbejde videre med, giver `args()` intet resultat. `NULL´ angiver at der slet ikke er noget. Det er ikke en manglende værdi, istedet er der intet.
+::::
+
+
 ``` r
 ?round
 ```
