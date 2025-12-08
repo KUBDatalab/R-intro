@@ -117,54 +117,52 @@ freely available to extend R's native capabilities.
 
 
 
-<img src="./fig/r-manual.jpeg" alt="RStudio extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
+<img src="./fig/r-manual.jpeg" alt="Positron extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
 
 
-<img src="./fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of RStudio" width="100%" style="display: block; margin: auto;" />
+<img src="./fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of Positron" width="100%" style="display: block; margin: auto;" />
 
-RStudio extends what R can do, and makes it easier to write R code and interact
+Positron extends what R can do, and makes it easier to write R code and interact
 with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">Right photo credit</a>.
 
 
 
 
-## A tour of RStudio
+## A tour of Positron
 
-Let's start by learning about [RStudio](https://posit.co/), which is an
+Let's start by learning about [Positron](https://positron.posit.co/), which is an
 Integrated Development Environment (IDE) for working with R.
 
-The RStudio IDE open-source product is free under the
-[Affero General Public License (AGPL) v3](https://www.gnu.org/licenses/agpl-3.0.en.html).
-The RStudio IDE is also available with a commercial license and priority email
+The Positron IDE open-source product is free under the
+[Elastic License 2.0] (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).
+The Positron IDE is also available with a commercial license and priority email
 support from Posit Software, Inc.
 
-We will use the RStudio IDE to write code, navigate the files on our computer,
-inspect the variables we create, and visualize the plots we generate. RStudio
+We will use the Positron IDE to write code, navigate the files on our computer,
+inspect the variables we create, and visualize the plots we generate. Positron
 can also be used for other things (e.g., version control, developing packages,
 writing Shiny apps) that we will not cover during the workshop.
 
-One of the advantages of using RStudio is that all the information
-you need to write code is available in a single window. Additionally, RStudio
+One of the advantages of using Positron is that all the information
+you need to write code is available in a single window. Additionally, Positron
 provides many shortcuts, autocompletion, and highlighting for the major file
-types you use while developing in R. RStudio makes typing easier and less
+types you use while developing in R. Positron makes typing easier and less
 error-prone.
 
-### The RStudio Interface
+### The Positron Interface
 
 Let's take a quick tour of RStudio.
 
-![RStudio interface](fig/R_00_Rstudio_01.png){alt='A picture of RStudios interface'}
+![Positron interface](fig/R_00_Positron_01.png){alt='A picture of Positron interface'}
 
-RStudio is divided into four "panes". The placement of these
-panes and their content can be customized (see menu, Tools -> Global Options ->
-Pane Layout).
+Positron is divided into four "panes". The placement of these
+panes and their content can be customized. Click "Costumize layout" in the upper right corner.
 
 The Default Layout is:
-- Top Left - **Source**: your scripts and documents
-- Bottom Left - **Console**: what R would look and be like without RStudio
-- Top Right - **Enviornment/History**: look here to see what you have done
-- Bottom Right - **Files** and more: see the contents of the project/working
-directory here, like your Script.R file
+- Top Center - **Code editor**: your scripts and documents
+- Bottom Center - **Console**: what R would look and be like without RStudio
+- Top Right - **Variables**: your objects and data frames
+- Bottom Right - **Plots**: see your visualisations
 
 ### Getting set up
 
@@ -177,24 +175,27 @@ this way makes it a lot easier to move your project around on your computer and
 share it with others without having to directly modify file paths in the
 individual scripts.
 
-RStudio provides a helpful set of tools to do this through its "Projects"
+Positron provides a helpful set of tools to do this through its "Project Folder"
 interface, which not only creates a working directory for you but also remembers
 its location (allowing you to quickly navigate to it). The interface also
 (optionally) preserves custom settings and open files to make it easier to
 resume work after a break.
 
-An easy way to work like this is to create projects in RStudio.
+An easy way to work like this is to create project folders in Positron.
 
 
-### Create a new project and a new script file
+### Create a new project folder and a new script file
 
-* Under the `File` menu, click on `New project`, choose `New directory`, then
-  `New project`
-* Enter a name for this new folder (or "directory") and choose a convenient
+* Under the `File` menu, click on `New Folder from Template`, choose `R Project`, then click
+  `Next`
+* Enter a name for this new folder and choose a convenient
   location for it. This will be your **working directory** for working on this
   project (e.g., `~/data-carpentry`)
-* Click on `Create project`
-* Create a new file where we will type our scripts. Go to File > New File > R
+* Click on `Next`
+* Choose `Project Configurations` by selecting the version of R you wish to work with.
+* Click `Create`
+* A new unsaved script is automatically created. Click <kbd>ctrl</kbd>/cmd-s to save
+* Create a new file where you will type our scripts. Go to File > New File > R
   script. Click the save icon on your toolbar and save your script as
   "`script.R`".
 
