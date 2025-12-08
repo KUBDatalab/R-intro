@@ -8,7 +8,7 @@ exercises: 10
 
 :::: questions
 
-- How can I select specific rows and/or columns from a dataframe?
+- How can I select specific rows and/or columns from a data-frame?
 - How can I combine multiple commands into a single command?
 - How can I create new columns or remove existing columns from a dataframe?
 - How can I reformat a dataframe to meet my needs?
@@ -23,7 +23,7 @@ exercises: 10
 - Select certain rows in a dataframe according to filtering conditions with the **`dplyr`**
   function `filter`.
 - Link the output of one **`dplyr`** function to the input of another function with
-  the 'pipe' operator `%>%`.
+  the 'pipe' operator ` |> `.
 - Add new columns to a dataframe that are functions of existing columns with `mutate`.
 - Use the split-apply-combine concept for data analysis.
 - Use `summarize`, `group_by`, and `count` to split a dataframe into groups of observations,
@@ -313,18 +313,20 @@ This is handy, as R evaluates the expression from the inside out (in this case,
 filtering, then selecting), but it can be difficult to read if too many 
 functions are nested, 
 
-The last option, *pipes*, are a recent addition to R. Pipes let you take the
+The last option is *pipes*. Pipes let you take the
 output of one function and send it directly to the next, which is useful when
-you need to do many things to the same dataset. Pipes in R look like `%>%` and
-are made available via the **`magrittr`** package, installed automatically with
-**`dplyr`**. If you use RStudio, you can type the pipe with:  
+you need to do many things to the same dataset. The pipe is build into R and looks like ` |> `. If you use Positron, you can type the pipe with:  
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
-<kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
+<kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac. 
+
+A previous incarnation looks like `%>%`. Both pipes work the exact same way.
+
+If you are using RStudio, the above keyboard shortcuts will result in `%>%`. 
 
 
 ``` r
-movieSerie %>%
-    filter(age_certification == "PG-13") %>%
+movieSerie |> 
+    filter(age_certification == "PG-13") |> 
     select(title,description)
 ```
 
@@ -347,7 +349,7 @@ movieSerie %>%
 
 In the above code, we use the pipe to send the `movieSerie` dataset first
 through `filter()` to keep rows where `age_certification` is "PG-13", then through
-`select()` to keep only the `title` and `description` columns. Since `%>%`
+`select()` to keep only the `title` and `description` columns. Since ` |> `
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
@@ -364,8 +366,8 @@ can assign it a new name:
 
 
 ``` r
-movieSerie_ch <- movieSerie %>%
-    filter(age_certification == "PG-13") %>%
+movieSerie_ch <- movieSerie |> 
+    filter(age_certification == "PG-13") |> 
     select(title,description)
 
 movieSerie_ch
@@ -409,8 +411,8 @@ have a `release_year` greater than 1980 and retain only the columns `title`,
 
 
 ``` r
-movieSerie %>%
-     filter(release_year > 1980) %>%
+movieSerie |> 
+     filter(release_year > 1980) |> 
      select(title, runtime, age_certification)
 ```
 
@@ -444,8 +446,8 @@ We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 
 ``` r
-movieSerie %>%
-  mutate(score_difference = imdb_score - tmdb_score) %>% 
+movieSerie |> 
+  mutate(score_difference = imdb_score - tmdb_score) |> 
   select(imdb_score, tmdb_score, score_difference)
 ```
 
@@ -487,9 +489,9 @@ frame!
 
 
 ``` r
-movieSerie_total_score <- movieSerie %>%
-  mutate(total_score = imdb_score + tmdb_score) %>%
-  filter(total_score > 15) %>%
+movieSerie_total_score <- movieSerie |> 
+  mutate(total_score = imdb_score + tmdb_score) |> 
+  filter(total_score > 15) |> 
   select(title, total_score)
 ```
 
@@ -514,8 +516,8 @@ genre:
 
 
 ``` r
-movieSerie %>%
-    group_by(genre) %>%
+movieSerie |> 
+    group_by(genre) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
@@ -551,8 +553,8 @@ You can also group by multiple columns:
 
 
 ``` r
-movieSerie %>%
-    group_by(genre, type) %>%
+movieSerie |> 
+    group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
 
@@ -584,9 +586,9 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 
 ``` r
-movieSerie %>%
-    group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) %>%
+movieSerie |> 
+    group_by(genre, type) |> 
+    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) |> 
     ungroup()
 ```
 
@@ -620,8 +622,8 @@ column indicating the maximum imdb_score given to a movie or serie:
 
 
 ``` r
-movieSerie %>%
-    group_by(genre, type) %>%
+movieSerie |> 
+    group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE))
 ```
@@ -656,10 +658,10 @@ imdb_score first:
 
 
 ``` r
-movieSerie %>%
-    group_by(genre, type) %>%
+movieSerie |> 
+    group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
-              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
+              max_imdb_score = max(imdb_score, na.rm = TRUE)) |> 
     arrange(max_imdb_score)
 ```
 
@@ -691,10 +693,10 @@ sort the results by decreasing order of minimum imdb_score:
 
 
 ``` r
-movieSerie %>%
-    group_by(genre, type) %>%
+movieSerie |> 
+    group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
-              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
+              max_imdb_score = max(imdb_score, na.rm = TRUE)) |> 
     arrange(desc(max_imdb_score))
 ```
 
@@ -730,7 +732,7 @@ each village, we would do:
 
 
 ``` r
-movieSerie %>%
+movieSerie |> 
     count(release_year)
 ```
 
@@ -756,7 +758,7 @@ decreasing order:
 
 
 ``` r
-movieSerie %>%
+movieSerie |> 
     count(release_year, sort = TRUE)
 ```
 
@@ -793,7 +795,7 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 
 
 ``` r
- movieSerie %>%
+ movieSerie |> 
   count(age_certification)
 ```
 
@@ -823,8 +825,8 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 
 
 ``` r
-movieSerie %>%
-  group_by(genre) %>%
+movieSerie |> 
+  group_by(genre) |> 
    summarize(
        mean_tmdb_score = mean(tmdb_score, na.rm = TRUE),
        min_tmdb_score = min(tmdb_score, na.rm = TRUE),

@@ -275,7 +275,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.764101
+[1] 4.61684
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -332,11 +332,11 @@ ggplot(data, mapping = aes(x=x, y=y)) +
   geom_point()
 ```
 
-ggplot takes some data. Typically we will provide the data using the pipe: ` %>% `  
+ggplot takes some data. Typically we will provide the data using the pipe: ` |> `  
 
 
 ``` r
-data %>% 
+data |> 
   ggplot(mapping = aes(x=x, y=y)) +
     geom_point()
 ```
@@ -354,7 +354,7 @@ gives us a column-plot, `geom_histogram` a histogram etc.
 Let us try to make a histogram like we saw earlier:
 
 ``` r
-interviews_plotting %>% 
+interviews_plotting |> 
   ggplot(aes(x=no_membrs)) +
   geom_histogram()
 ```
