@@ -138,8 +138,8 @@ the object name:
 
 
 ``` r
-runtime_min <- 51    # doesn't print anything
-runtime_min         # but typing the name of the object print
+runtime_minutes <- 51    # doesn't print anything
+runtime_minutes         # but typing the name of the object print
 ```
 
 ``` output
@@ -147,7 +147,7 @@ runtime_min         # but typing the name of the object print
 ```
 
 ``` r
-(runtime_min <- 1.0)  # putting parenthesis around the call also print
+(runtime_minutes <- 1.0)  # putting parenthesis around the call also print
 ```
 
 ``` output
@@ -156,11 +156,11 @@ runtime_min         # but typing the name of the object print
 
 ### Doing math on objects
 
-Now that R has `runtime_min` in memory, we can do arithmetic with it. For instance, we may want to convert the runtime in minutes into runtime in seconds (runtime in seconds is 60 times the runtime in minutes): 
+Now that R has `runtime_minutes` in memory, we can do arithmetic with it. For instance, we may want to convert the runtime in minutes into runtime in seconds (runtime in seconds is 60 times the runtime in minutes): 
 
 
 ``` r
-60 * runtime_min
+60 * runtime_minutes
 ```
 
 ``` output
@@ -171,8 +171,8 @@ We can also change an object’s value by assigning it a new one:
 
 
 ``` r
-runtime_min <- 114
-60 * runtime_min
+runtime_minutes <- 114
+60 * runtime_minutes
 ```
 
 ``` output
@@ -183,25 +183,25 @@ Assigning a value to one object does not automatically change the values of othe
 
 
 ``` r
-runtime_sec <- 60 * runtime_min
+runtime_seconds <- 60 * runtime_minutes
 ```
 
 and then change `runtime_min` to 114.
 
 
 ``` r
-runtime_min <- 114
+runtime_minutes <- 114
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge
 ## Exercise
-What do you think is the current content of the object `area_acres`? 123.5 or 6.175?
+What do you think is the current content of the object `runtime_seconds`? 114 or 684?
 
 :::::::::::::::::::::::: solution
 
 ## Solution
 
-The value of `area_acres` is still 6.175 because you have not
+The value of `runtime_minutes` is still 114 because you have not
 re-run the line `area_acres <- 2.47 * area_hectares` since
 changing the value of `area_hectares`.
 
