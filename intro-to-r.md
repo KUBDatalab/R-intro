@@ -64,7 +64,7 @@ x <- 3
 the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
 be read as 3 **goes into** `x`.
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
+In Positron, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push <kbd>Alt</kbd> at the
 same time as the <kbd>-</kbd> key) will write `<- ` in a single keystroke in a
 PC, while typing <kbd>Option</kbd> + <kbd>-</kbd> (push <kbd>Option</kbd> at the
 same time as the <kbd>-</kbd> key) does the same in a Mac.
@@ -261,7 +261,7 @@ or include them after any code on the line.
 
 ``` r
 # land area in hectares
-area_hectares <- 1.0			
+area_hectares <- 1.0		
 area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
@@ -270,12 +270,12 @@ area_acres				# print land area in acres.
 [1] 2.47
 ```
 
-RStudio makes it easy to comment or uncomment a paragraph: after selecting the
+Positron makes it easy to comment or uncomment a paragraph: after selecting the
 lines you  want to comment, press at the same time on your keyboard
-<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If you only want to comment
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>'''</kbd>. If you only want to comment
 out one line, you can put the cursor at any location of that line (i.e. no need
 to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
-<kbd>C</kbd>.
+<kbd>'</kbd>.
 
 
 ## Functions and their arguments

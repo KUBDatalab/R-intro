@@ -388,7 +388,7 @@ movieSerie[["title"]]     # Result is a vector
 movieSerie$title          # Result is a vector
 ```
 
-In RStudio, you can use the autocompletion feature to get the full and correct
+In Positron, you can use the autocompletion feature to get the full and correct
 names of the columns.
 
 :::: callout
