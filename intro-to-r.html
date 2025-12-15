@@ -491,8 +491,8 @@ object name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">runtime_min</span> <span class="op">&lt;-</span> <span class="fl">51</span>    <span class="co"># doesn't print anything</span></span>
-<span><span class="va">runtime_min</span>         <span class="co"># but typing the name of the object print</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">51</span>    <span class="co"># doesn't print anything</span></span>
+<span><span class="va">runtime_minutes</span>         <span class="co"># but typing the name of the object print</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -503,7 +503,7 @@ object name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">runtime_min</span> <span class="op">&lt;-</span> <span class="fl">1.0</span><span class="op">)</span>  <span class="co"># putting parenthesis around the call also print</span></span></code></pre>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">1.0</span><span class="op">)</span>  <span class="co"># putting parenthesis around the call also print</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -513,7 +513,7 @@ object name:</p>
 </div>
 <div class="section level3">
 <h3 id="doing-math-on-objects">Doing math on objects<a class="anchor" aria-label="anchor" href="#doing-math-on-objects"></a></h3>
-<p>Now that R has <code>runtime_min</code> in memory, we can do
+<p>Now that R has <code>runtime_minutes</code> in memory, we can do
 arithmetic with it. For instance, we may want to convert the runtime in
 minutes into runtime in seconds (runtime in seconds is 60 times the
 runtime in minutes):</p>
@@ -521,7 +521,7 @@ runtime in minutes):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_min</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_minutes</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -533,8 +533,8 @@ runtime in minutes):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">runtime_min</span> <span class="op">&lt;-</span> <span class="fl">114</span></span>
-<span><span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_min</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">114</span></span>
+<span><span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_minutes</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -548,14 +548,14 @@ acres in a new object, <code>area_acres</code>:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">runtime_sec</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_min</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">runtime_seconds</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_minutes</span></span></code></pre>
 </div>
 <p>and then change <code>runtime_min</code> to 114.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">runtime_min</span> <span class="op">&lt;-</span> <span class="fl">114</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">114</span></span></code></pre>
 </div>
 <div id="exercise" class="callout challenge">
 <div class="callout-square">
@@ -566,7 +566,7 @@ acres in a new object, <code>area_acres</code>:</p>
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
 <p>What do you think is the current content of the object
-<code>area_acres</code>? 123.5 or 6.175?</p>
+<code>runtime_seconds</code>? 114 or 684?</p>
 </div>
 </div>
 </div>
@@ -577,9 +577,10 @@ acres in a new object, <code>area_acres</code>:</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>The value of <code>area_acres</code> is still 6.175 because you have
-not re-run the line <code>area_acres &lt;- 2.47 * area_hectares</code>
-since changing the value of <code>area_hectares</code>.</p>
+<p>The value of <code>runtime_minutes</code> is still 114 because you
+have not re-run the line
+<code>area_acres &lt;- 2.47 * area_hectares</code> since changing the
+value of <code>area_hectares</code>.</p>
 </div>
 </div>
 </div>
