@@ -147,11 +147,11 @@ runtime_minutes         # but typing the name of the object print
 ```
 
 ``` r
-(runtime_minutes <- 1.0)  # putting parenthesis around the call also print
+(runtime_minutes <- 51)  # putting parenthesis around the call also print
 ```
 
 ``` output
-[1] 1
+[1] 51
 ```
 
 ### Doing math on objects
@@ -164,7 +164,7 @@ Now that R has `runtime_minutes` in memory, we can do arithmetic with it. For in
 ```
 
 ``` output
-[1] 60
+[1] 3060
 ```
 
 We can also change an object’s value by assigning it a new one:
@@ -179,14 +179,14 @@ runtime_minutes <- 114
 [1] 6840
 ```
 
-Assigning a value to one object does not automatically change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
+Assigning a value to one object does not automatically change the values of other objects. For example, let's store the runtime in seconds as new object, `runtime_seconds`:
 
 
 ``` r
 runtime_seconds <- 60 * runtime_minutes
 ```
 
-and then change `runtime_min` to 114.
+and then change `runtime_minutes` to 114.
 
 
 ``` r
@@ -201,9 +201,9 @@ What do you think is the current content of the object `runtime_seconds`? 114 or
 
 ## Solution
 
-The value of `runtime_minutes` is still 114 because you have not
-re-run the line `area_acres <- 2.47 * area_hectares` since
-changing the value of `area_hectares`.
+The value of `runtime_seconds` is still 114 because you have not
+re-run the line `runtime_seconds <- 60 * runtime_minutes` since
+changing the value of `runtime_minutes`.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
