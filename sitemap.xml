@@ -10,10 +10,16 @@
     <loc>https://KUBDatalab.github.io/R-intro/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-intro/aio.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-intro/dplyr-tidyr.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/functions-plots.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-intro/images.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/index.html</loc>
@@ -28,19 +34,31 @@
     <loc>https://KUBDatalab.github.io/R-intro/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-intro/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/dplyr-tidyr.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/functions-plots.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-intro/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-intro/instructor/instructor-notes.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/intro-to-r.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/intro.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-intro/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/instructor/profiles.html</loc>
@@ -52,10 +70,16 @@
     <loc>https://KUBDatalab.github.io/R-intro/instructor/whats-next.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-intro/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-intro/intro-to-r.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/intro.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-intro/key-points.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-intro/profiles.html</loc>
