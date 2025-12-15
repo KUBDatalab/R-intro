@@ -83,12 +83,12 @@ packages such as these are housed on, and downloadable from, the
 This function makes the package accessible by your R installation with the
 command `library()`, as you did with `tidyverse` earlier.
 
-To easily access the documentation for a package within R or RStudio, use
+To easily access the documentation for a package within R or Positron, use
 `help(package = "package_name")`.
 
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
-to check out this [handy data transformation with **`dplyr`** cheatsheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
-and this [one about **`tidyr`**](https://rstudio.github.io/cheatsheets/html/tidyr.html).
+to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
 ## Learning **`dplyr`** and **`tidyr`**
 
@@ -321,7 +321,7 @@ you need to do many things to the same dataset. The pipe is build into R and loo
 
 A previous incarnation looks like `%>%`. Both pipes work the exact same way.
 
-If you are using RStudio, the above keyboard shortcuts will result in `%>%`. 
+If you are using Positron, the above keyboard shortcuts will result in `%>%`. 
 
 
 ``` r
