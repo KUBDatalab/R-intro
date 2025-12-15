@@ -43,6 +43,11 @@ dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
 ```
 
 
+:::: instructor
+The purpose is mostly to have additional material. Introducing ggplot is probably
+too complicated, so we stick to the base-plotting functions.
+::::
+
 ## Scatterplots ## 
 
 Scatterplots visualizes the relation between two variables in the dataset, by
@@ -83,6 +88,18 @@ boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
 ```
 
 <img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+:::: instructor
+The `~` is often difficult to locate. <kbd>AltGr</kbd> + <kbd>¨/^</kbd> is used on
+most computers running Windows. We do not encounter many Linux-users, and they
+tend to either know where to find it, or are on a Windows-computer. 
+Macs... <kbd>option</kbd>+<kbd>¨</kbd>. Sometimes. Depending on the model.
+
+Considder emphasizing the connection to the formula notation of `R`. We are making
+a boxplot of imdb_score as a function of genre.
+
+::::
+
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -116,7 +133,7 @@ Histograms counts the number of observations in our data, that lies between
 two values. Here the "breaks" between the values on the x-axis corresponds
 nicely to the number of people, but they do not have to.
 
-## Writing our own functions ##
+## Writing our own functions
 
 When calculating an average of several values, we do two things. First we
 count how many values there are. Then we sum all the values, and divides the sum
@@ -148,6 +165,13 @@ We assign the result of some_function(x) to a temporary result, use that as
 the input to a second function, and the result of that as the input to a third 
 function. The result of the last calculation we do, will be returned as the 
 output of our function.
+
+:::: instructor
+The output of the function is by default the result of the last operation called
+in the function definition. Using `return()` to control the output is discouraged,
+unless we have a function that returns early - eg where a logical control 
+yields different results.
+::::
 
 :::: challenge
 
@@ -275,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.81649
+[1] 4.651083
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general

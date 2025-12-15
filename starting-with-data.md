@@ -136,6 +136,17 @@ has been loaded, we can see the content of the data frame by typing its name:
 `movieSerie` in the console.
 
 
+::::instructor
+Why do we use `<-` instead of `=`? 
+
+`=` works for assigning values to objects. However `=` is also used when we
+specify values of arguments in function calls. This means that `=` functions differently depending on context, whereas `<-` always function in the same way.
+This means that we do not have to have a deeper understanding of the context when
+we encounter `<-`. That reduces the cognitive load, and we are stressed enough 
+as it is.
+::::
+
+
 ``` r
 movieSerie
 ## Try also
@@ -322,7 +333,7 @@ movieSerie[3, ]
 head_movieSerie <- movieSerie[1:6, ]
 ```
 
-`:` is a special function that creates numeric vectors of integers in increasing
+`:` is a special operator that creates numeric vectors of integers in increasing
 or decreasing order, test `1:10` and `10:1` for instance.
 
 You can also exclude certain indices of a data frame using the "`-`" sign:
