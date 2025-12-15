@@ -33,7 +33,7 @@ be a bit overwhelming, so consider looking at the "[datasets](https://www.kaggle
 
 Many exists, some are available online, some are even free!
 
-Our favorite is [R for Data Science](https://r4ds.had.co.nz/index.html) by Hadley Wickham and Garrett Grolemund. The [https://r4ds.hadley.nz/](2nd edition) is coming soon. Both editions have a chapter on Exploratory Data Analysis.
+Our favorite is [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund. 
 
 ## Great sites
 
