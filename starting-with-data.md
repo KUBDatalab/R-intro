@@ -271,7 +271,7 @@ movieSerie[1, 6]
 
 ``` r
 ## first column of the tibble (as a vector, truncated, rather than showing all 5850 values)
-movieSerie[[1]] %>% head()
+movieSerie[[1]] |> head()
 ```
 
 ``` output

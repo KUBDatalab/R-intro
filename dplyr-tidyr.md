@@ -321,7 +321,7 @@ you need to do many things to the same dataset. The pipe is build into R and loo
 
 A previous incarnation looks like `%>%`. Both pipes work the exact same way.
 
-If you are using Positron, the above keyboard shortcuts will result in `%>%`. 
+If you are using Positron, the above keyboard shortcuts will result in ` |> `. 
 
 
 ``` r

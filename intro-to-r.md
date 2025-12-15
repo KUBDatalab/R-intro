@@ -138,16 +138,16 @@ the object name:
 
 
 ``` r
-area_hectares <- 1.0    # doesn't print anything
-area_hectares         # but typing the name of the object print
+runtime_min <- 51    # doesn't print anything
+runtime_min         # but typing the name of the object print
 ```
 
 ``` output
-[1] 1
+[1] 51
 ```
 
 ``` r
-(area_hectares <- 1.0)  # putting parenthesis around the call also print
+(runtime_min <- 1.0)  # putting parenthesis around the call also print
 ```
 
 ``` output
@@ -156,41 +156,41 @@ area_hectares         # but typing the name of the object print
 
 ### Doing math on objects
 
-Now that R has `area_hectares` in memory, we can do arithmetic with it. For instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares): 
+Now that R has `runtime_min` in memory, we can do arithmetic with it. For instance, we may want to convert the runtime in minutes into runtime in seconds (runtime in seconds is 60 times the runtime in minutes): 
 
 
 ``` r
-2.47 * area_hectares
+60 * runtime_min
 ```
 
 ``` output
-[1] 2.47
+[1] 60
 ```
 
 We can also change an object’s value by assigning it a new one:
 
 
 ``` r
-area_hectares <- 2.5
-2.47 * area_hectares
+runtime_min <- 114
+60 * runtime_min
 ```
 
 ``` output
-[1] 6.175
+[1] 6840
 ```
 
 Assigning a value to one object does not automatically change the values of other objects. For example, let’s store the plot’s area in acres in a new object, `area_acres`:
 
 
 ``` r
-area_acres <- 2.47 * area_hectares
+runtime_sec <- 60 * runtime_min
 ```
 
-and then change `area_hectares` to 50.
+and then change `runtime_min` to 114.
 
 
 ``` r
-area_hectares <- 50
+runtime_min <- 114
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge
