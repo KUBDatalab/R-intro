@@ -503,12 +503,12 @@ object name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">1.0</span><span class="op">)</span>  <span class="co"># putting parenthesis around the call also print</span></span></code></pre>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="fl">51</span><span class="op">)</span>  <span class="co"># putting parenthesis around the call also print</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 1</code></pre>
+<pre class="output" tabindex="0"><code>[1] 51</code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -526,7 +526,7 @@ runtime in minutes):</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 60</code></pre>
+<pre class="output" tabindex="0"><code>[1] 3060</code></pre>
 </div>
 <p>We can also change an object’s value by assigning it a new one:</p>
 <div class="codewrapper sourceCode" id="cb12">
@@ -542,15 +542,15 @@ runtime in minutes):</p>
 <pre class="output" tabindex="0"><code>[1] 6840</code></pre>
 </div>
 <p>Assigning a value to one object does not automatically change the
-values of other objects. For example, let’s store the plot’s area in
-acres in a new object, <code>area_acres</code>:</p>
+values of other objects. For example, let’s store the runtime in seconds
+as new object, <code>runtime_seconds</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">runtime_seconds</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="va">runtime_minutes</span></span></code></pre>
 </div>
-<p>and then change <code>runtime_min</code> to 114.</p>
+<p>and then change <code>runtime_minutes</code> to 114.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -577,10 +577,10 @@ acres in a new object, <code>area_acres</code>:</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>The value of <code>runtime_minutes</code> is still 114 because you
+<p>The value of <code>runtime_seconds</code> is still 114 because you
 have not re-run the line
-<code>area_acres &lt;- 2.47 * area_hectares</code> since changing the
-value of <code>area_hectares</code>.</p>
+<code>runtime_seconds &lt;- 60 * runtime_minutes</code> since changing
+the value of <code>runtime_minutes</code>.</p>
 </div>
 </div>
 </div>
