@@ -105,7 +105,7 @@ plot function what relationship we want to visualise.
 The function notation y~x, tells the boxplot function that we want to visualise
 y as a function of x. In this case we want to visualise the number of people, as 
 af function of the wall type. 
-Secondly, we use a boxplot. A boxplots shows the distribution of the values on 
+Secondly, we use a boxplot. A boxplot shows the distribution of the values on 
 the y-axis. The median value is indicated by the solid bar.
 The box encapsulates 50% of the observations. Its upper and lower borders 
 represents the interquartile range (IQR). 
@@ -139,7 +139,7 @@ When calculating an average of several values, we do two things. First we
 count how many values there are. Then we sum all the values, and divides the sum
 by the number of values. 
 Rather than writing R-code for each of these three operations, we use the 
-mean() function, where other more experienced programmers have written the code.
+´ function, where other more experienced programmers have written the code.
 
 We can write our own functions, where we collect several operations into one 
 function. 
@@ -202,7 +202,7 @@ root_mean <- function(x){
 
 ## Logical tests in functions
 Some times we want to do something different to the data, depending on the
-data. We can control the flow of the code using the if() construction.
+data. We can control the flow of the code using the `if()` construction.
 
 As an example:
 if(x<10){
@@ -211,7 +211,7 @@ if(x<10){
   print("x is larger than 10")
 }
 
-The if() function will run the code provided in the curly braces {}, if, and 
+The `if()` function will run the code provided in the curly braces {}, if, and 
 only if, the expression in the paranthesis is true. If x is 11, x is not  
 smaller than 10, and the first print function will not be executed.
 
@@ -262,7 +262,7 @@ loop, operating on only 10 values, and we wont notice the difference in speed.
 
 But we can measure it. 
 
-The Sys.time() function will tell us what time our computer thinks it is.
+The `Sys.time()` function will tell us what time our computer thinks it is.
 If we run that just before, and just after our loop, we can calculate how long
 it took to run.
 
@@ -280,7 +280,7 @@ for_time <- toc - tic
 
 
 A more efficient way to calculate the square root of the numbers from 1 to 10
-would be use the fact that sqrt() is a vectorized function that will calculate 
+would be use the fact that `sqrt()` is a vectorized function that will calculate 
 the square root of every element in a vector used as input to it:
 
 
@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.651083
+[1] 4.820156
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -337,15 +337,15 @@ be 1, and therefore always smaller than 10. And the loop will never stop.
 
 ## ggplot
 
-The plotting functions in R produce nice clean plots without any fancy details.
+The plotting functions in `R` produce nice clean plots without any fancy details.
 That is generally a good thing, we want to maximize the information per ink in our plots.
 
 However, we are limited in the types of plots we can make, and sometimes we just want a 
 bit more color.
 
-Enter ggplot2.
+Enter `ggplot2`.
 
-ggplot2 is a package designed to work well with the packages we have already 
+`ggplot2` is a package designed to work well with the packages we have already 
 encountered. It produces plots in a structured way, and comes with a lot of 
 extensions, that enables us to plot almost anything.
 
@@ -356,7 +356,7 @@ ggplot(data, mapping = aes(x=x, y=y)) +
   geom_point()
 ```
 
-ggplot takes some data. Typically we will provide the data using the pipe: ` |> `  
+`ggplot` takes some data. Typically we will provide the data using the pipe: ` |> `  
 
 
 ``` r
@@ -365,10 +365,10 @@ data |>
     geom_point()
 ```
 
-The `mapping` argument tells ggplot which variables in our data should be mapped 
+The `mapping` argument tells `ggplot` which variables in our data should be mapped 
 to the x- and y-axes in our plot.
 
-That in itself will not produce much of a plot. We need to tell ggplot which type
+That in itself will not produce much of a plot. We need to tell `ggplot` which type
 of plot we want. 
 
 We do that by adding a `geom_` function. Here we have added `geom_point` which
