@@ -367,6 +367,20 @@ dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div class="accordion-body">
+<p>The purpose is mostly to have additional material. Introducing ggplot
+is probably too complicated, so we stick to the base-plotting
+functions.</p>
+</div>
+</div>
+</div>
+</div>
 <section><h2 class="section-heading" id="scatterplots">Scatterplots<a class="anchor" aria-label="anchor" href="#scatterplots"></a></h2>
 <hr class="half-width"><p>Scatterplots visualizes the relation between two variables in the
 dataset, by plotting individual observations in a two-dimensional graph,
@@ -404,8 +418,26 @@ imdb_score for genre:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">boxplot</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">imdb_score</span><span class="op">~</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">genre</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="../fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure">
-Two new things happens here. First, we are using a new way of telling
+<figure><img src="../fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div class="accordion-body">
+<p>The <code>~</code> is often difficult to locate. <kbd>AltGr</kbd> +
+<kbd>¨/^</kbd> is used on most computers running Windows. We do not
+encounter many Linux-users, and they tend to either know where to find
+it, or are on a Windows-computer. Macs… <kbd>option</kbd>+<kbd>¨</kbd>.
+Sometimes. Depending on the model.</p>
+<p>Considder emphasizing the connection to the formula notation of
+<code>R</code>. We are making a boxplot of imdb_score as a function of
+genre.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Two new things happens here. First, we are using a new way of telling
 the plot function what relationship we want to visualise. The function
 notation y~x, tells the boxplot function that we want to visualise y as
 a function of x. In this case we want to visualise the number of people,
@@ -461,6 +493,21 @@ do. We assign the result of some_function(x) to a temporary result, use
 that as the input to a second function, and the result of that as the
 input to a third function. The result of the last calculation we do,
 will be returned as the output of our function.</p>
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div class="accordion-body">
+<p>The output of the function is by default the result of the last
+operation called in the function definition. Using <code>return()</code>
+to control the output is discouraged, unless we have a function that
+returns early - eg where a logical control yields different results.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="exercise" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -480,7 +527,7 @@ result</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One way to do this would be:</p>
 <p>root_mean &lt;- function(x){ sqrt(mean(x, na.rm=T)) }</p>
@@ -588,7 +635,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 4.81649</code></pre>
+<pre class="output" tabindex="0"><code>[1] 4.651083</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized

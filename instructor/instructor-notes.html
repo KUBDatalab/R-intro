@@ -371,9 +371,50 @@ any links that you are not going to use.
       <section id="aggregate-instructor-notes"><section id="intro"><h2 class="section-heading"><a href="intro.html">Before we Start</a></h2>
 <hr class="half-width"></section><section id="intro-to-r"><h2 class="section-heading"><a href="intro-to-r.html">Introduction to R</a></h2>
 <hr class="half-width"></section><section id="starting-with-data"><h2 class="section-heading"><a href="starting-with-data.html">Starting with Data</a></h2>
-<hr class="half-width"></section><section id="dplyr-tidyr"><h2 class="section-heading"><a href="dplyr-tidyr.html">Data Wrangling with dplyr and tidyr</a></h2>
+<hr class="half-width">
+<h3 id="starting-with-data-headingInstructor1">
+<a href="starting-with-data.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#starting-with-data-headingInstructor1"></a>
+</h3>
+<p>Why do we use <code>&lt;-</code> instead of <code>=</code>?</p>
+<p><code>=</code> works for assigning values to objects. However
+<code>=</code> is also used when we specify values of arguments in
+function calls. This means that <code>=</code> functions differently
+depending on context, whereas <code>&lt;-</code> always function in the
+same way. This means that we do not have to have a deeper understanding
+of the context when we encounter <code>&lt;-</code>. That reduces the
+cognitive load, and we are stressed enough as it is.</p>
+<hr>
+<br></section><section id="dplyr-tidyr"><h2 class="section-heading"><a href="dplyr-tidyr.html">Data Wrangling with dplyr and tidyr</a></h2>
 <hr class="half-width"></section><section id="functions-plots"><h2 class="section-heading"><a href="functions-plots.html">A couple of plots. And making our own functions</a></h2>
-<hr class="half-width"></section><section id="whats-next"><h2 class="section-heading"><a href="whats-next.html">What is the next step?What should I do next?<a class="anchor" aria-label="anchor" href="#what-should-i-do-next"></a></a></h2>
+<hr class="half-width">
+<h3 id="functions-plots-headingInstructor1">
+<a href="functions-plots.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#functions-plots-headingInstructor1"></a>
+</h3>
+<p>The purpose is mostly to have additional material. Introducing ggplot
+is probably too complicated, so we stick to the base-plotting
+functions.</p>
+<hr>
+<br><h3 id="functions-plots-headingInstructor2">
+<a href="functions-plots.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#functions-plots-headingInstructor2"></a>
+</h3>
+<p>The <code>~</code> is often difficult to locate. <kbd>AltGr</kbd> +
+<kbd>¨/^</kbd> is used on most computers running Windows. We do not
+encounter many Linux-users, and they tend to either know where to find
+it, or are on a Windows-computer. Macs… <kbd>option</kbd>+<kbd>¨</kbd>.
+Sometimes. Depending on the model.</p>
+<p>Considder emphasizing the connection to the formula notation of
+<code>R</code>. We are making a boxplot of imdb_score as a function of
+genre.</p>
+<hr>
+<br><h3 id="functions-plots-headingInstructor3">
+<a href="functions-plots.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#functions-plots-headingInstructor3"></a>
+</h3>
+<p>The output of the function is by default the result of the last
+operation called in the function definition. Using <code>return()</code>
+to control the output is discouraged, unless we have a function that
+returns early - eg where a logical control yields different results.</p>
+<hr>
+<br></section><section id="whats-next"><h2 class="section-heading"><a href="whats-next.html">What is the next step?What should I do next?<a class="anchor" aria-label="anchor" href="#what-should-i-do-next"></a></a></h2>
 <hr class="half-width"></section></section>
 </div>
     </main>

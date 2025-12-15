@@ -1068,7 +1068,7 @@ acres in a new object, <code>area_acres</code>:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The value of <code>area_acres</code> is still 6.175 because you have
 not re-run the line <code>area_acres &lt;- 2.47 * area_hectares</code>
@@ -1103,7 +1103,7 @@ of <code>r_area</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1510,7 +1510,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>R implicitly converts them to all be the same type.</p>
 </div>
@@ -1536,7 +1536,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1569,7 +1569,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Vectors can be of only one data type. R tries to convert (coerce) the
 content of this vector to find a “common denominator” that doesn’t lose
@@ -1605,7 +1605,7 @@ any information.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Only one. There is no memory of past data types, and the coercion
 happens the first time the vector is evaluated. Therefore, the
@@ -1981,7 +1981,7 @@ the <code>rooms</code> vector.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2287,6 +2287,7 @@ automatically convert all the “NULL” or “NA” entries in the dataset into
 no outpu is created. If we want to check that our data has been loaded,
 we can see the content of the data frame by typing its name:
 <code>movieSerie</code> in the console.</p>
+
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2509,7 +2510,7 @@ numbers come first, followed by column numbers.</p>
 <code class="sourceCode R"><span><span class="co">## equivalent to head_movieSerie &lt;- head(movieSerie)</span></span>
 <span><span class="va">head_movieSerie</span> <span class="op">&lt;-</span> <span class="va">movieSerie</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span></span></code></pre>
 </div>
-<p><code>:</code> is a special function that creates numeric vectors of
+<p><code>:</code> is a special operator that creates numeric vectors of
 integers in increasing or decreasing order, test <code>1:10</code> and
 <code>10:1</code> for instance.</p>
 <p>You can also exclude certain indices of a data frame using the
@@ -2645,7 +2646,7 @@ the first through 6th rows of the interviews dataset.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3823,8 +3824,7 @@ imdb_score for genre:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">boxplot</span><span class="op">(</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">imdb_score</span><span class="op">~</span><span class="va">movieSerie_plotting</span><span class="op">$</span><span class="va">genre</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure">
-Two new things happens here. First, we are using a new way of telling
+<figure><img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Two new things happens here. First, we are using a new way of telling
 the plot function what relationship we want to visualise. The function
 notation y~x, tells the boxplot function that we want to visualise y as
 a function of x. In this case we want to visualise the number of people,
@@ -3884,6 +3884,7 @@ do. We assign the result of some_function(x) to a temporary result, use
 that as the input to a second function, and the result of that as the
 input to a third function. The result of the last calculation we do,
 will be returned as the output of our function.</p>
+
 <div id="exercise" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -3903,7 +3904,7 @@ result</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One way to do this would be:</p>
 <p>root_mean &lt;- function(x){ sqrt(mean(x, na.rm=T)) }</p>
@@ -4017,7 +4018,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 4.81649</code></pre>
+<pre class="output" tabindex="0"><code>[1] 4.651083</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized
