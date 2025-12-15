@@ -87,8 +87,8 @@ To easily access the documentation for a package within R or RStudio, use
 `help(package = "package_name")`.
 
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
-to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
-and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+to check out this [handy data transformation with **`dplyr`** cheatsheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+and this [one about **`tidyr`**](https://rstudio.github.io/cheatsheets/html/tidyr.html).
 
 ## Learning **`dplyr`** and **`tidyr`**
 
