@@ -45,9 +45,7 @@ learning in regards to exploratory data analysis:
 
 [codecademy](https://www.codecademy.com/catalog/language/r)
 
-
-
-This site:  https://rstats.wtf/
+[What They Forgot to Teach You About R](https://rstats.wtf/)
 
 
 ## Contact us!
