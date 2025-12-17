@@ -261,13 +261,13 @@ or include them after any code on the line.
 
 ``` r
 # land area in hectares
-area_hectares <- 1.0		
-area_acres <- area_hectares * 2.47	# convert to acres
-area_acres				# print land area in acres.
+runtime_hours <- 1.0		
+runtime_minutes <- runtime_hours * 60	# convert to minutes
+runtime_minutes				# print runtime in minutes.
 ```
 
 ``` output
-[1] 2.47
+[1] 60
 ```
 
 Positron makes it easy to comment or uncomment a paragraph: after selecting the
@@ -291,7 +291,7 @@ is called *calling* the function. An example of a function call is:
 
 
 ``` r
-b <- sqrt(area_acres)
+b <- sqrt(runtime_minutes)
 ```
 Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
 calculates the square root, and returns the value which is then assigned to
