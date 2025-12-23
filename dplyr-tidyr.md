@@ -885,7 +885,7 @@ Now we can save this data frame to our `data_output` directory.
 
 
 ``` r
-write_csv(movieSerie_ch, file = "data_output/movieSerie_changed.csv")
+write_csv(movieSerie_ch, file = "data_output/movie_series_changed.csv")
 ```
 
 

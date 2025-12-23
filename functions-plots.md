@@ -28,7 +28,7 @@ in a new object
 
 
 ``` r
-movieSerie_plotting <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
+movieSerie_plotting <- read_csv("data/movie_series.csv", na = c("NA", "NULL"))
 ```
 
 ``` output
@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 5.356438
+[1] 5.4189
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general

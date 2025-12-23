@@ -43,7 +43,7 @@ We will now demonstrate how to import tabular data using `read_csv()`.
 
 ## Presentation of the movieSerie dataset
 
-The data set we will import is movieSerie.csv. It is list of movies and series 
+The data set we will import is movie_series.csv. It is list of movies and series 
 from IMDB and the movie database. Each row holds information for a single movie 
 or serie, and the columns represent:
 
@@ -103,7 +103,7 @@ After this we can read in the data set.
 
 
 ``` r
-movieSerie <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
+movieSerie <- read_csv("data/movie_series.csv", na = c("NA", "NULL"))
 ```
 
 :::: callout

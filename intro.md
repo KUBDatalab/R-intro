@@ -260,14 +260,14 @@ dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Begin by downloading the dataset called ["`movieSerie.csv`"](/data/movieSerie.csv). 
+Begin by downloading the dataset called ["`movie_series.csv`"](/data/movie_series.csv). 
 Place this downloaded file in the `data/` you just created. You can do this directly 
 from R by copying and pasting this in your terminal (your instructor can place this chunk of code in
 the Etherpad):
 
 
 ``` r
-download.file("https://raw.githubusercontent.com/KUBDatalab/R-intro/main/episodes/data/movieSerie.csv", "data/movieSerie.csv", mode = "wb")
+download.file("https://raw.githubusercontent.com/KUBDatalab/R-intro/main/episodes/data/movie_series.csv", "data/movie_series.csv", mode = "wb")
 ```
 
 
