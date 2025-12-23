@@ -134,7 +134,7 @@ Let's start by learning about [Positron](https://positron.posit.co/), which is a
 Integrated Development Environment (IDE) for working with R.
 
 The Positron IDE open-source product is free under the
-[Elastic License 2.0] (https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).
+[Elastic License 2.0](https://github.com/posit-dev/positron?tab=License-1-ov-file#readme).
 The Positron IDE is also available with a commercial license and priority email
 support from Posit Software, Inc.
 
@@ -190,7 +190,7 @@ An easy way to work like this is to create project folders in Positron.
   `Next`
 * Enter a name for this new folder and choose a convenient
   location for it. This will be your **working directory** for working on this
-  project (e.g., `~/data-carpentry`)
+  project (e.g., `~/r_intro`)
 * Click on `Next`
 * Choose `Project Configurations` by selecting the version of R you wish to work with.
 * Click `Create`
@@ -260,10 +260,8 @@ dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Begin by downloading the dataset called ["`movie_series.csv`"](/data/movie_series.csv). 
-Place this downloaded file in the `data/` you just created. You can do this directly 
-from R by copying and pasting this in your terminal (your instructor can place this chunk of code in
-the Etherpad):
+Begin by downloading the dataset called `movie_series.csv` and place it in the `data`-folder you just created. You can do this directly 
+from Positron by copying this R-code and pasting it in your terminal:
 
 
 ``` r
@@ -301,7 +299,7 @@ selected text will be sent to the console and executed when you press
 <kbd>Ctrl</kbd> + <kbd>Enter</kbd>. If there is information in the console
 you do not need anymore, you can clear it with <kbd>Ctrl</kbd> + <kbd>L</kbd>.
 <!-- You can find other keyboard shortcuts in this -->
-[Positron cheatsheet about the Positron IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). -->
+<!-- [Positron cheatsheet about the Positron IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). -->
 
 At some point in your analysis, you may want to check the content of a variable
 or the structure of an object without necessarily keeping a record of it in
@@ -350,34 +348,24 @@ For this course we need the package `tidyverse`, so in order to install this pac
 install.packages("tidyverse")
 ```
 
-
-You could also have installed the **`tidyverse`** packages by running this command directly in the R terminal.
+The `tidyverse` package is really a package consisting of several packages. Among these are `ggplot2` and `dplyr`, both of which require other packages to run correctly.
+All of these packages will be installed automatically, when you install `tidyverse`. The installation time may vary, depending on what has already been installed. As the install proceeds, messages relating to its progress will be written to the console.
 
 ::::::::::::::::::::::::::::::::::::: challenge 
-Use both the Console and the Packages tab to confirm that you have the tidyverse
-installed.
+Use the console to confirm you have the `tidyverse` installed.
 
 :::::::::::::::::::::::: solution
 
-Scroll through packages tab down to ‘tidyverse’. You can also type a few
-characters into the searchbox.
-The ‘tidyverse’ package is really a package of packages, including
-'ggplot2' and 'dplyr', both of which require other packages to run correctly.
-All of these packages will be installed automatically. Depending on what
-packages have previously been installed in your R environment, the install of
-‘tidyverse’ could be very quick or could take several minutes. As the install
-proceeds, messages relating to its progress will be written to the console.
-You will be able to see all of the packages which are actually being
-installed.
 
-In the console. If you write tidy it should put up if it is installed. Look for tidyverse::
+Type `tidy` in the console. Based on the four letters, Positron will auto-suggest `tidyverse`, if the package has already been installed. Depending on the network connection, you might have to allow a few seconds the the auto-suggest to work.
+
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use Positron to write and run R programs
+- Use Positron to write and execute R scripts
 - Use `install.packages()` to install packages (libraries)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

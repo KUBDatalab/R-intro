@@ -260,7 +260,7 @@ or include them after any code on the line.
 
 
 ``` r
-# land area in hectares
+# runtime in minutes
 runtime_hours <- 1.0		
 runtime_minutes <- runtime_hours * 60	# convert to minutes
 runtime_minutes				# print runtime in minutes.
@@ -342,7 +342,13 @@ NULL
 :::: callout
 
 ## NULL
-´args()´ som funktion giver ikke et egentligt resultat. Funktionen har en sideeffekt, hvor den printer noget, men hvor `round()` giver et resultat som vi kan gemme og arbejde videre med, giver `args()` intet resultat. `NULL´ angiver at der slet ikke er noget. Det er ikke en manglende værdi, istedet er der intet.
+The function `args()` does not produce an actual result, that we can store and continue working with. Instead it types the required arguments of the function (in this case `round()`) and `NULL`. `NULL` indicates that there is nothing at all. It is not a missing value; instead, there is simply nothing
+
+Besides returning the required arguments of the given function (in this case round()), it also writes NULL.
+
+`args()` som funktion giver ikke et egentligt resultat, som vi ka. Funktionen udskriver definitionen af den ønskede funktion (i dette tilfælde round())med tilhørende argumenter. Funktionen har dog en sideeffekt, hvor den printer noget, men hvor `round()` giver et resultat som vi kan gemme og arbejde videre med, giver `args()` intet resultat. `NULL´ angiver at der slet ikke er noget. Det er ikke en manglende værdi, istedet er der intet.
+
+T The function has a side effect in that it prints something, but whereas `round()` produces a result we can store and continue working with, `args()` produces no result. `NULL` indicates that there is nothing at all. It is not a missing value; instead, there is simply nothing.
 ::::
 
 
