@@ -472,16 +472,17 @@ statistics on grouped data</li>
 </ul></section><section><h2 class="section-heading" id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h2>
 <hr class="half-width"><p>To select columns of a data frame, use <code>select()</code>. The
 first argument to this function is the data frame
-(<code>movieSerie</code>), and the subsequent arguments are the columns
-to keep, separated by commas. Alternatively, if you are selecting
-columns adjacent to each other, you can use a <code>:</code> to select a
-range of columns, read as “select columns from ___ to ___.”</p>
+(<code>movie_series</code>), and the subsequent arguments are the
+columns to keep, separated by commas. Alternatively, if you are
+selecting columns adjacent to each other, you can use a <code>:</code>
+to select a range of columns, read as “select columns from ___ to
+___.”</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># to select columns throughout the data frame</span></span>
-<span><span class="fu">select</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">select</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -506,7 +507,7 @@ range of columns, read as “select columns from ___ to ___.”</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># to select a series of connected columns</span></span>
-<span><span class="fu">select</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">title</span><span class="op">:</span><span class="va">description</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">select</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">title</span><span class="op">:</span><span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -535,7 +536,7 @@ condition we want our final data frame to adhere to
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations where age_certification name is "PG-13" </span></span>
-<span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -570,7 +571,7 @@ function, separated by commas:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "and" operator (comma)</span></span>
 <span><span class="co"># output data frame satisfies ALL specified conditions</span></span>
-<span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span>,</span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span>,</span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span>,</span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
 </div>
@@ -602,7 +603,7 @@ operator instead of commas:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "&amp;" logical operator</span></span>
 <span><span class="co"># output data frame satisfies ALL specified conditions</span></span>
-<span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">&amp;</span> </span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">&amp;</span> </span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">&amp;</span> </span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
 </div>
@@ -635,7 +636,7 @@ operator for “or,” which is the vertical bar (|):</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "|" logical operator</span></span>
 <span><span class="co"># output data frame satisfies AT LEAST ONE of the specified conditions</span></span>
-<span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">|</span> </span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">|</span> </span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">|</span> </span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
 </div>
@@ -669,8 +670,8 @@ that as input to the next function, like this:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie2</span> <span class="op">&lt;-</span> <span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span></span>
-<span><span class="va">movieSerie_ch</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">movieSerie2</span>, <span class="va">title</span><span class="op">:</span><span class="va">description</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">movie_series2</span> <span class="op">&lt;-</span> <span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span></span>
+<span><span class="va">movie_series_ch</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">movie_series2</span>, <span class="va">title</span><span class="op">:</span><span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
 <p>This is readable, but can clutter up your workspace with lots of
 objects that you have to name individually. With multiple steps, that
@@ -681,7 +682,7 @@ like this:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie_ch</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="va">movie_series_ch</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="fu">filter</span><span class="op">(</span><span class="va">movie_series</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span>,</span>
 <span>                         <span class="va">title</span><span class="op">:</span><span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
 <p>This is handy, as R evaluates the expression from the inside out (in
@@ -702,7 +703,7 @@ in <code>|&gt;</code>.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">filter</span><span class="op">(</span><span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">title</span>,<span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
@@ -725,7 +726,7 @@ in <code>|&gt;</code>.</p>
 # ℹ 441 more rows</code></pre>
 </div>
 <p>In the above code, we use the pipe to send the
-<code>movieSerie</code> dataset first through <code>filter()</code> to
+<code>movie_series</code> dataset first through <code>filter()</code> to
 keep rows where <code>age_certification</code> is “PG-13”, then through
 <code>select()</code> to keep only the <code>title</code> and
 <code>description</code> columns. Since <code>|&gt;</code> takes the
@@ -735,7 +736,7 @@ argument to the <code>filter()</code> and <code>select()</code>
 functions any more.</p>
 <p>Some may find it helpful to read the pipe like the word “then”. For
 instance, in the above example, we take the data frame
-<code>movieSerie</code>, <em>then</em> we <code>filter</code> for rows
+<code>movie_series</code>, <em>then</em> we <code>filter</code> for rows
 with <code>age_certification == "PG-13"</code>, <em>then</em> we
 <code>select</code> columns <code>title</code> and
 <code>description</code>. The <strong><code>dplyr</code></strong>
@@ -748,11 +749,11 @@ data, we can assign it a new name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie_ch</span> <span class="op">&lt;-</span> <span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series_ch</span> <span class="op">&lt;-</span> <span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">filter</span><span class="op">(</span><span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">title</span>,<span class="va">description</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">movieSerie_ch</span></span></code></pre>
+<span><span class="va">movie_series_ch</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -772,7 +773,7 @@ data, we can assign it a new name:</p>
 10 Gattaca                               "In a future society in the era of ind…
 # ℹ 441 more rows</code></pre>
 </div>
-<p>Note that the final data frame (<code>movieSerie_ch</code>) is the
+<p>Note that the final data frame (<code>movie_series_ch</code>) is the
 leftmost part of this expression.</p>
 <div id="exercise" class="callout discussion">
 <div class="callout-square">
@@ -782,9 +783,9 @@ leftmost part of this expression.</p>
 <div id="exercise" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
-<p>Using pipes, subset the <code>movieSerie</code> data set to include
-movieSerie have a <code>release_year</code> greater than 1980 and retain
-only the columns <code>title</code>, <code>runtime</code>, and
+<p>Using pipes, subset the <code>movie_series</code> data set to include
+movie_series have a <code>release_year</code> greater than 1980 and
+retain only the columns <code>title</code>, <code>runtime</code>, and
 <code>age_certification</code>.</p>
 </div>
 </div>
@@ -800,7 +801,7 @@ only the columns <code>title</code>, <code>runtime</code>, and
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>     <span class="fu">filter</span><span class="op">(</span><span class="va">release_year</span> <span class="op">&gt;</span> <span class="fl">1980</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>     <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">runtime</span>, <span class="va">age_certification</span><span class="op">)</span></span></code></pre>
 </div>
@@ -837,7 +838,7 @@ vs tmdb:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>score_difference <span class="op">=</span> <span class="va">imdb_score</span> <span class="op">-</span> <span class="va">tmdb_score</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">imdb_score</span>, <span class="va">tmdb_score</span>, <span class="va">score_difference</span><span class="op">)</span></span></code></pre>
 </div>
@@ -867,7 +868,7 @@ vs tmdb:</p>
 <div id="exercise-1" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
-<p>Create a new data frame from the <code>movieSerie</code> data set
+<p>Create a new data frame from the <code>movie_series</code> data set
 that meets the following criteria: contains only the <code>title</code>
 column and a new column called <code>total_score</code> containing a
 value that is equal to the total number of scores on both imdb and tmdb
@@ -890,7 +891,7 @@ to produce the data frame!</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie_total_score</span> <span class="op">&lt;-</span> <span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series_total_score</span> <span class="op">&lt;-</span> <span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>total_score <span class="op">=</span> <span class="va">imdb_score</span> <span class="op">+</span> <span class="va">tmdb_score</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">total_score</span> <span class="op">&gt;</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">total_score</span><span class="op">)</span></span></code></pre>
@@ -917,7 +918,7 @@ average imdb_score by genre:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -955,7 +956,7 @@ run off the screen anymore. It’s one of the advantages of
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -990,7 +991,7 @@ tibble, use the <code>ungroup</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
@@ -1027,7 +1028,7 @@ to a movie or serie:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -1064,7 +1065,7 @@ put the group with the smallest imdb_score first:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1102,7 +1103,7 @@ imdb_score:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_imdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              max_imdb_score <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">imdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1145,7 +1146,7 @@ village, we would do:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">release_year</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1172,7 +1173,7 @@ argument to get results in decreasing order:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">release_year</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1220,7 +1221,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span> <span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span> <span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">age_certification</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1257,7 +1258,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">movie_series</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu">summarize</span><span class="op">(</span></span>
 <span>       mean_tmdb_score <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">tmdb_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -1320,7 +1321,7 @@ directory.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">movieSerie_ch</span>, file <span class="op">=</span> <span class="st">"data_output/movie_series_changed.csv"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">movie_series_ch</span>, file <span class="op">=</span> <span class="st">"data_output/movie_series_changed.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
