@@ -63,7 +63,7 @@ $-notation:
 plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
 ```
 
-<img src="fig/functions-plots-rendered-first-scatterplot-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-first-scatterplot-1.png" alt="" style="display: block; margin: auto;" />
 
 Scatterplots are useful for showing that sort for relationships in the data.
 Here it does not appear that the correlation exists; there is no clear trend.
@@ -77,7 +77,7 @@ plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score,
      ylab = "imdb score")
 ```
 
-<img src="fig/functions-plots-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
@@ -87,7 +87,7 @@ We can use boxplots to visualize the distribution of number of imdb_score for ge
 boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
 ```
 
-<img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
 
 :::: instructor
 The `~` is often difficult to locate. <kbd>AltGr</kbd> + <kbd>¨/^</kbd> is used on
@@ -127,7 +127,7 @@ Another useful plottype are histograms.
 hist(movieSerie_plotting$runtime)
 ```
 
-<img src="fig/functions-plots-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/functions-plots-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 5.451332
+[1] 4.672815
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -384,7 +384,8 @@ interviews_plotting |>
 ```
 
 ``` error
-Error: object 'interviews_plotting' not found
+Error:
+! object 'interviews_plotting' not found
 ```
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
 chooses 30 bins for us, and that is normally not the right number.
