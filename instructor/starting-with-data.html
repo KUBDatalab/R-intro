@@ -382,7 +382,7 @@ by importing spreadsheets from your hard drive (or the web). We will now
 demonstrate how to import tabular data using
 <code>read_csv()</code>.</p>
 </section><section><h2 class="section-heading" id="presentation-of-the-movieserie-dataset">Presentation of the movieSerie dataset<a class="anchor" aria-label="anchor" href="#presentation-of-the-movieserie-dataset"></a></h2>
-<hr class="half-width"><p>The data set we will import is movieSerie.csv. It is list of movies
+<hr class="half-width"><p>The data set we will import is movie_series.csv. It is list of movies
 and series from IMDB and the movie database. Each row holds information
 for a single movie or serie, and the columns represent:</p>
 <table class="table"><colgroup><col width="50%"><col width="50%"></colgroup><thead><tr class="header"><th>column_name</th>
@@ -464,7 +464,7 @@ tidyverse package.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/movieSerie.csv"</span>, na <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"NA"</span>, <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">movieSerie</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/movie_series.csv"</span>, na <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"NA"</span>, <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="note" class="callout">
 <div class="callout-square">
@@ -507,7 +507,7 @@ we can see the content of the data frame by typing its name:
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Why do we use <code>&lt;-</code> instead of <code>=</code>?</p>
 <p><code>=</code> works for assigning values to objects. However
@@ -861,7 +861,7 @@ the first through 6th rows of the interviews dataset.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
