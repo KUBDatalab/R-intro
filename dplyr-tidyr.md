@@ -107,7 +107,7 @@ We're going to learn some of the most common **`dplyr`** functions:
 ## Selecting columns and filtering rows
 
 To select columns of a data frame, use `select()`. The first argument to this
-function is the data frame (`movieSerie`), and the subsequent arguments are the
+function is the data frame (`movie_series`), and the subsequent arguments are the
 columns to keep, separated by commas. Alternatively, if you are selecting
 columns adjacent to each other, you can use a `:` to select a range of columns,
 read as "select columns from ___ to ___."
@@ -115,7 +115,7 @@ read as "select columns from ___ to ___."
 
 ``` r
 # to select columns throughout the data frame
-select(movieSerie, title, description)
+select(movie_series, title, description)
 ```
 
 ``` output
@@ -137,7 +137,7 @@ select(movieSerie, title, description)
 
 ``` r
 # to select a series of connected columns
-select(movieSerie, title:description)
+select(movie_series, title:description)
 ```
 
 ``` output
@@ -164,7 +164,7 @@ data frame to adhere to (e.g. age_certification is PG-13):
 
 ``` r
 # filters observations where age_certification name is "PG-13" 
-filter(movieSerie, age_certification == "PG-13")
+filter(movie_series, age_certification == "PG-13")
 ```
 
 ``` output
@@ -197,7 +197,7 @@ commas:
 ``` r
 # filters observations with "and" operator (comma)
 # output data frame satisfies ALL specified conditions
-filter(movieSerie, age_certification == "PG-13",
+filter(movie_series, age_certification == "PG-13",
                    runtime > 100,
                    imdb_score < 6.0)
 ```
@@ -227,7 +227,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 ``` r
 # filters observations with "&" logical operator
 # output data frame satisfies ALL specified conditions
-filter(movieSerie, age_certification == "PG-13" & 
+filter(movie_series, age_certification == "PG-13" & 
                    runtime > 100 & 
                    imdb_score < 6.0)
 ```
@@ -258,7 +258,7 @@ To form "or" statements we use the logical operator for "or," which is the verti
 ``` r
 # filters observations with "|" logical operator
 # output data frame satisfies AT LEAST ONE of the specified conditions
-filter(movieSerie, age_certification == "PG-13" | 
+filter(movie_series, age_certification == "PG-13" | 
                    runtime > 100 | 
                    imdb_score < 6.0)
 ```
@@ -293,8 +293,8 @@ that as input to the next function, like this:
 
 
 ``` r
-movieSerie2 <- filter(movieSerie, age_certification == "PG-13")
-movieSerie_ch <- select(movieSerie2, title:description)
+movie_series2 <- filter(movie_series, age_certification == "PG-13")
+movie_series_ch <- select(movie_series2, title:description)
 ```
 
 This is readable, but can clutter up your workspace with lots of objects that
@@ -305,7 +305,7 @@ You can also nest functions (i.e. one function inside of another), like this:
 
 
 ``` r
-movieSerie_ch <- select(filter(movieSerie, age_certification == "PG-13"),
+movie_series_ch <- select(filter(movie_series, age_certification == "PG-13"),
                          title:description)
 ```
 
@@ -325,7 +325,7 @@ If you are using Positron, the above keyboard shortcuts will result in ` |> `.
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     filter(age_certification == "PG-13") |> 
     select(title,description)
 ```
@@ -347,7 +347,7 @@ movieSerie |>
 # ℹ 441 more rows
 ```
 
-In the above code, we use the pipe to send the `movieSerie` dataset first
+In the above code, we use the pipe to send the `movie_series` dataset first
 through `filter()` to keep rows where `age_certification` is "PG-13", then through
 `select()` to keep only the `title` and `description` columns. Since ` |> `
 takes the object on its left and passes it as the first argument to the function
@@ -355,7 +355,7 @@ on its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we take the data frame `movieSerie`, *then* we `filter`
+in the above example, we take the data frame `movie_series`, *then* we `filter`
 for rows with `age_certification == "PG-13"`, *then* we `select` columns `title` and
 `description`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
@@ -366,11 +366,11 @@ can assign it a new name:
 
 
 ``` r
-movieSerie_ch <- movieSerie |> 
+movie_series_ch <- movie_series |> 
     filter(age_certification == "PG-13") |> 
     select(title,description)
 
-movieSerie_ch
+movie_series_ch
 ```
 
 ``` output
@@ -390,7 +390,7 @@ movieSerie_ch
 # ℹ 441 more rows
 ```
 
-Note that the final data frame (`movieSerie_ch`) is the leftmost part of this
+Note that the final data frame (`movie_series_ch`) is the leftmost part of this
 expression.
 
 
@@ -399,7 +399,7 @@ expression.
 
 ## Exercise
 
-Using pipes, subset the `movieSerie` data set to include movieSerie
+Using pipes, subset the `movie_series` data set to include movie_series
 have a `release_year` greater than 1980 and retain only the columns `title`,
  `runtime`, and `age_certification`.
  
@@ -411,7 +411,7 @@ have a `release_year` greater than 1980 and retain only the columns `title`,
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
      filter(release_year > 1980) |> 
      select(title, runtime, age_certification)
 ```
@@ -446,7 +446,7 @@ We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
   mutate(score_difference = imdb_score - tmdb_score) |> 
   select(imdb_score, tmdb_score, score_difference)
 ```
@@ -473,7 +473,7 @@ movieSerie |>
 
 ## Exercise
 
-Create a new data frame from the `movieSerie` data set that meets the following
+Create a new data frame from the `movie_series` data set that meets the following
 criteria: contains only the `title` column and a new column called
 `total_score` containing a value that is equal to the total number of scores on 
 both imdb and tmdb (`imdb_score` plus `tmdb_score`).
@@ -489,7 +489,7 @@ frame!
 
 
 ``` r
-movieSerie_total_score <- movieSerie |> 
+movie_series_total_score <- movie_series |> 
   mutate(total_score = imdb_score + tmdb_score) |> 
   filter(total_score > 15) |> 
   select(title, total_score)
@@ -516,7 +516,7 @@ genre:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
@@ -553,7 +553,7 @@ You can also group by multiple columns:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
 ```
@@ -586,7 +586,7 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) |> 
     ungroup()
@@ -622,7 +622,7 @@ column indicating the maximum imdb_score given to a movie or serie:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE))
@@ -658,7 +658,7 @@ imdb_score first:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE)) |> 
@@ -693,7 +693,7 @@ sort the results by decreasing order of minimum imdb_score:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     group_by(genre, type) |> 
     summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
               max_imdb_score = max(imdb_score, na.rm = TRUE)) |> 
@@ -732,7 +732,7 @@ each village, we would do:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     count(release_year)
 ```
 
@@ -758,7 +758,7 @@ decreasing order:
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
     count(release_year, sort = TRUE)
 ```
 
@@ -795,7 +795,7 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 
 
 ``` r
- movieSerie |> 
+ movie_series |> 
   count(age_certification)
 ```
 
@@ -825,7 +825,7 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 
 
 ``` r
-movieSerie |> 
+movie_series |> 
   group_by(genre) |> 
    summarize(
        mean_tmdb_score = mean(tmdb_score, na.rm = TRUE),
@@ -885,7 +885,7 @@ Now we can save this data frame to our `data_output` directory.
 
 
 ``` r
-write_csv(movieSerie_ch, file = "data_output/movie_series_changed.csv")
+write_csv(movie_series_ch, file = "data_output/movie_series_changed.csv")
 ```
 
 

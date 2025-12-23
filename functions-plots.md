@@ -28,7 +28,7 @@ in a new object
 
 
 ``` r
-movieSerie_plotting <- read_csv("data/movie_series.csv", na = c("NA", "NULL"))
+movie_series_plotting <- read_csv("data/movie_series.csv", na = c("NA", "NULL"))
 ```
 
 ``` output
@@ -60,7 +60,7 @@ $-notation:
 
 
 ``` r
-plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
+plot(movie_series_plotting$release_year, movie_series_plotting$imdb_score)
 ```
 
 <img src="fig/functions-plots-rendered-first-scatterplot-1.png" alt="" style="display: block; margin: auto;" />
@@ -71,7 +71,7 @@ Here it does not appear that the correlation exists; there is no clear trend.
 We might want to adjust the labels on the axes, and add a main title:
 
 ``` r
-plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score, 
+plot(movie_series_plotting$release_year, movie_series_plotting$imdb_score, 
      main = "Relation between release date and their imdb_score",
      xlab = "Release year",
      ylab = "imdb score")
@@ -84,7 +84,7 @@ plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score,
 We can use boxplots to visualize the distribution of number of imdb_score for genre:
 
 ``` r
-boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
+boxplot(movie_series_plotting$imdb_score~movie_series_plotting$genre)
 ```
 
 <img src="fig/functions-plots-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
@@ -124,7 +124,7 @@ outliers are either very interesting, or something that we can ignore.
 Another useful plottype are histograms. 
 
 ``` r
-hist(movieSerie_plotting$runtime)
+hist(movie_series_plotting$runtime)
 ```
 
 <img src="fig/functions-plots-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 5.4189
+[1] 4.730239
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
