@@ -507,10 +507,9 @@ credit</a>.</p>
 <hr class="half-width">
 <p>Let’s start by learning about <a href="https://positron.posit.co/" class="external-link">Positron</a>, which is an Integrated
 Development Environment (IDE) for working with R.</p>
-<p>The Positron IDE open-source product is free under the [Elastic
-License 2.0] (<a href="https://github.com/posit-dev/positron?tab=License-1-ov-file#readme" class="external-link uri">https://github.com/posit-dev/positron?tab=License-1-ov-file#readme</a>).
-The Positron IDE is also available with a commercial license and
-priority email support from Posit Software, Inc.</p>
+<p>The Positron IDE open-source product is free under the <a href="https://github.com/posit-dev/positron?tab=License-1-ov-file#readme" class="external-link">Elastic
+License 2.0</a>. The Positron IDE is also available with a commercial
+license and priority email support from Posit Software, Inc.</p>
 <p>We will use the Positron IDE to write code, navigate the files on our
 computer, inspect the variables we create, and visualize the plots we
 generate. Positron can also be used for other things (e.g., version
@@ -566,7 +565,7 @@ then click <code>Next</code>
 </li>
 <li>Enter a name for this new folder and choose a convenient location
 for it. This will be your <strong>working directory</strong> for working
-on this project (e.g., <code>~/data-carpentry</code>)</li>
+on this project (e.g., <code>~/r_intro</code>)</li>
 <li>Click on <code>Next</code>
 </li>
 <li>Choose <code>Project Configurations</code> by selecting the version
@@ -654,10 +653,10 @@ interface by clicking on the “New Folder” button in the file pane
 <span><span class="fu">dir.create</span><span class="op">(</span><span class="st">"data_output"</span><span class="op">)</span></span>
 <span><span class="fu">dir.create</span><span class="op">(</span><span class="st">"fig_output"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Begin by downloading the dataset called <a href="/data/movie_series.csv">“<code>movie_series.csv</code>”</a>. Place
-this downloaded file in the <code>data/</code> you just created. You can
-do this directly from R by copying and pasting this in your terminal
-(your instructor can place this chunk of code in the Etherpad):</p>
+<p>Begin by downloading the dataset called <code>movie_series.csv</code>
+and place it in the <code>data</code>-folder you just created. You can
+do this directly from Positron by copying this R-code and pasting it in
+your terminal:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -697,8 +696,8 @@ commands in selected text will be sent to the console and executed when
 you press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>. If there is information in
 the console you do not need anymore, you can clear it with
 <kbd>Ctrl</kbd> + <kbd>L</kbd>.
-<!-- You can find other keyboard shortcuts in this --> <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf" class="external-link">Positron
-cheatsheet about the Positron IDE</a>. –&gt;</p>
+<!-- You can find other keyboard shortcuts in this -->
+<!-- [Positron cheatsheet about the Positron IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). --></p>
 <p>At some point in your analysis, you may want to check the content of
 a variable or the structure of an object without necessarily keeping a
 record of it in your script. You can type these commands and execute
@@ -753,9 +752,13 @@ console</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>You could also have installed the
-<strong><code>tidyverse</code></strong> packages by running this command
-directly in the R terminal.</p>
+<p>The <code>tidyverse</code> package is really a package consisting of
+several packages. Among these are <code>ggplot2</code> and
+<code>dplyr</code>, both of which require other packages to run
+correctly. All of these packages will be installed automatically, when
+you install <code>tidyverse</code>. The installation time may vary,
+depending on what has already been installed. As the install proceeds,
+messages relating to its progress will be written to the console.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -764,8 +767,8 @@ directly in the R terminal.</p>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>Use both the Console and the Packages tab to confirm that you have
-the tidyverse installed.</p>
+<p>Use the console to confirm you have the <code>tidyverse</code>
+installed.</p>
 </div>
 </div>
 </div>
@@ -776,18 +779,10 @@ the tidyverse installed.</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p>Scroll through packages tab down to ‘tidyverse’. You can also type a
-few characters into the searchbox. The ‘tidyverse’ package is really a
-package of packages, including ‘ggplot2’ and ‘dplyr’, both of which
-require other packages to run correctly. All of these packages will be
-installed automatically. Depending on what packages have previously been
-installed in your R environment, the install of ‘tidyverse’ could be
-very quick or could take several minutes. As the install proceeds,
-messages relating to its progress will be written to the console. You
-will be able to see all of the packages which are actually being
-installed.</p>
-<p>In the console. If you write tidy it should put up if it is
-installed. Look for tidyverse::</p>
+<p>Type <code>tidy</code> in the console. Based on the four letters,
+Positron will auto-suggest <code>tidyverse</code>, if the package has
+already been installed. Depending on the network connection, you might
+have to allow a few seconds the the auto-suggest to work.</p>
 </div>
 </div>
 </div>
@@ -800,7 +795,7 @@ installed. Look for tidyverse::</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Use Positron to write and run R programs</li>
+<li>Use Positron to write and execute R scripts</li>
 <li>Use <code>install.packages()</code> to install packages
 (libraries)</li>
 </ul>
@@ -1153,7 +1148,7 @@ lines with comments or include them after any code on the line.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># land area in hectares</span></span>
+<code class="sourceCode R"><span><span class="co"># runtime in minutes</span></span>
 <span><span class="va">runtime_hours</span> <span class="op">&lt;-</span> <span class="fl">1.0</span>    </span>
 <span><span class="va">runtime_minutes</span> <span class="op">&lt;-</span> <span class="va">runtime_hours</span> <span class="op">*</span> <span class="fl">60</span>  <span class="co"># convert to minutes</span></span>
 <span><span class="va">runtime_minutes</span>        <span class="co"># print runtime in minutes.</span></span></code></pre>
@@ -1247,11 +1242,25 @@ about the <code>round</code> function. We can use
 <div id="null" class="callout-inner">
 <h3 class="callout-title">NULL</h3>
 <div class="callout-content">
-<p>´args()´ som funktion giver ikke et egentligt resultat. Funktionen
-har en sideeffekt, hvor den printer noget, men hvor <code>round()</code>
-giver et resultat som vi kan gemme og arbejde videre med, giver
+<p>The function <code>args()</code> does not produce an actual result,
+that we can store and continue working with. Instead it types the
+required arguments of the function (in this case <code>round()</code>)
+and <code>NULL</code>. <code>NULL</code> indicates that there is nothing
+at all. It is not a missing value; instead, there is simply nothing</p>
+<p>Besides returning the required arguments of the given function (in
+this case round()), it also writes NULL.</p>
+<p><code>args()</code> som funktion giver ikke et egentligt resultat,
+som vi ka. Funktionen udskriver definitionen af den ønskede funktion (i
+dette tilfælde round())med tilhørende argumenter. Funktionen har dog en
+sideeffekt, hvor den printer noget, men hvor <code>round()</code> giver
+et resultat som vi kan gemme og arbejde videre med, giver
 <code>args()</code> intet resultat. `NULL´ angiver at der slet ikke er
 noget. Det er ikke en manglende værdi, istedet er der intet.</p>
+<p>T The function has a side effect in that it prints something, but
+whereas <code>round()</code> produces a result we can store and continue
+working with, <code>args()</code> produces no result. <code>NULL</code>
+indicates that there is nothing at all. It is not a missing value;
+instead, there is simply nothing.</p>
 </div>
 </div>
 </div>
@@ -2650,7 +2659,7 @@ the first through 6th rows of the interviews dataset.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3182,7 +3191,7 @@ retain only the columns <code>title</code>, <code>runtime</code>, and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3274,7 +3283,7 @@ to produce the data frame!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3610,7 +3619,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3647,7 +3656,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4038,7 +4047,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 4.730239</code></pre>
+<pre class="output" tabindex="0"><code>[1] 4.760886</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized
