@@ -4,7 +4,7 @@ teaching: 80
 exercises: 35
 ---
 
-:::: questions:
+:::: questions
 
 - How do I create scatterplots, boxplots, and barplots?
 - How can I define my own functions?
@@ -12,7 +12,7 @@ exercises: 35
 ::::  
 
 
-:::: objectives:
+:::: objectives
 
 - Produce scatter plots and boxplots using Base R.
 - Write your own function
@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.672815
+[1] 5.356438
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -392,11 +392,11 @@ chooses 30 bins for us, and that is normally not the right number.
 
 :::: keypoints
 
-- Boxplots are useful for visualizing the distribution of a continuous variable.
-- Barplots are useful for visualizing categorical data.
-- Functions allows you to repeat the same set of operations again and again.
-- Loops allows you to apply the same function to lots of data.
-- Logical tests allow you to apply different calculations on different sets of data.
+- Boxplots are useful for visualizing the distribution of a continuous variable
+- Barplots are useful for visualizing categorical data
+- Functions allows you to repeat the same set of operations again and again
+- Loops allows you to apply the same function to lots of data
+- Logical tests allow you to apply different calculations on different sets of data
 
 ::::
 

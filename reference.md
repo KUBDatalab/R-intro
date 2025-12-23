@@ -2,8 +2,6 @@
 title: 'Reference'
 ---
 
-Hm...
-
 ## Glossary
 
 The pipe, |>, is made using ctrl+shift+m on a windows computer. On a mac use
@@ -15,8 +13,8 @@ it.
 On a mac we have some succes pressing option+i. Confusingly | is also sometime 
 called a pipe, because it performs a similar function in most Linux and Unix settings.
 
-Dataframe or Tibble? The original dataframe has some limitations and annoyances.
-A new and shiny way to work with dataframes has been implemented in the tidyverse package.
+Data frame or Tibble? The original data frame has some limitations and annoyances.
+A new and shiny way to work with data frames has been implemented in the tidyverse package.
 The primary differences is a nicer and more readable output, but a 
 lot of optimation has happened behind the scenes. Since a lot of work has been
 put into making the two different types of data structures compatible, the names

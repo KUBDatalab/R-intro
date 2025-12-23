@@ -475,6 +475,6 @@ movieSerie_head <- movieSerie[-(7:n_rows), ]
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use read_csv to read tabular data in R.
+- Use read_csv to read tabular data in R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

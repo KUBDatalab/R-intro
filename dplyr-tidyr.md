@@ -10,8 +10,8 @@ exercises: 10
 
 - How can I select specific rows and/or columns from a data-frame?
 - How can I combine multiple commands into a single command?
-- How can I create new columns or remove existing columns from a dataframe?
-- How can I reformat a dataframe to meet my needs?
+- How can I create new columns or remove existing columns from a data frame?
+- How can I reformat a data frame to meet my needs?
 
 ::::
 
@@ -19,22 +19,22 @@ exercises: 10
 :::: objectives
 
 - Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
-- Select certain columns in a dataframe with the **`dplyr`** function `select`.
-- Select certain rows in a dataframe according to filtering conditions with the **`dplyr`**
+- Select certain columns in a data frame with the **`dplyr`** function `select`.
+- Select certain rows in a data frame according to filtering conditions with the **`dplyr`**
   function `filter`.
 - Link the output of one **`dplyr`** function to the input of another function with
   the 'pipe' operator ` |> `.
-- Add new columns to a dataframe that are functions of existing columns with `mutate`.
+- Add new columns to a data frame that are functions of existing columns with `mutate`.
 - Use the split-apply-combine concept for data analysis.
-- Use `summarize`, `group_by`, and `count` to split a dataframe into groups of observations,
+- Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations,
   apply a summary statistics for each group, and then combine the results.
 - Describe the concept of a wide and a long table format and for which purpose those
   formats are useful.
 - Describe the roles of variable names and their associated values when a table is
   reshaped.
-- Reshape a dataframe from long to wide format and back with the `pivot_wider` and
+- Reshape a data frame from long to wide format and back with the `pivot_wider` and
   `pivot_longer` commands from the **`tidyr`** package.
-- Export a dataframe to a csv file.
+- Export a data frame to a csv file.
 
 ::::
 
@@ -64,13 +64,13 @@ tidyverse. These packages were loaded in R's memory when we called
 ## What is an R package?
 
 The package **`dplyr`** provides easy tools for the most common data
-wrangling tasks. It is built to work directly with dataframes, with many
+wrangling tasks. It is built to work directly with data frames, with many
 common tasks optimized by being written in a compiled language (C++) (not all R
 packages are written in R!).
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your
 data for plotting and use by different R functions. Sometimes we want data sets
-where we have one row per measurement. Sometimes we want a dataframe where each
+where we have one row per measurement. Sometimes we want a data frame where each
 measurement type has its own column, and rows are instead more aggregated
 groups. Moving back and forth between these formats is nontrivial, and
 **`tidyr`** gives you tools for this and more sophisticated data wrangling.
@@ -106,15 +106,15 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 ## Selecting columns and filtering rows
 
-To select columns of a dataframe, use `select()`. The first argument to this
-function is the dataframe (`movieSerie`), and the subsequent arguments are the
+To select columns of a data frame, use `select()`. The first argument to this
+function is the data frame (`movieSerie`), and the subsequent arguments are the
 columns to keep, separated by commas. Alternatively, if you are selecting
 columns adjacent to each other, you can use a `:` to select a range of columns,
 read as "select columns from ___ to ___."
 
 
 ``` r
-# to select columns throughout the dataframe
+# to select columns throughout the data frame
 select(movieSerie, title, description)
 ```
 
@@ -158,8 +158,8 @@ select(movieSerie, title:description)
 ```
 
 To choose rows based on specific criteria, we can use the `filter()` function.
-The argument after the dataframe is the condition we want our final
-dataframe to adhere to (e.g. age_certification is PG-13): 
+The argument after the data frame is the condition we want our final
+data frame to adhere to (e.g. age_certification is PG-13): 
 
 
 ``` r
@@ -189,14 +189,14 @@ filter(movieSerie, age_certification == "PG-13")
 We can also specify multiple conditions within the `filter()` function. We can
 combine conditions using either "and" or "or" statements. In an "and" 
 statement, an observation (row) must meet **every** criteria to be included
-in the resulting dataframe. To form "and" statements within dplyr, we can  pass
+in the resulting data frame. To form "and" statements within dplyr, we can  pass
 our desired conditions as arguments in the `filter()` function, separated by
 commas:
 
 
 ``` r
 # filters observations with "and" operator (comma)
-# output dataframe satisfies ALL specified conditions
+# output data frame satisfies ALL specified conditions
 filter(movieSerie, age_certification == "PG-13",
                    runtime > 100,
                    imdb_score < 6.0)
@@ -226,7 +226,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 
 ``` r
 # filters observations with "&" logical operator
-# output dataframe satisfies ALL specified conditions
+# output data frame satisfies ALL specified conditions
 filter(movieSerie, age_certification == "PG-13" & 
                    runtime > 100 & 
                    imdb_score < 6.0)
@@ -257,7 +257,7 @@ To form "or" statements we use the logical operator for "or," which is the verti
 
 ``` r
 # filters observations with "|" logical operator
-# output dataframe satisfies AT LEAST ONE of the specified conditions
+# output data frame satisfies AT LEAST ONE of the specified conditions
 filter(movieSerie, age_certification == "PG-13" | 
                    runtime > 100 | 
                    imdb_score < 6.0)
@@ -288,7 +288,7 @@ filter(movieSerie, age_certification == "PG-13" |
 What if you want to select and filter at the same time? There are three
 ways to do this: use intermediate steps, nested functions, or pipes.
 
-With intermediate steps, you create a temporary dataframe and use
+With intermediate steps, you create a temporary data frame and use
 that as input to the next function, like this:
 
 
@@ -351,11 +351,11 @@ In the above code, we use the pipe to send the `movieSerie` dataset first
 through `filter()` to keep rows where `age_certification` is "PG-13", then through
 `select()` to keep only the `title` and `description` columns. Since ` |> `
 takes the object on its left and passes it as the first argument to the function
-on its right, we don't need to explicitly include the dataframe as an argument
+on its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we take the dataframe `movieSerie`, *then* we `filter`
+in the above example, we take the data frame `movieSerie`, *then* we `filter`
 for rows with `age_certification == "PG-13"`, *then* we `select` columns `title` and
 `description`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
@@ -390,7 +390,7 @@ movieSerie_ch
 # ℹ 441 more rows
 ```
 
-Note that the final dataframe (`movieSerie_ch`) is the leftmost part of this
+Note that the final data frame (`movieSerie_ch`) is the leftmost part of this
 expression.
 
 
@@ -473,12 +473,12 @@ movieSerie |>
 
 ## Exercise
 
-Create a new dataframe from the `movieSerie` data set that meets the following
+Create a new data frame from the `movieSerie` data set that meets the following
 criteria: contains only the `title` column and a new column called
 `total_score` containing a value that is equal to the total number of scores on 
 both imdb and tmdb (`imdb_score` plus `tmdb_score`).
 Only the rows where `total_score` is greater than 15 should be shown in the
-final dataframe.
+final data frame.
 
 **Hint**: think about how the commands should be ordered to produce the data
 frame!
@@ -547,7 +547,7 @@ movieSerie |>
 ```
 
 You may also have noticed that the output from these calls doesn't run off the
-screen anymore. It's one of the advantages of `tbl_df` over dataframe.
+screen anymore. It's one of the advantages of `tbl_df` over data frame.
 
 You can also group by multiple columns:
 
@@ -870,7 +870,7 @@ or summarize your raw data, you may want to export these new data sets to share
 them with your collaborators or for archival.
 
 Similar to the `read_csv()` function used for reading CSV files into R, there is
-a `write_csv()` function that generates CSV files from dataframes.
+a `write_csv()` function that generates CSV files from data frames.
 
 Before using `write_csv()`, we are going to create a new folder, `data_output`,
 in our working directory that will store this generated dataset. We don't want
@@ -881,7 +881,7 @@ it. In contrast, our script will generate the contents of the `data_output`
 directory, so even if the files it contains are deleted, we can always
 re-generate them.
 
-Now we can save this dataframe to our `data_output` directory.
+Now we can save this data frame to our `data_output` directory.
 
 
 ``` r
@@ -892,13 +892,13 @@ write_csv(movieSerie_ch, file = "data_output/movieSerie_changed.csv")
 
 :::: keypoints
 
-- Use the `dplyr` package to manipulate dataframes.
-- Use `select()` to choose variables from a dataframe.
-- Use `filter()` to choose data based on values.
-- Use `group_by()` and `summarize()` to work with subsets of data.
-- Use `mutate()` to create new variables.
-- Use the `tidyr` package to change the layout of dataframes.
-- Use `pivot_wider()` to go from long to wide format.
-- Use `pivot_longer()` to go from wide to long format.
+- Use the `dplyr` package to manipulate data frames
+- Use `select()` to choose variables from a data frame
+- Use `filter()` to choose data based on values
+- Use `group_by()` and `summarize()` to work with subsets of data
+- Use `mutate()` to create new variables
+- Use the `tidyr` package to change the layout of data frames
+- Use `pivot_wider()` to go from long to wide format
+- Use `pivot_longer()` to go from wide to long format
 
 ::::

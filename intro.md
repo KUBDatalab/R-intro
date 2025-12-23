@@ -15,11 +15,11 @@ exercises: 5
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Install latest version of R.
-- Install latest version of Positron.
-- Navigate the Positron GUI.
-- Install additional packages using the packages tab.
-- Install additional packages using R code.
+- Install latest version of R
+- Install latest version of Positron
+- Navigate the Positron GUI
+- Install additional packages using the packages tab
+- Install additional packages using R code
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -377,7 +377,7 @@ In the console. If you write tidy it should put up if it is installed. Look for 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use Positron to write and run R programs.
-- Use `install.packages()` to install packages (libraries).
+- Use Positron to write and run R programs
+- Use `install.packages()` to install packages (libraries)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

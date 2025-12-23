@@ -5,13 +5,13 @@ exercises: 0
 ---
 
 ::::questions
-  - "What do I do now?"
-  - "What is the next step?"
+  - What do I do now?
+  - What is the next step?
 ::::  
 
 ::::objectives
-   - "Present suggestions for further reading,"
-   - "Tips on problems to work on to practice,"
+   - Present suggestions for further reading
+   - Tips on problems to work on to practice
 ::::   
 
 
@@ -20,7 +20,7 @@ exercises: 0
 
 ## Great data
 First of all: If you do not have data you want to work with 
-already. Find some!
+already, find some.
 
 [Kaggle](https://www.kaggle.com/datasets) host competitions 
 in machine learning. For the use of those competitions, they
@@ -66,8 +66,8 @@ Our mail: kubdatalab@kb.dk
 
 
 ::::keypoints
-   - "Practice is important!"
-   - "Working on data that YOU find interesting is a really good idea,"
-   - "The amount of ressources online is immense."
-   - "KUB Datalab is there for your."
+   - Practice is important
+   - Working on data that YOU find interesting is a really good idea
+   - The amount of ressources online is immense
+   - KUB Datalab is there for you
 ::::  

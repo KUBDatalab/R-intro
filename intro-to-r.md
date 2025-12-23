@@ -942,8 +942,8 @@ length(rooms_above_2)
 Normaly we do not work with data in seperate vectors. Instead it would be in 
 a spreadsheet like format. In R this is called data frame
 
-A dataframe is made up by columns of vectors, so we can combine the three vectors 
-to a dataframe.
+A data frame is made up by columns of vectors, so we can combine the three vectors 
+to a data frame.
 
 
 
@@ -974,8 +974,8 @@ data frames.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- Access individual values by location using `[]`.
-- Access arbitrary sets of data using `[c(...)]`.
-- Use logical operations and logical vectors to access subsets of data.
+- Access individual values by location using `[]`
+- Access arbitrary sets of data using `[c(...)]`
+- Use logical operations and logical vectors to access subsets of data
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
