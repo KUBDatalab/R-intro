@@ -348,9 +348,9 @@
 <ul><li>How can I select specific rows and/or columns from a
 data-frame?</li>
 <li>How can I combine multiple commands into a single command?</li>
-<li>How can I create new columns or remove existing columns from a
-dataframe?</li>
-<li>How can I reformat a dataframe to meet my needs?</li>
+<li>How can I create new columns or remove existing columns from a data
+frame?</li>
+<li>How can I reformat a data frame to meet my needs?</li>
 </ul></div>
 </div>
 </div>
@@ -361,29 +361,29 @@ dataframe?</li>
 <ul><li>Describe the purpose of an R package and the
 <strong><code>dplyr</code></strong> and
 <strong><code>tidyr</code></strong> packages.</li>
-<li>Select certain columns in a dataframe with the
+<li>Select certain columns in a data frame with the
 <strong><code>dplyr</code></strong> function <code>select</code>.</li>
-<li>Select certain rows in a dataframe according to filtering conditions
-with the <strong><code>dplyr</code></strong> function
+<li>Select certain rows in a data frame according to filtering
+conditions with the <strong><code>dplyr</code></strong> function
 <code>filter</code>.</li>
 <li>Link the output of one <strong><code>dplyr</code></strong> function
 to the input of another function with the ‘pipe’ operator
 <code>|&gt;</code>.</li>
-<li>Add new columns to a dataframe that are functions of existing
+<li>Add new columns to a data frame that are functions of existing
 columns with <code>mutate</code>.</li>
 <li>Use the split-apply-combine concept for data analysis.</li>
 <li>Use <code>summarize</code>, <code>group_by</code>, and
-<code>count</code> to split a dataframe into groups of observations,
+<code>count</code> to split a data frame into groups of observations,
 apply a summary statistics for each group, and then combine the
 results.</li>
 <li>Describe the concept of a wide and a long table format and for which
 purpose those formats are useful.</li>
 <li>Describe the roles of variable names and their associated values
 when a table is reshaped.</li>
-<li>Reshape a dataframe from long to wide format and back with the
+<li>Reshape a data frame from long to wide format and back with the
 <code>pivot_wider</code> and <code>pivot_longer</code> commands from the
 <strong><code>tidyr</code></strong> package.</li>
-<li>Export a dataframe to a csv file.</li>
+<li>Export a data frame to a csv file.</li>
 </ul></div>
 </div>
 </div>
@@ -422,12 +422,12 @@ teaching.</p>
 <section><h2 class="section-heading" id="what-is-an-r-package">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a></h2>
 <hr class="half-width"><p>The package <strong><code>dplyr</code></strong> provides easy tools
 for the most common data wrangling tasks. It is built to work directly
-with dataframes, with many common tasks optimized by being written in a
+with data frames, with many common tasks optimized by being written in a
 compiled language (C++) (not all R packages are written in R!).</p>
 <p>The package <strong><code>tidyr</code></strong> addresses the common
 problem of wanting to reshape your data for plotting and use by
 different R functions. Sometimes we want data sets where we have one row
-per measurement. Sometimes we want a dataframe where each measurement
+per measurement. Sometimes we want a data frame where each measurement
 type has its own column, and rows are instead more aggregated groups.
 Moving back and forth between these formats is nontrivial, and
 <strong><code>tidyr</code></strong> gives you tools for this and more
@@ -472,8 +472,8 @@ statistics on grouped data</li>
 <li>
 <code>count()</code>: count discrete values</li>
 </ul></section><section><h2 class="section-heading" id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h2>
-<hr class="half-width"><p>To select columns of a dataframe, use <code>select()</code>. The
-first argument to this function is the dataframe
+<hr class="half-width"><p>To select columns of a data frame, use <code>select()</code>. The
+first argument to this function is the data frame
 (<code>movieSerie</code>), and the subsequent arguments are the columns
 to keep, separated by commas. Alternatively, if you are selecting
 columns adjacent to each other, you can use a <code>:</code> to select a
@@ -482,7 +482,7 @@ range of columns, read as “select columns from ___ to ___.”</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># to select columns throughout the dataframe</span></span>
+<code class="sourceCode R"><span><span class="co"># to select columns throughout the data frame</span></span>
 <span><span class="fu">select</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -529,8 +529,8 @@ range of columns, read as “select columns from ___ to ___.”</p>
 # ℹ 5,840 more rows</code></pre>
 </div>
 <p>To choose rows based on specific criteria, we can use the
-<code>filter()</code> function. The argument after the dataframe is the
-condition we want our final dataframe to adhere to
+<code>filter()</code> function. The argument after the data frame is the
+condition we want our final data frame to adhere to
 (e.g. age_certification is PG-13):</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -563,7 +563,7 @@ condition we want our final dataframe to adhere to
 <code>filter()</code> function. We can combine conditions using either
 “and” or “or” statements. In an “and” statement, an observation (row)
 must meet <strong>every</strong> criteria to be included in the
-resulting dataframe. To form “and” statements within dplyr, we can pass
+resulting data frame. To form “and” statements within dplyr, we can pass
 our desired conditions as arguments in the <code>filter()</code>
 function, separated by commas:</p>
 <div class="codewrapper sourceCode" id="cb7">
@@ -571,7 +571,7 @@ function, separated by commas:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "and" operator (comma)</span></span>
-<span><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
+<span><span class="co"># output data frame satisfies ALL specified conditions</span></span>
 <span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span>,</span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span>,</span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
@@ -603,7 +603,7 @@ operator instead of commas:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "&amp;" logical operator</span></span>
-<span><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
+<span><span class="co"># output data frame satisfies ALL specified conditions</span></span>
 <span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">&amp;</span> </span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">&amp;</span> </span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
@@ -636,7 +636,7 @@ operator for “or,” which is the vertical bar (|):</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filters observations with "|" logical operator</span></span>
-<span><span class="co"># output dataframe satisfies AT LEAST ONE of the specified conditions</span></span>
+<span><span class="co"># output data frame satisfies AT LEAST ONE of the specified conditions</span></span>
 <span><span class="fu">filter</span><span class="op">(</span><span class="va">movieSerie</span>, <span class="va">age_certification</span> <span class="op">==</span> <span class="st">"PG-13"</span> <span class="op">|</span> </span>
 <span>                   <span class="va">runtime</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">|</span> </span>
 <span>                   <span class="va">imdb_score</span> <span class="op">&lt;</span> <span class="fl">6.0</span><span class="op">)</span></span></code></pre>
@@ -665,7 +665,7 @@ operator for “or,” which is the vertical bar (|):</p>
 <hr class="half-width"><p>What if you want to select and filter at the same time? There are
 three ways to do this: use intermediate steps, nested functions, or
 pipes.</p>
-<p>With intermediate steps, you create a temporary dataframe and use
+<p>With intermediate steps, you create a temporary data frame and use
 that as input to the next function, like this:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -732,11 +732,11 @@ keep rows where <code>age_certification</code> is “PG-13”, then through
 <code>select()</code> to keep only the <code>title</code> and
 <code>description</code> columns. Since <code>|&gt;</code> takes the
 object on its left and passes it as the first argument to the function
-on its right, we don’t need to explicitly include the dataframe as an
+on its right, we don’t need to explicitly include the data frame as an
 argument to the <code>filter()</code> and <code>select()</code>
 functions any more.</p>
 <p>Some may find it helpful to read the pipe like the word “then”. For
-instance, in the above example, we take the dataframe
+instance, in the above example, we take the data frame
 <code>movieSerie</code>, <em>then</em> we <code>filter</code> for rows
 with <code>age_certification == "PG-13"</code>, <em>then</em> we
 <code>select</code> columns <code>title</code> and
@@ -774,7 +774,7 @@ data, we can assign it a new name:</p>
 10 Gattaca                               "In a future society in the era of ind…
 # ℹ 441 more rows</code></pre>
 </div>
-<p>Note that the final dataframe (<code>movieSerie_ch</code>) is the
+<p>Note that the final data frame (<code>movieSerie_ch</code>) is the
 leftmost part of this expression.</p>
 <div id="exercise" class="callout discussion">
 <div class="callout-square">
@@ -796,7 +796,7 @@ only the columns <code>title</code>, <code>runtime</code>, and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -869,13 +869,13 @@ vs tmdb:</p>
 <div id="exercise-1" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
-<p>Create a new dataframe from the <code>movieSerie</code> data set that
-meets the following criteria: contains only the <code>title</code>
+<p>Create a new data frame from the <code>movieSerie</code> data set
+that meets the following criteria: contains only the <code>title</code>
 column and a new column called <code>total_score</code> containing a
 value that is equal to the total number of scores on both imdb and tmdb
 (<code>imdb_score</code> plus <code>tmdb_score</code>). Only the rows
 where <code>total_score</code> is greater than 15 should be shown in the
-final dataframe.</p>
+final data frame.</p>
 <p><strong>Hint</strong>: think about how the commands should be ordered
 to produce the data frame!</p>
 </div>
@@ -886,7 +886,7 @@ to produce the data frame!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -951,7 +951,7 @@ average imdb_score by genre:</p>
 </div>
 <p>You may also have noticed that the output from these calls doesn’t
 run off the screen anymore. It’s one of the advantages of
-<code>tbl_df</code> over dataframe.</p>
+<code>tbl_df</code> over data frame.</p>
 <p>You can also group by multiple columns:</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1216,7 +1216,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1253,7 +1253,7 @@ observations (hint: see <code>?n</code>).</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1306,7 +1306,7 @@ summarize your raw data, you may want to export these new data sets to
 share them with your collaborators or for archival.</p>
 <p>Similar to the <code>read_csv()</code> function used for reading CSV
 files into R, there is a <code>write_csv()</code> function that
-generates CSV files from dataframes.</p>
+generates CSV files from data frames.</p>
 <p>Before using <code>write_csv()</code>, we are going to create a new
 folder, <code>data_output</code>, in our working directory that will
 store this generated dataset. We don’t want to write generated datasets
@@ -1316,7 +1316,7 @@ unaltered data, and should be left alone to make sure we don’t delete or
 modify it. In contrast, our script will generate the contents of the
 <code>data_output</code> directory, so even if the files it contains are
 deleted, we can always re-generate them.</p>
-<p>Now we can save this dataframe to our <code>data_output</code>
+<p>Now we can save this data frame to our <code>data_output</code>
 directory.</p>
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1331,16 +1331,16 @@ directory.</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>Use the <code>dplyr</code> package to manipulate dataframes.</li>
-<li>Use <code>select()</code> to choose variables from a dataframe.</li>
-<li>Use <code>filter()</code> to choose data based on values.</li>
+<ul><li>Use the <code>dplyr</code> package to manipulate data frames</li>
+<li>Use <code>select()</code> to choose variables from a data frame</li>
+<li>Use <code>filter()</code> to choose data based on values</li>
 <li>Use <code>group_by()</code> and <code>summarize()</code> to work
-with subsets of data.</li>
-<li>Use <code>mutate()</code> to create new variables.</li>
-<li>Use the <code>tidyr</code> package to change the layout of
-dataframes.</li>
-<li>Use <code>pivot_wider()</code> to go from long to wide format.</li>
-<li>Use <code>pivot_longer()</code> to go from wide to long format.</li>
+with subsets of data</li>
+<li>Use <code>mutate()</code> to create new variables</li>
+<li>Use the <code>tidyr</code> package to change the layout of data
+frames</li>
+<li>Use <code>pivot_wider()</code> to go from long to wide format</li>
+<li>Use <code>pivot_longer()</code> to go from wide to long format</li>
 </ul></div>
 </div>
 </div>
@@ -1407,7 +1407,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://KUBDatalab.github.io/R-intro/instructor/dplyr-tidyr.html",
   "identifier": "https://KUBDatalab.github.io/R-intro/instructor/dplyr-tidyr.html",
-  "dateCreated": "2025-12-17",
+  "dateCreated": "2025-12-23",
   "dateModified": "2025-12-23",
   "datePublished": "2025-12-23"
 }
