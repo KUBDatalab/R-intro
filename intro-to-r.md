@@ -156,11 +156,12 @@ runtime_minutes         # but typing the name of the object print
 
 ### Doing math on objects
 
-Now that R has `runtime_minutes` in memory, we can do arithmetic with it. For instance, we may want to convert the runtime in minutes into runtime in seconds (runtime in seconds is 60 times the runtime in minutes): 
+Now that R has `runtime_minutes` in memory, we can do arithmetic with it. For instance, we may want to convert the runtime in minutes into runtime in seconds (runtime in seconds is 60 times the runtime in minutes), store it in a new object, and view it: 
 
 
 ``` r
-60 * runtime_minutes
+runtime_seconds <- 60 * runtime_minutes
+runtime_seconds
 ```
 
 ``` output
@@ -172,6 +173,11 @@ We can also change an object’s value by assigning it a new one:
 
 ``` r
 runtime_minutes <- 114
+```
+
+That would correspond to this many seconds:
+
+``` r
 60 * runtime_minutes
 ```
 
@@ -186,22 +192,22 @@ Assigning a value to one object does not automatically change the values of othe
 runtime_seconds <- 60 * runtime_minutes
 ```
 
-and then change `runtime_minutes` to 114.
+and then change `runtime_minutes` back to 51.
 
 
 ``` r
-runtime_minutes <- 114
+runtime_minutes <- 51
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge
 ## Exercise
-What do you think is the current content of the object `runtime_seconds`? 114 or 684?
+What do you think is the current content of the object `runtime_seconds`? 6840 or 3060?
 
 :::::::::::::::::::::::: solution
 
 ## Solution
 
-The value of `runtime_seconds` is still 114 because you have not
+The value of `runtime_seconds` is still 6840 because you have not
 re-run the line `runtime_seconds <- 60 * runtime_minutes` since
 changing the value of `runtime_minutes`.
 
