@@ -362,7 +362,7 @@
         
 <section id="aio-intro"><p>Content from <a href="intro.html">Before we Start</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -812,7 +812,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-intro-to-r"><p>Content from <a href="intro-to-r.html">Introduction to R</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/intro-to-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -2091,7 +2091,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-starting-with-data"><p>Content from <a href="starting-with-data.html">Starting with Data</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -2743,7 +2743,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-dplyr-tidyr"><p>Content from <a href="dplyr-tidyr.html">Data Wrangling with dplyr and tidyr</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/dplyr-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -3395,8 +3395,12 @@ run off the screen anymore. It’s one of the advantages of
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3431,8 +3435,12 @@ tibble, use the <code>ungroup</code> function:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3468,8 +3476,12 @@ to a movie or serie:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3506,8 +3518,12 @@ put the group with the smallest imdb_score first:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3544,8 +3560,12 @@ imdb_score:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3788,7 +3808,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-functions-plots"><p>Content from <a href="functions-plots.html">A couple of plots. And making our own functions</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/functions-plots.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 115 minutes</p>
@@ -4126,7 +4146,7 @@ solution is.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 4.84295</code></pre>
+<pre class="output" tabindex="0"><code>[1] 4.893153</code></pre>
 </div>
 <p>More than double as fast! To be fair most of the time is spent
 outputting the results, but as a general rule utilizing the vectorized
@@ -4254,7 +4274,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-whats-next"><p>Content from <a href="whats-next.html">What is the next step?</a></p>
 <hr>
-<p>Last updated on 2026-02-03 |
+<p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/whats-next.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
@@ -4404,8 +4424,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-intro/instructor/aio.html",
   "identifier": "https://KUBDatalab.github.io/R-intro/instructor/aio.html",
   "dateCreated": "2026-01-19",
-  "dateModified": "2026-02-03",
-  "datePublished": "2026-02-03"
+  "dateModified": "2026-02-10",
+  "datePublished": "2026-02-10"
 }
 
   </script><script>

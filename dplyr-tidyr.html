@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr and tidyr</h1>
-        <p>Last updated on 2026-02-03 |
+        <p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-intro/edit/main/episodes/dplyr-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -963,8 +963,12 @@ run off the screen anymore. It’s one of the advantages of
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -999,8 +1003,12 @@ tibble, use the <code>ungroup</code> function:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1036,8 +1044,12 @@ to a movie or serie:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1074,8 +1086,12 @@ put the group with the smallest imdb_score first:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1112,8 +1128,12 @@ imdb_score:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1407,8 +1427,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-intro/dplyr-tidyr.html",
   "identifier": "https://KUBDatalab.github.io/R-intro/dplyr-tidyr.html",
   "dateCreated": "2026-01-19",
-  "dateModified": "2026-02-03",
-  "datePublished": "2026-02-03"
+  "dateModified": "2026-02-10",
+  "datePublished": "2026-02-10"
 }
 
   </script><script>
