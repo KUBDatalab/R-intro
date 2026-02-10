@@ -559,8 +559,12 @@ movie_series |>
 ```
 
 ``` output
-`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -593,8 +597,12 @@ movie_series |>
 ```
 
 ``` output
-`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -629,8 +637,12 @@ movie_series |>
 ```
 
 ``` output
-`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -666,8 +678,12 @@ movie_series |>
 ```
 
 ``` output
-`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -701,8 +717,12 @@ movie_series |>
 ```
 
 ``` output
-`summarise()` has grouped output by 'genre'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by genre and type.
+ℹ Output is grouped by genre.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(genre, type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
