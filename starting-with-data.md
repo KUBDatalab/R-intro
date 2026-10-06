@@ -363,7 +363,7 @@ movie_series[, -1]          # The whole tibble, except the first column
 ```
 
 ``` r
-movie_series[-c(7:131), ]   # Equivalent to head(interviews)
+movie_series[-c(7:131), ]   # Equivalent to head(movie_series)
 ```
 
 ``` output
@@ -436,8 +436,8 @@ bit trickier than dividing n_rows by 2. Use the median( ) function and what
 you've learned about sequences in R to extract the middle row!
 
 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
-    `head(interviews)`, keeping just the first through 6th rows of the
-    interviews dataset.
+    `head(movie_series)`, keeping just the first through 6th rows of the
+    movie_series dataset.
 
 
 :::::::::::::::::::::::: solution
