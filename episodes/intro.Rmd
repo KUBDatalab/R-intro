@@ -123,10 +123,10 @@ knitr::include_graphics("./fig/r-manual.jpeg")
 
 
 ```{r positron-analogy-2, echo = FALSE, fig.show = "hold", fig.alt = "automatic car gear shift representing the ease of Positron", out.width="100%"}
-knitr::include_graphics("./fig/r-automatic.jpeg")
+knitr::include_graphics("./fig/r-automatic.png")
 ```
 
-Positron extends what R can do, and makes it easier to write R code and interact
+Positron and other IDEs extends what R can do, and makes it easier to write R code and interact
 with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">Right photo credit</a>.
 
 
