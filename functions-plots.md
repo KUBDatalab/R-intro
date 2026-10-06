@@ -299,7 +299,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 ```
 
 ``` output
-[1] 4.100181
+[1] 4.7224
 ```
 More than double as fast!
 To be fair most of the time is spent outputting the results, but as a general
@@ -378,15 +378,16 @@ gives us a column-plot, `geom_histogram` a histogram etc.
 Let us try to make a histogram like we saw earlier:
 
 ``` r
-interviews_plotting |> 
-  ggplot(aes(x=no_membrs)) +
+movie_series_plotting |> 
+  ggplot(aes(x = runtime)) +
   geom_histogram()
 ```
 
-``` error
-Error:
-! object 'interviews_plotting' not found
+``` output
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
+
+<img src="fig/functions-plots-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
 chooses 30 bins for us, and that is normally not the right number.
 

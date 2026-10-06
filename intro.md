@@ -120,9 +120,9 @@ freely available to extend R's native capabilities.
 <img src="./fig/r-manual.jpeg" alt="Positron extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
 
 
-<img src="./fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of Positron" width="100%" style="display: block; margin: auto;" />
+<img src="./fig/r-automatic.png" alt="automatic car gear shift representing the ease of Positron" width="100%" style="display: block; margin: auto;" />
 
-Positron extends what R can do, and makes it easier to write R code and interact
+Positron and other IDEs extends what R can do, and makes it easier to write R code and interact
 with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">Right photo credit</a>.
 
 
