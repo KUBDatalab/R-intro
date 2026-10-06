@@ -319,8 +319,8 @@ gives us a column-plot, `geom_histogram` a histogram etc.
 
 Let us try to make a histogram like we saw earlier:
 ```{r}
-interviews_plotting |> 
-  ggplot(aes(x=no_membrs)) +
+movie_series_plotting |> 
+  ggplot(aes(x = runtime)) +
   geom_histogram()
 ```
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
